@@ -1,16 +1,22 @@
 # Modern SaaS Design System
 
 > **Category:** Enterprise SaaS  
-> **Aesthetic:** Clean, modern, gradient-rich with sophisticated depth and clear hierarchy  
+> **Aesthetic:** Clean, modern, minimalist with sophisticated depth and clear hierarchy  
 > **Companion Document:** [COMPONENTS.md](./COMPONENTS.md) for detailed component API and usage examples
 
 ---
 
 ## Design Philosophy
 
-### Core Principle: Clarity Through Depth
+### Core Principle: Clarity Through Restraint
 
-This design system is built on the belief that **digital interfaces should feel like physical spaces** — with depth, light, and layers that guide attention naturally. We don't flatten everything; we use subtle gradients, shadows, and transparency to create visual hierarchy that mirrors how humans understand physical environments.
+This design system is built on the belief that **simplicity enhances focus**. We use pure neutral backgrounds to create a calm, professional environment where content and data take center stage. Color is reserved as visual accent — guiding attention to interactive elements and data insights without overwhelming users.
+
+### Key Design Principle: **Color as Punctuation, Not Background**
+
+- **Large surfaces are neutral (0% chroma):** Body, sidebars, cards, panels use pure black/white/gray
+- **Color is punctuation:** Used sparingly on icons, badges, charts, and interactive elements to draw attention
+- **Gradients are accents:** Reserved for hero banners, CTAs, and decorative elements — never on large backgrounds
 
 ### Design Pillars
 
@@ -43,11 +49,15 @@ This design system is built on the belief that **digital interfaces should feel 
 
 ### Why This Approach?
 
-**Gradients & Blur:** Create depth without harsh lines. Radial gradients (18-24% opacity) add visual interest without distraction. Backdrop blur signals layering and focus.
+**Pure Neutral Backgrounds:** Large surfaces (body, sidebar, cards) use 0% chroma colors for a calm, professional appearance. This creates visual rest and lets content stand out.
+
+**Color as Visual Accent:** Saturated colors appear only on small elements (icons, badges, progress bars, charts) to guide attention. This makes interactive elements immediately recognizable.
+
+**Gradients for Emphasis:** Gradients are reserved for hero sections, CTAs, and decorative elements — creating visual hierarchy without noise.
 
 **Large Corner Radius:** 24-32px radius feels modern and friendly. It reduces visual noise and creates flow between sections.
 
-**Multi-layer Shadows:** Deep, soft shadows (60-100px blur) with low opacity (0.28-0.42) create realistic depth. Purple/blue tints echo the decorative background gradients.
+**Multi-layer Shadows:** Deep, soft shadows (60-100px blur) with low opacity (0.28-0.42) create realistic depth without color.
 
 **Immediate Transitions:** 100-200ms transitions feel instant but provide visual continuity. Longer (300ms) for complex state changes like expanding accordions.
 
@@ -57,20 +67,21 @@ This design system is built on the belief that **digital interfaces should feel 
 
 ## 1. Visual Theme & Atmosphere
 
-A contemporary enterprise design language built on soft gradients, generous spacing, and refined depth. The system communicates professionalism through subtle radial gradients, frosted-glass surfaces, and carefully calibrated shadows. The foundation is a pure neutral palette (black/white with zero chroma) with decorative indigo gradients providing ambient warmth.
+A contemporary enterprise design language built on pure neutral foundations, generous spacing, and refined depth. The system communicates professionalism through clean backgrounds and strategic use of color accents. The foundation is a pure neutral palette (black/white with zero chroma) with color used sparingly to guide attention.
 
 **Design Intent:**
 
-This aesthetic serves enterprise users who need to focus on complex tasks. The gradient-rich background provides visual interest without competing for attention. Frosted-glass surfaces (backdrop-blur) create clear layering — users immediately understand what's an overlay, what's a card, what's the background.
+This aesthetic serves enterprise users who need to focus on complex tasks. Pure neutral backgrounds create visual calm and reduce cognitive load. Color appears only where it matters — on interactive elements, data visualization, and call-to-action elements.
 
 **Key Characteristics:**
 
-- Soft radial gradients on major surfaces (18% opacity, subtle)
-- Frosted-glass backdrop blur effects (`backdrop-blur-xl`) for layering
-- Large corner radius (24px–32px) for primary surfaces — friendly, modern
-- Multi-layer shadow system with purple/blue tints — ties to primary palette
-- High color contrast for accessibility (4.5:1 text, 3:1 interactive)
-- Generous whitespace and padding — content breathes, focus is clear
+- **Pure neutral backgrounds** — Body, sidebar, and cards use 0% chroma colors (black/white/gray)
+- **Color as accent** — Saturated colors only on icons, badges, charts, and interactive feedback
+- **Frosted-glass surfaces** — `backdrop-blur-xl` for layering (modals, dropdowns, top bar)
+- **Large corner radius** — 24px–32px for primary surfaces — friendly, modern
+- **Multi-layer shadow system** — Creates depth through shadows, not color
+- **High color contrast** — 4.5:1 text, 3:1 interactive for accessibility
+- **Generous whitespace** — Content breathes, focus is clear
 
 ---
 
@@ -88,16 +99,17 @@ We use **OKLCH color space** instead of traditional hex/RGB because:
 **Color Psychology:**
 
 - **Neutral Primary:** Pure black/white with zero chroma creates timeless, professional appearance that never feels dated or trendy
-- **Indigo Ambience:** Subtle indigo gradients (18-24% opacity) in backgrounds provide warmth without distraction
-- **Cool Neutral Tones:** Gray palette with subtle blue undertones reduces eye strain, feels modern and clean
-- **Minimal Saturation:** Reserved for critical feedback (errors), data visualization (charts), and navigation accents
-- **70-90% Opacity:** Creates layering without hard edges, glass-like depth
+- **Calm Backgrounds:** 0% chroma on all large surfaces (body, sidebar, cards) reduces visual noise and enhances focus
+- **Strategic Color:** Saturated colors appear only on small, interactive elements to guide user attention
+- **Minimal Saturation:** Reserved for critical feedback (errors), data visualization (charts), icons, and badges
+- **Clean Hierarchy:** Pure neutrals for structure, color for emphasis
 
 **Color Application Strategy:**
-1. **Main Content (0% chroma):** All interactive elements (buttons, inputs, borders) use pure neutrals — focus stays on content
-2. **Background Ambience (18-24% opacity indigo):** Decorative only, provides warmth without competing for attention
-3. **Data Visualization (10-25% chroma indigo):** Charts use saturated colors to make data insights stand out from UI chrome
-4. **Navigation Accent (deep dark mode only):** Sidebar uses subtle indigo to distinguish navigation from content area
+1. **Large Surfaces (0% chroma):** Body, sidebar, cards, panels — all use pure neutrals for visual calm
+2. **Interactive Elements (0% chroma):** Buttons, inputs, borders use pure neutrals unless they need emphasis
+3. **Visual Accents (10-25% chroma):** Icons, badges, progress bars, charts use saturated colors to stand out
+4. **Hero Elements:** Gradient banners and CTAs can use color for visual impact
+5. **Navigation Accent (dark mode only):** Sidebar active state uses subtle indigo to distinguish from content
 
 **Semantic Color Strategy:**
 Colors communicate meaning, not just decoration:
@@ -156,48 +168,59 @@ Colors communicate meaning, not just decoration:
 
 ### Gradients & Effects
 
-**Background Gradient (Light Mode):**
+**Background (Light Mode):**
 ```css
-background: radial-gradient(circle at top left, rgba(129,140,248,0.18), transparent 34%),
-            linear-gradient(180deg, #f8fafc 0%, #f5f7fb 100%);
+background-color: oklch(1 0 0); /* Pure white, no gradient */
 ```
-- **Radial:** `rgba(129,140,248,0.18)` = #818cf8 (indigo-400) at **18% opacity**
-- **Position:** Top left corner, fades to transparent at **34%** of container
-- **Linear:** Slate-50 (#f8fafc) → Custom cool white (#f5f7fb)
-- **Effect:** Subtle warmth without distraction, guides eye to top-left content
+- **Pure neutral:** Clean white background without any gradients
+- **Effect:** Maximum clarity and focus, professional appearance
 
-**Background Gradient (Dark Mode):**
+**Background (Dark Mode):**
 ```css
-background: radial-gradient(circle at top left, rgba(79,70,229,0.24), transparent 30%),
-            linear-gradient(180deg, #020617 0%, #0f172a 100%);
+background-color: oklch(0.145 0 0); /* Pure dark, no gradient */
 ```
-- **Radial:** `rgba(79,70,229,0.24)` = #4f46e5 (indigo-600) at **24% opacity**
-- **Position:** Top left corner, fades to transparent at **30%** of container
-- **Linear:** Slate-950 (#020617) → Slate-900 (#0f172a)
-- **Effect:** Deeper, more dramatic than light mode; indigo more visible for warmth
+- **Pure neutral:** Clean dark background without any gradients
+- **Effect:** Reduces eye strain, maintains focus on content
 
-**Frosted Surface:**
+**Accent Gradients (Hero sections, CTAs only):**
+```css
+background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 50%, #2563eb 100%);
+```
+- **Usage:** Only on hero banners, call-to-action sections, and decorative elements
+- **Effect:** Creates visual hierarchy and guides attention to important content
+
+**Frosted Surface (Modals, Dropdowns):**
 ```css
 background: rgba(255,255,255,0.85);
 backdrop-filter: blur(16px);
 ```
+- **Usage:** Overlay surfaces like modals, dropdown menus, top navigation bar
+- **Effect:** Creates layering while maintaining context of underlying content
 
 ### Shadows
+
+Shadows create depth through varying levels of opacity and blur, without relying on color.
 
 **Surface Shadow (24px radius cards):**
 ```css
 box-shadow: 0 24px 60px -30px rgba(15,23,42,0.32);
 ```
+- **Usage:** Standard cards and panels
+- **Effect:** Subtle elevation, separates content from background
 
 **Elevated Shadow (32px radius panels):**
 ```css
 box-shadow: 0 35px 100px -42px rgba(15,23,42,0.42);
 ```
+- **Usage:** Modals, dialogs, elevated surfaces
+- **Effect:** Strong separation, draws attention
 
-**Accent Gradient Shadow:**
+**Light Shadows (Hover states, small elements):**
 ```css
-box-shadow: 0 24px 60px -32px rgba(79,70,229,0.28);
+box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 ```
+- **Usage:** Hover states on cards, interactive elements
+- **Effect:** Immediate feedback on interactivity
 
 ---
 
