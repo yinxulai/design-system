@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Aurora Design System</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .chart-placeholder {
+      height: 200px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(129, 140, 248, 0.05) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted-foreground);
+      border: 1px dashed var(--border);
+    }
+    .activity-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+    .activity-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--muted);
+      flex-shrink: 0;
+    }
+    .progress-bar {
+      height: 8px;
+      background: var(--muted);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+  </style>
+</head>
+<body class="gradient-bg">
+  <div class="container">
+    <!-- Navigation -->
+    <nav class="nav">
+      <a href="index.html" style="font-weight: 600; color: var(--foreground); text-decoration: none;">Aurora</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="components.html" class="nav-link">Components</a></li>
+        <li><a href="colors.html" class="nav-link">Colors</a></li>
+        <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+      </ul>
+    </nav>
+
+    <!-- Header -->
+    <div class="section-header mb-6">
+      <div>
+        <h1 class="mb-2">Dashboard Overview</h1>
+        <p>Monitor your key metrics and recent activity</p>
+      </div>
+      <div class="flex gap-2">
+        <button class="btn btn-outline btn-sm">
+          <span>📅</span>
+          Last 30 days
+        </button>
+        <button class="btn btn-primary btn-sm">
+          <span>+</span>
+          New Release
+        </button>
+      </div>
+    </div>
+
+    <!-- Stats Grid -->
+    <section class="section">
+      <div class="grid grid-cols-1 grid-cols-2-sm grid-cols-4-lg">
+        <div class="surface surface-accent stat-card">
+          <div class="flex items-center justify-between">
+            <div class="stat-card-title">Total Releases</div>
+            <span style="font-size: 24px;">📦</span>
+          </div>
+          <div class="stat-card-value">127</div>
+          <div class="stat-card-description">
+            <span style="color: #22c55e;">↑ 12 this month</span>
+          </div>
+        </div>
+
+        <div class="surface stat-card">
+          <div class="flex items-center justify-between">
+            <div class="stat-card-title">Active Projects</div>
+            <span style="font-size: 24px;">🚀</span>
+          </div>
+          <div class="stat-card-value">8</div>
+          <div class="stat-card-description">
+            <span style="color: #22c55e;">↑ +2 from last month</span>
+          </div>
+        </div>
+
+        <div class="surface stat-card">
+          <div class="flex items-center justify-between">
+            <div class="stat-card-title">Success Rate</div>
+            <span style="font-size: 24px;">✅</span>
+          </div>
+          <div class="stat-card-value">98.5%</div>
+          <div class="stat-card-description">
+            <span style="color: #22c55e;">↑ +0.3% improvement</span>
+          </div>
+        </div>
+
+        <div class="surface stat-card">
+          <div class="flex items-center justify-between">
+            <div class="stat-card-title">Pending Approvals</div>
+            <span style="font-size: 24px;">⏳</span>
+          </div>
+          <div class="stat-card-value">3</div>
+          <div class="stat-card-description">
+            <span style="color: #f59e0b;">Requires attention</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="mb-2">Release Analytics</h2>
+          <p>Track your release trends over time</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="btn btn-ghost btn-sm">Week</button>
+          <button class="btn btn-outline btn-sm">Month</button>
+          <button class="btn btn-ghost btn-sm">Year</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 grid-cols-2-sm">
+        <div class="surface p-6">
+          <h3 class="mb-4">Release Velocity</h3>
+          <div class="chart-placeholder">
+            📊 Line Chart
+          </div>
+          <div class="flex items-center justify-between" style="margin-top: 16px;">
+            <div class="text-sm">
+              <span class="badge badge-success">+15%</span>
+              <span style="margin-left: 8px; color: var(--muted-foreground);">vs last period</span>
+            </div>
+            <button class="btn btn-ghost btn-sm">Details →</button>
+          </div>
+        </div>
+
+        <div class="surface p-6">
+          <h3 class="mb-4">Deployment Success</h3>
+          <div class="chart-placeholder">
+            📈 Bar Chart
+          </div>
+          <div class="flex items-center justify-between" style="margin-top: 16px;">
+            <div class="text-sm">
+              <span class="badge badge-success">98.5%</span>
+              <span style="margin-left: 8px; color: var(--muted-foreground);">success rate</span>
+            </div>
+            <button class="btn btn-ghost btn-sm">Details →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two Column Layout -->
+    <div class="grid grid-cols-1 grid-cols-3-lg gap-6">
+      <!-- Recent Activity -->
+      <div style="grid-column: span 2 / span 2;">
+        <section class="section">
+          <div class="section-header">
+            <div>
+              <h2 class="mb-2">Recent Activity</h2>
+              <p>Latest releases and updates</p>
+            </div>
+            <button class="btn btn-ghost btn-sm">View All →</button>
+          </div>
+
+          <div class="surface p-5">
+            <div class="activity-item">
+              <div class="activity-icon">
+                <span>🚀</span>
+              </div>
+              <div style="flex: 1; min-width: 0;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+                  <span style="font-weight: 600; font-size: 14px;">Release v2.1.0 deployed</span>
+                  <span class="text-xs" style="color: var(--muted-foreground);">2 hours ago</span>
+                </div>
+                <p class="text-sm" style="color: var(--muted-foreground); margin-bottom: 8px;">
+                  Production deployment completed successfully with 15 new features
+                </p>
+                <div class="badge badge-success">Success</div>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon">
+                <span>📝</span>
+              </div>
+              <div style="flex: 1; min-width: 0;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+                  <span style="font-weight: 600; font-size: 14px;">Release v2.0.5 created</span>
+                  <span class="text-xs" style="color: var(--muted-foreground);">5 hours ago</span>
+                </div>
+                <p class="text-sm" style="color: var(--muted-foreground); margin-bottom: 8px;">
+                  Bug fixes and performance improvements ready for review
+                </p>
+                <div class="badge badge-warning">Pending Approval</div>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon">
+                <span>✅</span>
+              </div>
+              <div style="flex: 1; min-width: 0;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+                  <span style="font-weight: 600; font-size: 14px;">Release v2.0.4 approved</span>
+                  <span class="text-xs" style="color: var(--muted-foreground);">1 day ago</span>
+                </div>
+                <p class="text-sm" style="color: var(--muted-foreground); margin-bottom: 8px;">
+                  Security patches reviewed and approved by team lead
+                </p>
+                <div class="badge badge-default">Approved</div>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon">
+                <span>🔧</span>
+              </div>
+              <div style="flex: 1; min-width: 0;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+                  <span style="font-weight: 600; font-size: 14px;">Hotfix v2.0.3 deployed</span>
+                  <span class="text-xs" style="color: var(--muted-foreground);">2 days ago</span>
+                </div>
+                <p class="text-sm" style="color: var(--muted-foreground); margin-bottom: 8px;">
+                  Critical bug fix deployed to production
+                </p>
+                <div class="badge badge-success">Success</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <div>
+        <!-- Team Activity -->
+        <section class="section">
+          <div class="section-header">
+            <div>
+              <h2 class="mb-2">Team Activity</h2>
+              <p>Who's working on what</p>
+            </div>
+          </div>
+
+          <div class="surface p-4" style="display: flex; flex-direction: column; gap: 12px;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-size: 14px; font-weight: 600;">Sarah Chen</span>
+                <span class="text-xs" style="color: var(--muted-foreground);">Active</span>
+              </div>
+              <p class="text-sm" style="color: var(--muted-foreground); margin-bottom: 8px;">
+                Working on v2.2.0 features
+              </p>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 75%;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-size: 14px; font-weight: 600;">Alex Kumar</span>
+                <span class="text-xs" style="color: var(--muted-foreground);">Reviewing</span>
+              </div>
+              <p class="text-sm" style="color: var(--muted-foreground); margin-bottom: 8px;">
+                Code review for v2.0.5
+              </p>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 40%;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-size: 14px; font-weight: 600;">Maria Garcia</span>
+                <span class="text-xs" style="color: var(--muted-foreground);">Testing</span>
+              </div>
+              <p class="text-sm" style="color: var(--muted-foreground); margin-bottom: 8px;">
+                QA testing v2.1.0
+              </p>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 90%;"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="section">
+          <div class="section-header">
+            <div>
+              <h2 class="mb-2">Quick Actions</h2>
+              <p>Common tasks</p>
+            </div>
+          </div>
+
+          <div class="surface-muted surface p-4" style="display: flex; flex-direction: column; gap: 8px;">
+            <button class="btn btn-outline" style="justify-content: flex-start; width: 100%;">
+              <span>+</span>
+              Create Release
+            </button>
+            <button class="btn btn-outline" style="justify-content: flex-start; width: 100%;">
+              <span>📝</span>
+              Draft Changelog
+            </button>
+            <button class="btn btn-outline" style="justify-content: flex-start; width: 100%;">
+              <span>🔍</span>
+              View Reports
+            </button>
+            <button class="btn btn-outline" style="justify-content: flex-start; width: 100%;">
+              <span>⚙️</span>
+              Settings
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Projects List -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="mb-2">Active Projects</h2>
+          <p>Your current projects and their status</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="btn btn-outline btn-sm">
+            <span>🔍</span>
+            Filter
+          </button>
+          <button class="btn btn-primary btn-sm">
+            <span>+</span>
+            New Project
+          </button>
+        </div>
+      </div>
+
+      <div class="surface p-4" style="display: flex; flex-direction: column; gap: 8px;">
+        <div class="list-row">
+          <div style="flex: 1;">
+            <div style="font-size: 14px; font-weight: 600; color: var(--foreground); margin-bottom: 4px;">
+              Aurora Design System
+            </div>
+            <p class="text-sm" style="color: var(--muted-foreground);">
+              Latest: v1.0.0 • 127 releases
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="badge badge-success">Active</div>
+            <button class="btn btn-ghost btn-sm">→</button>
+          </div>
+        </div>
+
+        <div class="list-row">
+          <div style="flex: 1;">
+            <div style="font-size: 14px; font-weight: 600; color: var(--foreground); margin-bottom: 4px;">
+              Release Manager API
+            </div>
+            <p class="text-sm" style="color: var(--muted-foreground);">
+              Latest: v3.2.1 • 89 releases
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="badge badge-success">Active</div>
+            <button class="btn btn-ghost btn-sm">→</button>
+          </div>
+        </div>
+
+        <div class="list-row">
+          <div style="flex: 1;">
+            <div style="font-size: 14px; font-weight: 600; color: var(--foreground); margin-bottom: 4px;">
+              Mobile App
+            </div>
+            <p class="text-sm" style="color: var(--muted-foreground);">
+              Latest: v2.8.0 • 45 releases
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="badge badge-warning">Pending</div>
+            <button class="btn btn-ghost btn-sm">→</button>
+          </div>
+        </div>
+
+        <div class="list-row">
+          <div style="flex: 1;">
+            <div style="font-size: 14px; font-weight: 600; color: var(--foreground); margin-bottom: 4px;">
+              Documentation Site
+            </div>
+            <p class="text-sm" style="color: var(--muted-foreground);">
+              Latest: v1.5.2 • 32 releases
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="badge badge-success">Active</div>
+            <button class="btn btn-ghost btn-sm">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="text-align: center; padding: 48px 0; color: var(--muted-foreground);">
+      <p class="text-sm">
+        <a href="index.html" style="color: var(--primary); text-decoration: none;">← Back to Home</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

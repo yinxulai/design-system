@@ -47,7 +47,7 @@ This design system is built on the belief that **digital interfaces should feel 
 
 **Large Corner Radius:** 24-32px radius feels modern and friendly. It reduces visual noise and creates flow between sections.
 
-**Multi-layer Shadows:** Deep, soft shadows (60-100px blur) with low opacity (0.28-0.42) create realistic depth. Purple/blue tints tie shadows to the primary color palette.
+**Multi-layer Shadows:** Deep, soft shadows (60-100px blur) with low opacity (0.28-0.42) create realistic depth. Purple/blue tints echo the decorative background gradients.
 
 **Immediate Transitions:** 100-200ms transitions feel instant but provide visual continuity. Longer (300ms) for complex state changes like expanding accordions.
 
@@ -57,7 +57,7 @@ This design system is built on the belief that **digital interfaces should feel 
 
 ## 1. Visual Theme & Atmosphere
 
-A contemporary enterprise design language built on soft gradients, generous spacing, and refined depth. The system communicates professionalism through subtle radial gradients, frosted-glass surfaces, and carefully calibrated shadows. The foundation is a neutral-cool palette with indigo as the primary interactive accent.
+A contemporary enterprise design language built on soft gradients, generous spacing, and refined depth. The system communicates professionalism through subtle radial gradients, frosted-glass surfaces, and carefully calibrated shadows. The foundation is a pure neutral palette (black/white with zero chroma) with decorative indigo gradients providing ambient warmth.
 
 **Design Intent:**
 
@@ -87,9 +87,10 @@ We use **OKLCH color space** instead of traditional hex/RGB because:
 
 **Color Psychology:**
 
-- **Indigo Primary:** Professional, trustworthy, tech-forward (not corporate blue, not playful purple)
-- **Neutral Cool Tones:** Reduces eye strain, feels modern and clean
-- **Subtle Saturation:** High saturation reserved for CTAs and errors — draws attention where needed
+- **Neutral Primary:** Pure black/white with zero chroma creates timeless, professional appearance that never feels dated or trendy
+- **Indigo Ambience:** Subtle indigo gradients (18-24% opacity) in backgrounds provide warmth without distraction
+- **Cool Neutral Tones:** Gray palette with subtle blue undertones reduces eye strain, feels modern and clean
+- **Minimal Saturation:** Reserved for critical feedback (errors) and success states — draws attention where needed
 - **70-90% Opacity:** Creates layering without hard edges, glass-like depth
 
 **Semantic Color Strategy:**

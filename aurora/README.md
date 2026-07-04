@@ -123,7 +123,8 @@ WCAG 2.1 AA compliance minimum, keyboard navigation, screen reader support.
 
 ### Color System
 - **OKLCH Color Space** - Perceptual uniformity, predictable lightness
-- **Primary:** Indigo (professional, trustworthy)
+- **Primary:** Neutral Black/White (timeless, professional)
+- **Indigo Ambience** - Subtle gradients (18-24% opacity) for warmth
 - **Neutral Cool Tones** - Reduces eye strain
 - **70-90% Opacity** - Creates layering without hard edges
 

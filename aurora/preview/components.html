@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Components - Aurora Design System</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="gradient-bg">
+  <div class="container">
+    <!-- Navigation -->
+    <nav class="nav">
+      <a href="index.html" style="font-weight: 600; color: var(--foreground); text-decoration: none;">Aurora</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="components.html" class="nav-link active">Components</a></li>
+        <li><a href="colors.html" class="nav-link">Colors</a></li>
+        <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+      </ul>
+    </nav>
+
+    <!-- Header -->
+    <div class="hero-panel mb-8">
+      <span class="eyebrow">Preview</span>
+      <h1 style="margin-top: 16px; margin-bottom: 12px;">Component Library</h1>
+      <p class="text-lg" style="max-width: 640px;">
+        Explore all Aurora components with live interactions and code examples.
+      </p>
+    </div>
+
+    <!-- Buttons -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="mb-2">Buttons</h2>
+          <p>Primary actions, outlines, and ghost styles with size variants</p>
+        </div>
+      </div>
+
+      <div class="surface p-6">
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <!-- Primary Buttons -->
+          <div>
+            <h3 class="mb-3">Primary Buttons</h3>
+            <div class="flex gap-3" style="flex-wrap: wrap; align-items: center;">
+              <button class="btn btn-primary btn-sm">Small</button>
+              <button class="btn btn-primary">Default</button>
+              <button class="btn btn-primary btn-lg">Large</button>
+              <button class="btn btn-primary" disabled style="opacity: 0.5; cursor: not-allowed;">Disabled</button>
+            </div>
+          </div>
+
+          <!-- Outline Buttons -->
+          <div>
+            <h3 class="mb-3">Outline Buttons</h3>
+            <div class="flex gap-3" style="flex-wrap: wrap; align-items: center;">
+              <button class="btn btn-outline btn-sm">Small</button>
+              <button class="btn btn-outline">Default</button>
+              <button class="btn btn-outline btn-lg">Large</button>
+            </div>
+          </div>
+
+          <!-- Ghost Buttons -->
+          <div>
+            <h3 class="mb-3">Ghost Buttons</h3>
+            <div class="flex gap-3" style="flex-wrap: wrap; align-items: center;">
+              <button class="btn btn-ghost btn-sm">Small</button>
+              <button class="btn btn-ghost">Default</button>
+              <button class="btn btn-ghost btn-lg">Large</button>
+            </div>
+          </div>
+
+          <!-- With Icons -->
+          <div>
+            <h3 class="mb-3">With Icons</h3>
+            <div class="flex gap-3" style="flex-wrap: wrap;">
+              <button class="btn btn-primary">
+                <span>+</span>
+                Add Item
+              </button>
+              <button class="btn btn-outline">
+                Download
+                <span>↓</span>
+              </button>
+              <button class="btn btn-ghost">
+                ⚙️ Settings
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Surface Cards -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="mb-2">Surface Cards</h2>
+          <p>Container components with three tone variants</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 grid-cols-3-lg">
+        <div class="surface p-5">
+          <h3 class="mb-3">Default Tone</h3>
+          <p class="mb-4">Primary content cards with frosted glass effect and subtle shadow.</p>
+          <div class="badge badge-default">Badge</div>
+        </div>
+
+        <div class="surface surface-muted p-5">
+          <h3 class="mb-3">Muted Tone</h3>
+          <p class="mb-4">Secondary content with lighter visual weight, no shadow for subtlety.</p>
+          <div class="badge badge-default">Badge</div>
+        </div>
+
+        <div class="surface surface-accent p-5">
+          <h3 class="mb-3">Accent Tone</h3>
+          <p class="mb-4">Featured content with gradient background and primary-tinted shadow.</p>
+          <div class="badge badge-default">Badge</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stat Cards -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="mb-2">Stat Cards</h2>
+          <p>Display key metrics and statistics prominently</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 grid-cols-2-sm grid-cols-4-lg">
+        <div class="surface stat-card">
+          <div class="stat-card-title">Total Users</div>
+          <div class="stat-card-value">1,234</div>
+          <div class="stat-card-description">+12% from last month</div>
+        </div>
+
+        <div class="surface stat-card">
+          <div class="stat-card-title">Active Sessions</div>
+          <div class="stat-card-value">89</div>
+          <div class="stat-card-description">Currently online</div>
+        </div>
+
+        <div class="surface surface-accent stat-card">
+          <div class="stat-card-title">Revenue</div>
+          <div class="stat-card-value">$45.2K</div>
+          <div class="stat-card-description">+23% from last month</div>
+        </div>
+
+        <div class="surface stat-card">
+          <div class="stat-card-title">Conversion Rate</div>
+          <div class="stat-card-value">12.4%</div>
+          <div class="stat-card-description">-2% from last month</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Badges -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="mb-2">Badges</h2>
+          <p>Status indicators and labels</p>
+        </div>
+      </div>
+
+      <div class="surface p-6">
+        <div class="flex gap-3" style="flex-wrap: wrap; align-items: center;">
+          <div class="badge badge-default">Default</div>
+          <div class="badge badge-success">Success</div>
+          <div class="badge badge-warning">Warning</div>
+          <div class="badge badge-error">Error</div>
+          <div class="badge badge-default">Published</div>
+          <div class="badge badge-warning">Draft</div>
+          <div class="badge badge-success">Verified ✓</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- List Rows -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="mb-2">List Rows</h2>
+          <p>Uniform list items for tables and repeating content</p>
+        </div>
+      </div>
+
+      <div class="surface p-4" style="display: flex; flex-direction: column; gap: 8px;">
+        <div class="list-row">
+          <div>
+            <div style="font-size: 14px; font-weight: 600; color: var(--foreground); margin-bottom: 4px;">Release v2.1.0</div>
+            <div style="font-size: 14px; color: var(--muted-foreground);">Major feature update with bug fixes</div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-sm" style="color: var(--muted-foreground);">2 days ago</span>
+            <button class="btn btn-ghost btn-sm">→</button>
+          </div>
+        </div>
+
+        <div class="list-row">
+          <div>
+            <div style="font-size: 14px; font-weight: 600; color: var(--foreground); margin-bottom: 4px;">Release v2.0.5</div>
+            <div style="font-size: 14px; color: var(--muted-foreground);">Security patches and performance improvements</div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-sm" style="color: var(--muted-foreground);">1 week ago</span>
+            <button class="btn btn-ghost btn-sm">→</button>
+          </div>
+        </div>
+
+        <div class="list-row">
+          <div>
+            <div style="font-size: 14px; font-weight: 600; color: var(--foreground); margin-bottom: 4px;">Release v2.0.0</div>
+            <div style="font-size: 14px; color: var(--muted-foreground);">Complete redesign with new features</div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-sm" style="color: var(--muted-foreground);">2 weeks ago</span>
+            <button class="btn btn-ghost btn-sm">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Forms -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="mb-2">Form Elements</h2>
+          <p>Inputs, textareas, and form layouts</p>
+        </div>
+      </div>
+
+      <div class="surface p-6" style="max-width: 600px;">
+        <form style="display: flex; flex-direction: column; gap: 16px;">
+          <div class="form-group">
+            <label class="label" for="name">Full Name</label>
+            <input type="text" id="name" class="input" placeholder="John Doe">
+          </div>
+
+          <div class="form-group">
+            <label class="label" for="email">Email Address</label>
+            <input type="email" id="email" class="input" placeholder="john@example.com">
+          </div>
+
+          <div class="form-group">
+            <label class="label" for="message">Message</label>
+            <textarea id="message" class="input textarea" placeholder="Your message here..."></textarea>
+          </div>
+
+          <div class="flex gap-3 justify-between">
+            <button type="button" class="btn btn-outline">Cancel</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Empty State -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="mb-2">Empty State</h2>
+          <p>Communicate absence of content with clear guidance</p>
+        </div>
+      </div>
+
+      <div class="surface p-5">
+        <div class="empty-state">
+          <div class="empty-state-icon">
+            <span style="font-size: 24px;">📦</span>
+          </div>
+          <div>
+            <h3 class="mb-2">No releases yet</h3>
+            <p>Create your first release to get started with version management.</p>
+          </div>
+          <button class="btn btn-primary">Create Release</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Header -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="mb-2">Section Headers</h2>
+          <p>Organize content with titles, descriptions, and actions</p>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div>
+          <h2 class="mb-2">Example Section</h2>
+          <p>This is how section headers look with actions on the right side</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="btn btn-outline btn-sm">Filter</button>
+          <button class="btn btn-primary btn-sm">+ Add</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="text-align: center; padding: 48px 0; color: var(--muted-foreground);">
+      <p class="text-sm">
+        <a href="index.html" style="color: var(--primary); text-decoration: none;">← Back to Home</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    // Add hover effects
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('mouseenter', function() {
+        if (!this.disabled) {
+          this.style.transform = 'translateY(-1px)';
+        }
+      });
+      btn.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+      });
+    });
+  </script>
+</body>
+</html>

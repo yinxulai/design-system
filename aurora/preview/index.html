@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurora Design System - Preview</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="gradient-bg">
+  <div class="container">
+    <!-- Hero -->
+    <div class="hero-panel mb-8">
+      <span class="eyebrow">Design System</span>
+      <h1 style="margin-top: 16px; margin-bottom: 12px;">Aurora Design System</h1>
+      <p class="text-lg" style="max-width: 640px; margin-bottom: 24px;">
+        A gradient-rich design system with sophisticated depth and clarity. Built for modern SaaS applications with enterprise-grade accessibility.
+      </p>
+      <div class="flex gap-3" style="flex-wrap: wrap;">
+        <a href="../DESIGN.md" class="btn btn-primary btn-lg">View Documentation</a>
+        <a href="https://github.com/taicode-labs/aurora" class="btn btn-outline btn-lg">GitHub</a>
+      </div>
+    </div>
+
+    <!-- Design Principles -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="mb-2">Design Philosophy</h2>
+          <p>Five core pillars that guide every design decision</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 grid-cols-2-sm grid-cols-3-lg">
+        <div class="surface p-5">
+          <h3 class="mb-3">Progressive Disclosure</h3>
+          <p>Start simple, reveal complexity only when needed. Use depth to indicate interactivity and importance.</p>
+        </div>
+
+        <div class="surface p-5">
+          <h3 class="mb-3">Spatial Consistency</h3>
+          <p>Predictable layouts with 4px spacing rhythm and large corner radius (24-32px) for visual harmony.</p>
+        </div>
+
+        <div class="surface p-5">
+          <h3 class="mb-3">Responsive Honesty</h3>
+          <p>Mobile and desktop are different experiences — we embrace that with context-aware design.</p>
+        </div>
+
+        <div class="surface p-5">
+          <h3 class="mb-3">Feedback Loops</h3>
+          <p>Every interaction provides immediate visual feedback with 100-200ms transitions.</p>
+        </div>
+
+        <div class="surface p-5">
+          <h3 class="mb-3">Accessible by Default</h3>
+          <p>WCAG 2.1 AA compliance minimum with keyboard navigation and screen reader support.</p>
+        </div>
+
+        <div class="surface-accent surface p-5">
+          <h3 class="mb-3">✨ Key Differentiator</h3>
+          <p><strong>OKLCH color space</strong> for perceptual uniformity and <strong>frosted glass</strong> aesthetics.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preview Pages -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="mb-2">Interactive Previews</h2>
+          <p>Explore live examples of Aurora design patterns</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 grid-cols-2-sm">
+        <a href="components.html" class="surface p-6" style="text-decoration: none; display: block;">
+          <div class="flex items-center justify-between mb-4">
+            <h3>Components</h3>
+            <span style="font-size: 24px; color: var(--primary);">→</span>
+          </div>
+          <p>Explore buttons, cards, forms, badges, and all core UI components with live interactions.</p>
+        </a>
+
+        <a href="colors.html" class="surface p-6" style="text-decoration: none; display: block;">
+          <div class="flex items-center justify-between mb-4">
+            <h3>Color System</h3>
+            <span style="font-size: 24px; color: var(--primary);">→</span>
+          </div>
+          <p>OKLCH-based color palette with semantic tokens, gradients, and accessibility guidelines.</p>
+        </a>
+
+        <a href="dashboard.html" class="surface p-6" style="text-decoration: none; display: block;">
+          <div class="flex items-center justify-between mb-4">
+            <h3>Dashboard Layout</h3>
+            <span style="font-size: 24px; color: var(--primary);">→</span>
+          </div>
+          <p>Complete dashboard example with stat cards, charts, and responsive navigation.</p>
+        </a>
+
+        <a href="typography.html" class="surface p-6" style="text-decoration: none; display: block;">
+          <div class="flex items-center justify-between mb-4">
+            <h3>Typography</h3>
+            <span style="font-size: 24px; color: var(--primary);">→</span>
+          </div>
+          <p>Inter Variable font with hierarchy scale, spacing rules, and readability guidelines.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2 class="mb-2">Key Features</h2>
+          <p>What makes Aurora different</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 grid-cols-2-sm grid-cols-4-lg">
+        <div class="surface-muted surface p-4">
+          <div class="stat-card-value" style="font-size: 48px; margin-bottom: 8px;">24px</div>
+          <div class="stat-card-title">Border Radius</div>
+          <p class="text-xs" style="margin-top: 8px;">Large, friendly corners create modern, approachable interfaces</p>
+        </div>
+
+        <div class="surface-muted surface p-4">
+          <div class="stat-card-value" style="font-size: 48px; margin-bottom: 8px;">16px</div>
+          <div class="stat-card-title">Backdrop Blur</div>
+          <p class="text-xs" style="margin-top: 8px;">Frosted glass effect adds depth and visual hierarchy</p>
+        </div>
+
+        <div class="surface-muted surface p-4">
+          <div class="stat-card-value" style="font-size: 48px; margin-bottom: 8px;">4px</div>
+          <div class="stat-card-title">Spacing Rhythm</div>
+          <p class="text-xs" style="margin-top: 8px;">Consistent base unit creates visual harmony across all components</p>
+        </div>
+
+        <div class="surface-muted surface p-4">
+          <div class="stat-card-value" style="font-size: 48px; margin-bottom: 8px;">100ms</div>
+          <div class="stat-card-title">Transitions</div>
+          <p class="text-xs" style="margin-top: 8px;">Instant feedback that respects user attention and reduces motion</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Documentation Links -->
+    <section class="section">
+      <div class="surface p-6">
+        <div class="flex flex-col gap-4">
+          <div>
+            <h3 class="mb-2">Complete Documentation</h3>
+            <p>Deep dive into design principles, component APIs, and implementation guides.</p>
+          </div>
+          <div class="flex gap-3" style="flex-wrap: wrap;">
+            <a href="../DESIGN.md" class="btn btn-outline">DESIGN.md - Principles & Philosophy</a>
+            <a href="../COMPONENTS.md" class="btn btn-outline">COMPONENTS.md - API Reference</a>
+            <a href="../README.md" class="btn btn-outline">README.md - Getting Started</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="text-align: center; padding: 48px 0; color: var(--muted-foreground);">
+      <p class="text-sm">Aurora Design System · Version 1.0 · 2026</p>
+      <p class="text-xs" style="margin-top: 8px; opacity: 0.7;">Built with ❤️ for modern SaaS applications</p>
+    </footer>
+  </div>
+</body>
+</html>
