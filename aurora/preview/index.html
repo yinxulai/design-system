@@ -171,8 +171,6 @@
         <button class="tab active" data-tab="home">Home</button>
         <button class="tab" data-tab="apps">Apps</button>
         <button class="tab" data-tab="files">Files</button>
-        <button class="tab" data-tab="projects">Projects</button>
-        <button class="tab" data-tab="learn">Learn</button>
       </div>
       <div class="header-actions">
         <button class="button secondary">
@@ -646,51 +644,89 @@
               <h2>New Releases</h2>
             </div>
             <div class="card-grid">
-              <div class="card">
-                <div class="card-header">
-                  <div class="card-title">UXFlow</div>
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon violet">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <path d="M8 12h8"/>
+                      <path d="M12 8v8"/>
+                    </svg>
+                  </div>
                   <div class="badge outline">New</div>
                 </div>
-                <div class="card-content">
-                  <div class="card-description">Intuitive user experience design</div>
-                  <div class="card-meta">Install 85%</div>
-                </div>
-                <div class="card-footer">
-                  <div class="progress-bar">
-                    <div class="progress-fill" style="width: 85%"></div>
+                <div class="app-card-content">
+                  <h3>UXFlow</h3>
+                  <p>Intuitive user experience design</p>
+                  <div class="app-card-progress">
+                    <div class="flex items-center justify-between text-sm">
+                      <span>Installation</span>
+                      <span>85%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 85%"></div>
+                    </div>
                   </div>
+                </div>
+                <div class="app-card-footer">
                   <button class="button secondary full-width">Continue Install</button>
                 </div>
               </div>
-              <div class="card">
-                <div class="card-header">
-                  <div class="card-title">WebCanvas</div>
+
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon blue">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="4" width="18" height="14" rx="2" ry="2"/>
+                      <path d="M7 8h10"/>
+                      <path d="M7 12h6"/>
+                    </svg>
+                  </div>
                   <div class="badge outline">New</div>
                 </div>
-                <div class="card-content">
-                  <div class="card-description">Web design and development</div>
-                  <div class="card-meta">Install 70%</div>
-                </div>
-                <div class="card-footer">
-                  <div class="progress-bar">
-                    <div class="progress-fill" style="width: 70%"></div>
+                <div class="app-card-content">
+                  <h3>WebCanvas</h3>
+                  <p>Web design and development</p>
+                  <div class="app-card-progress">
+                    <div class="flex items-center justify-between text-sm">
+                      <span>Installation</span>
+                      <span>70%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 70%"></div>
+                    </div>
                   </div>
+                </div>
+                <div class="app-card-footer">
                   <button class="button primary full-width">Install</button>
                 </div>
               </div>
-              <div class="card">
-                <div class="card-header">
-                  <div class="card-title">3DStudio</div>
+
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon pink">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 3v18"/>
+                      <path d="M3 12h18"/>
+                      <circle cx="12" cy="12" r="8"/>
+                    </svg>
+                  </div>
                   <div class="badge outline">New</div>
                 </div>
-                <div class="card-content">
-                  <div class="card-description">3D modeling and rendering</div>
-                  <div class="card-meta">Install 60%</div>
-                </div>
-                <div class="card-footer">
-                  <div class="progress-bar">
-                    <div class="progress-fill" style="width: 60%"></div>
+                <div class="app-card-content">
+                  <h3>3DStudio</h3>
+                  <p>3D modeling and rendering</p>
+                  <div class="app-card-progress">
+                    <div class="flex items-center justify-between text-sm">
+                      <span>Installation</span>
+                      <span>60%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 60%"></div>
+                    </div>
                   </div>
+                </div>
+                <div class="app-card-footer">
                   <button class="button primary full-width">Install</button>
                 </div>
               </div>
@@ -702,76 +738,152 @@
               <h2>All Apps</h2>
             </div>
             <div class="card-grid">
-              <div class="card">
-                <div class="card-header">
-                  <div class="card-title">PixelMaster</div>
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon violet">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                  </div>
                   <div class="badge outline">Creative</div>
                 </div>
-                <div class="card-content">
-                  <div class="card-description">Advanced image editing and composition</div>
+                <div class="app-card-content">
+                  <h3>PixelMaster</h3>
+                  <p>Advanced image editing and composition</p>
                 </div>
-                <div class="card-footer">
-                  <button class="button secondary full-width">Open</button>
+                <div class="app-card-footer">
+                  <button class="button secondary flex-1">Open</button>
+                  <button class="star-button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                  </button>
                 </div>
               </div>
-              <div class="card">
-                <div class="card-header">
-                  <div class="card-title">VectorPro</div>
+
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon orange">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/>
+                      <path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"/>
+                    </svg>
+                  </div>
                   <div class="badge outline">Creative</div>
                 </div>
-                <div class="card-content">
-                  <div class="card-description">Professional vector graphics creation</div>
+                <div class="app-card-content">
+                  <h3>VectorPro</h3>
+                  <p>Professional vector graphics creation</p>
                 </div>
-                <div class="card-footer">
-                  <button class="button secondary full-width">Open</button>
+                <div class="app-card-footer">
+                  <button class="button secondary flex-1">Open</button>
+                  <button class="star-button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                  </button>
                 </div>
               </div>
-              <div class="card">
-                <div class="card-header">
-                  <div class="card-title">VideoStudio</div>
+
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon pink">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="23 7 16 12 23 17 23 7"/>
+                      <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                  </div>
                   <div class="badge outline">Video</div>
                 </div>
-                <div class="card-content">
-                  <div class="card-description">Cinematic video editing and production</div>
+                <div class="app-card-content">
+                  <h3>VideoStudio</h3>
+                  <p>Cinematic video editing and production</p>
                 </div>
-                <div class="card-footer">
-                  <button class="button secondary full-width">Open</button>
+                <div class="app-card-footer">
+                  <button class="button secondary flex-1">Open</button>
+                  <button class="star-button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                  </button>
                 </div>
               </div>
-              <div class="card">
-                <div class="card-header">
-                  <div class="card-title">PageCraft</div>
+
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon red">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="4" width="18" height="14" rx="2" ry="2"/>
+                      <path d="M8 8h8"/>
+                      <path d="M8 12h5"/>
+                    </svg>
+                  </div>
                   <div class="badge outline">Creative</div>
                 </div>
-                <div class="card-content">
-                  <div class="card-description">Professional page design and layout</div>
+                <div class="app-card-content">
+                  <h3>PageCraft</h3>
+                  <p>Professional page design and layout</p>
                 </div>
-                <div class="card-footer">
-                  <button class="button secondary full-width">Open</button>
+                <div class="app-card-footer">
+                  <button class="button secondary flex-1">Open</button>
+                  <button class="star-button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                  </button>
                 </div>
               </div>
-              <div class="card">
-                <div class="card-header">
-                  <div class="card-title">UXFlow</div>
+
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon blue">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="4" width="18" height="14" rx="2" ry="2"/>
+                      <path d="M8 8h8"/>
+                      <path d="M8 12h6"/>
+                    </svg>
+                  </div>
                   <div class="badge outline">Design</div>
                 </div>
-                <div class="card-content">
-                  <div class="card-description">Intuitive user experience design</div>
+                <div class="app-card-content">
+                  <h3>UXFlow</h3>
+                  <p>Intuitive user experience design</p>
                 </div>
-                <div class="card-footer">
-                  <button class="button secondary full-width">Continue</button>
+                <div class="app-card-footer">
+                  <button class="button secondary flex-1">Continue</button>
+                  <button class="star-button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                  </button>
                 </div>
               </div>
-              <div class="card">
-                <div class="card-header">
-                  <div class="card-title">PhotoLab</div>
+
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon teal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 7h16"/>
+                      <path d="M7 3v4"/>
+                      <path d="M17 3v4"/>
+                      <rect x="4" y="7" width="16" height="12" rx="2"/>
+                    </svg>
+                  </div>
                   <div class="badge outline">Photography</div>
                 </div>
-                <div class="card-content">
-                  <div class="card-description">Advanced photo editing and organization</div>
+                <div class="app-card-content">
+                  <h3>PhotoLab</h3>
+                  <p>Advanced photo editing and organization</p>
                 </div>
-                <div class="card-footer">
-                  <button class="button secondary full-width">Open</button>
+                <div class="app-card-footer">
+                  <button class="button secondary flex-1">Open</button>
+                  <button class="star-button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -785,8 +897,8 @@
               <p>Access, manage, and share all your design files in one place.</p>
             </div>
             <div class="hero-actions">
-              <button class="button outline">Cloud Storage</button>
-              <button class="button primary">Upload Files</button>
+              <button class="button hero-secondary">Cloud Storage</button>
+              <button class="button hero-primary">Upload Files</button>
             </div>
           </section>
 
@@ -822,58 +934,65 @@
               </div>
               <div class="file-row">
                 <div class="file-name">
-                  <div class="flex items-center gap-3">
+                  <div class="file-main">
                     <div class="app-icon violet small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg></div>
                     <div>
-                      <p class="font-medium">Brand Redesign.pxm</p>
+                      <p class="file-title">Brand Redesign.pxm</p>
+                      <p class="file-subtitle">Design system assets</p>
+                      <div class="file-inline-meta">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m22 21-.6-3.5"/><path d="M16 15l-2 6"/><path d="m16 15 2 6"/></svg>
+                        Shared with 3 people
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div>PixelMaster</div>
-                <div>24.5 MB</div>
-                <div class="flex items-center justify-between">
+                <div class="file-meta"><span class="file-chip">PixelMaster</span></div>
+                <div class="file-meta"><span class="file-chip">24.5 MB</span></div>
+                <div class="file-status">
                   <span>2 hours ago</span>
                   <div class="file-actions">
-                    <button class="button ghost">Share</button>
-                    <button class="button ghost">More</button>
+                    <button class="button ghost small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg></button>
+                    <button class="button ghost small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></button>
                   </div>
                 </div>
               </div>
               <div class="file-row">
                 <div class="file-name">
-                  <div class="flex items-center gap-3">
+                  <div class="file-main">
                     <div class="app-icon orange small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/></svg></div>
                     <div>
-                      <p class="font-medium">Company Logo.vec</p>
+                      <p class="file-title">Company Logo.vec</p>
+                      <p class="file-subtitle">Brand identity exports</p>
                     </div>
                   </div>
                 </div>
-                <div>VectorPro</div>
-                <div>8.2 MB</div>
-                <div class="flex items-center justify-between">
+                <div class="file-meta"><span class="file-chip">VectorPro</span></div>
+                <div class="file-meta"><span class="file-chip">8.2 MB</span></div>
+                <div class="file-status">
                   <span>Yesterday</span>
                   <div class="file-actions">
-                    <button class="button ghost">Share</button>
-                    <button class="button ghost">More</button>
+                    <button class="button ghost small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg></button>
+                    <button class="button ghost small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></button>
                   </div>
                 </div>
               </div>
               <div class="file-row">
                 <div class="file-name">
-                  <div class="flex items-center gap-3">
+                  <div class="file-main">
                     <div class="app-icon pink small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/></svg></div>
                     <div>
-                      <p class="font-medium">Product Launch Video.vid</p>
+                      <p class="file-title">Product Launch Video.vid</p>
+                      <p class="file-subtitle">Final cut rendering</p>
                     </div>
                   </div>
                 </div>
-                <div>VideoStudio</div>
-                <div>1.2 GB</div>
-                <div class="flex items-center justify-between">
+                <div class="file-meta"><span class="file-chip">VideoStudio</span></div>
+                <div class="file-meta"><span class="file-chip">1.2 GB</span></div>
+                <div class="file-status">
                   <span>3 days ago</span>
                   <div class="file-actions">
-                    <button class="button ghost">Share</button>
-                    <button class="button ghost">More</button>
+                    <button class="button ghost small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg></button>
+                    <button class="button ghost small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></button>
                   </div>
                 </div>
               </div>
@@ -881,317 +1000,6 @@
           </section>
         </section>
 
-        <section class="tab-page" data-tab="projects">
-          <section class="hero-banner" style="background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 50%, #4338ca 100%);">
-            <div class="hero-content">
-              <h2>Project Management</h2>
-              <p>Organize your creative work into projects and collaborate with your team.</p>
-            </div>
-            <button class="button primary">New Project</button>
-          </section>
-
-          <div class="toolbar">
-            <button class="button outline">All Projects</button>
-            <button class="button outline">Recent</button>
-            <button class="button outline">Shared</button>
-            <button class="button outline">Archived</button>
-            <div class="inline-search">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="11" cy="11" r="8"/>
-                <path d="m21 21-4.35-4.35"/>
-              </svg>
-              <input type="search" placeholder="Search projects...">
-            </div>
-          </div>
-
-          <section class="section">
-            <h2>Active Projects</h2>
-            <div class="project-grid">
-              <div class="card">
-                <div class="card-header">
-                  <div class="card-title">Website Redesign</div>
-                  <div class="badge outline">Due June 15, 2025</div>
-                </div>
-                <div class="card-content">
-                  <div class="card-description">Complete overhaul of company website</div>
-                  <div class="card-meta">Progress 75%</div>
-                  <div class="progress-bar">
-                    <div class="progress-fill" style="width: 75%"></div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <button class="button secondary full-width">Open Project</button>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header">
-                  <div class="card-title">Mobile App Launch</div>
-                  <div class="badge outline">Due July 30, 2025</div>
-                </div>
-                <div class="card-content">
-                  <div class="card-description">Design and assets for new mobile application</div>
-                  <div class="card-meta">Progress 60%</div>
-                  <div class="progress-bar">
-                    <div class="progress-fill" style="width: 60%"></div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <button class="button secondary full-width">Open Project</button>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header">
-                  <div class="card-title">Brand Identity</div>
-                  <div class="badge outline">Due May 25, 2025</div>
-                </div>
-                <div class="card-content">
-                  <div class="card-description">New brand guidelines and assets</div>
-                  <div class="card-meta">Progress 90%</div>
-                  <div class="progress-bar">
-                    <div class="progress-fill" style="width: 90%"></div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <button class="button secondary full-width">Open Project</button>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header">
-                  <div class="card-title">Create New Project</div>
-                </div>
-                <div class="card-content">
-                  <div class="card-description">Start a new creative project from scratch or use a template</div>
-                </div>
-                <div class="card-footer">
-                  <button class="button primary full-width">New Project</button>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section class="section">
-            <h2>Project Templates</h2>
-            <div class="template-grid">
-              <div class="card">
-                <div class="card-header" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white;">
-                  <div class="card-title">Brand Identity</div>
-                  <div class="card-description">Complete brand design package</div>
-                </div>
-                <div class="card-footer">
-                  <button class="button ghost">Use Template</button>
-                  <span class="badge outline">Popular</span>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" style="background: linear-gradient(135deg, #f59e0b, #ef4444); color: white;">
-                  <div class="card-title">Marketing Campaign</div>
-                  <div class="card-description">Multi-channel marketing assets</div>
-                </div>
-                <div class="card-footer">
-                  <button class="button ghost">Use Template</button>
-                  <span class="badge outline">New</span>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" style="background: linear-gradient(135deg, #10b981, #14b8a6); color: white;">
-                  <div class="card-title">Website Redesign</div>
-                  <div class="card-description">Complete website design workflow</div>
-                </div>
-                <div class="card-footer">
-                  <button class="button ghost">Use Template</button>
-                  <span class="badge outline">Featured</span>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" style="background: linear-gradient(135deg, #ec4899, #f43f5e); color: white;">
-                  <div class="card-title">Product Launch</div>
-                  <div class="card-description">Product launch campaign assets</div>
-                </div>
-                <div class="card-footer">
-                  <button class="button ghost">Use Template</button>
-                  <span class="badge outline">Popular</span>
-                </div>
-              </div>
-            </div>
-          </section>
-        </section>
-
-        <section class="tab-page" data-tab="learn">
-          <section class="hero-banner" style="background: linear-gradient(135deg, #16a34a 0%, #059669 50%, #14b8a6 100%);">
-            <div class="hero-content">
-              <h2>Learn & Grow</h2>
-              <p>Expand your creative skills with tutorials, courses, and resources.</p>
-            </div>
-            <button class="button primary">Upgrade to Pro</button>
-          </section>
-
-          <div class="toolbar">
-            <button class="button outline">All Tutorials</button>
-            <button class="button outline">Courses</button>
-            <button class="button outline">Tips & Tricks</button>
-            <button class="button outline">Trending</button>
-            <button class="button outline">Saved</button>
-            <div class="inline-search">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="11" cy="11" r="8"/>
-                <path d="m21 21-4.35-4.35"/>
-              </svg>
-              <input type="search" placeholder="Search tutorials...">
-            </div>
-          </div>
-
-          <section class="section">
-            <h2>Featured Tutorials</h2>
-            <div class="learn-grid">
-              <div class="card">
-                <div class="card-header" style="background: linear-gradient(135deg, #6366f1, #a855f7); color: white; position: relative;">
-                  <button class="button secondary" style="position: absolute; top: 16px; right: 16px;">Play</button>
-                  <div class="card-title">Mastering Digital Illustration</div>
-                </div>
-                <div class="card-content">
-                  <p class="card-description">Learn advanced techniques for creating stunning digital art</p>
-                  <div class="flex items-center justify-between">
-                    <span>Sarah Chen</span>
-                    <span>1h 45m</span>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <span class="badge outline">Advanced</span>
-                  <span class="card-meta">24K views</span>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" style="background: linear-gradient(135deg, #14b8a6, #06b6d4); color: white; position: relative;">
-                  <button class="button secondary" style="position: absolute; top: 16px; right: 16px;">Play</button>
-                  <div class="card-title">UI/UX Design Fundamentals</div>
-                </div>
-                <div class="card-content">
-                  <p class="card-description">Essential principles for creating intuitive user interfaces</p>
-                  <div class="flex items-center justify-between">
-                    <span>Michael Rodriguez</span>
-                    <span>2h 20m</span>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <span class="badge outline">Intermediate</span>
-                  <span class="card-meta">56K views</span>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" style="background: linear-gradient(135deg, #ec4899, #f43f5e); color: white; position: relative;">
-                  <button class="button secondary" style="position: absolute; top: 16px; right: 16px;">Play</button>
-                  <div class="card-title">Video Editing Masterclass</div>
-                </div>
-                <div class="card-content">
-                  <p class="card-description">Professional techniques for cinematic video editing</p>
-                  <div class="flex items-center justify-between">
-                    <span>James Wilson</span>
-                    <span>3h 10m</span>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <span class="badge outline">Advanced</span>
-                  <span class="card-meta">32K views</span>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section class="section">
-            <div class="section-header">
-              <h2>Popular Courses</h2>
-              <button class="button ghost">View All</button>
-            </div>
-            <div class="file-table">
-              <div class="file-row">
-                <div>
-                  <h3 class="font-medium">Typography Essentials</h3>
-                  <p class="card-description">Create beautiful and effective typography for any project</p>
-                </div>
-                <div>Beginner</div>
-                <div>1h 30m</div>
-                <div>18K views</div>
-                <div><button class="button ghost">Watch Now</button></div>
-              </div>
-              <div class="file-row">
-                <div>
-                  <h3 class="font-medium">Color Theory for Designers</h3>
-                  <p class="card-description">Understanding color relationships and psychology</p>
-                </div>
-                <div>Intermediate</div>
-                <div>2h 05m</div>
-                <div>41K views</div>
-                <div><button class="button ghost">Watch Now</button></div>
-              </div>
-            </div>
-          </section>
-
-          <section class="section">
-            <h2>Learning Paths</h2>
-            <div class="learning-path-grid">
-              <div class="course-card">
-                <div class="card-header">
-                  <div class="badge outline">Beginner</div>
-                  <div class="card-title">UI/UX Design Fundamentals</div>
-                  <div class="card-description">Master the basics of user interface and experience design</div>
-                </div>
-                <div class="card-content">
-                  <div class="flex justify-between text-sm">
-                    <span>8 courses • 24 hours</span>
-                    <span>4.8 ★</span>
-                  </div>
-                  <div class="progress-bar">
-                    <div class="progress-fill" style="width: 30%"></div>
-                  </div>
-                  <p class="text-xs color-muted-foreground">30% completed</p>
-                </div>
-                <div class="card-footer">
-                  <button class="button secondary full-width">Continue Learning</button>
-                </div>
-              </div>
-              <div class="course-card">
-                <div class="card-header">
-                  <div class="badge outline">Intermediate</div>
-                  <div class="card-title">Digital Illustration Mastery</div>
-                  <div class="card-description">Create stunning digital artwork and illustrations</div>
-                </div>
-                <div class="card-content">
-                  <div class="flex justify-between text-sm">
-                    <span>12 courses • 36 hours</span>
-                    <span>4.9 ★</span>
-                  </div>
-                  <div class="progress-bar">
-                    <div class="progress-fill" style="width: 0%"></div>
-                  </div>
-                  <p class="text-xs color-muted-foreground">Not started</p>
-                </div>
-                <div class="card-footer">
-                  <button class="button secondary full-width">Start Learning</button>
-                </div>
-              </div>
-              <div class="course-card">
-                <div class="card-header">
-                  <div class="badge outline">Advanced</div>
-                  <div class="card-title">Motion Graphics & Animation</div>
-                  <div class="card-description">Create professional motion graphics and animations</div>
-                </div>
-                <div class="card-content">
-                  <div class="flex justify-between text-sm">
-                    <span>10 courses • 30 hours</span>
-                    <span>4.7 ★</span>
-                  </div>
-                  <div class="progress-bar">
-                    <div class="progress-fill" style="width: 0%"></div>
-                  </div>
-                  <p class="text-xs color-muted-foreground">Not started</p>
-                </div>
-                <div class="card-footer">
-                  <button class="button secondary full-width">Start Learning</button>
-                </div>
-              </div>
-            </div>
-          </section>
-        </section>
       </div>
     </main>
   </div>
