@@ -42,6 +42,18 @@ A component is only considered system-ready when it can answer four questions cl
 - Document the component’s do/don’t guidance so teams can apply it consistently.
 - Treat accessibility and responsive behavior as part of the component contract, not as a later polish pass.
 
+### Product pattern contracts
+
+Before a component is considered system-ready, the following product patterns must also be defined in the documentation:
+
+- **Forms:** define default, hover, focus, filled, disabled, invalid, success, and loading states; include helper text, inline errors, and summary errors.
+- **Data surfaces:** define comfortable, compact, and spacious density modes for lists and tables; document row states, grouping, alignment, and responsive behavior.
+- **Empty and error states:** define when to use them, what content they should contain, and what action should follow.
+- **Feedback and loading:** define inline feedback, toast patterns, skeleton states, and progress treatment so the system feels consistent across tasks.
+- **Navigation and information architecture:** define primary, secondary, and tertiary navigation behavior, breadcrumbs, tab patterns, and mobile adaptation.
+
+Each of these patterns should include purpose, variants, states, responsive behavior, and accessibility requirements, not just a visual example.
+
 ### Example component contract
 
 A ready-to-ship component should explicitly define:

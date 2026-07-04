@@ -59,13 +59,49 @@ Aurora should feel calm, direct, and dependable. The interface should help peopl
 
 ### System Discipline
 
-To keep the system durable, the implementation should follow a few governing rules:
+To keep the system durable, the implementation must follow a few governing rules:
 
 - **Single source of truth:** intent belongs in this document, reusable primitives in [STYLES.md](./STYLES.md), and component composition in [COMPONENTS.md](./COMPONENTS.md).
-- **Token-first execution:** new visual decisions should be introduced as tokens before becoming component-specific styling.
-- **State completeness:** every important component needs defined default, hover, focus, active, disabled, loading, and error states.
-- **Accessibility as a contract:** contrast, keyboard behavior, focus visibility, reduced motion, and touch targets must be treated as mandatory quality checks.
-- **Visual restraint:** use gradients, motion, and saturated accents sparingly; the system should feel calm before it feels expressive.
+- **Token-first execution is mandatory:** every new color, spacing, radius, shadow, typography, motion, or control-size decision must be introduced in the shared token layer before it appears in a component or preview screen. Raw values are not allowed in implementation work.
+- **State completeness is mandatory:** every reusable component must define default, hover, focus, active, disabled, loading, selected, and error states before it is considered system-ready.
+- **Accessibility is a release requirement:** contrast, keyboard behavior, focus visibility, reduced motion, and touch targets must be verified before a pattern ships.
+- **Visual restraint is a non-negotiable constraint:** gradients, motion, and saturated accents may be used only when they support hierarchy or feedback. They are never allowed to become the visual language of core surfaces, repetitive cards, or long-form content.
+- **Workflow patterns must be explicit:** forms, empty states, loading states, error recovery, navigation hierarchy, and content density are treated as shared product patterns, not one-off UI treatments.
+- **The preview is part of the contract:** if a preview screen contradicts the documented system rules, the preview is considered out of spec and must be corrected.
+
+### Product Pattern Standards
+
+A mature design system is not defined by visuals alone. It must also provide repeatable product patterns for the moments where users need to make decisions, recover from mistakes, or navigate complex information.
+
+#### 1. Forms and Validation States
+- Every form field must have a defined default, hover, focus, filled, disabled, error, success, and loading state.
+- Validation must be progressive: inline helper text first, field-level error next, then a summary-level error when necessary.
+- Required fields must be visually distinguishable without becoming noisy; optional fields must remain clearly secondary.
+- Error messaging must explain what went wrong and how to fix it, rather than relying on color alone.
+- Forms must not ship with incomplete states; a field without a defined invalid or disabled state is considered incomplete implementation.
+
+#### 2. Data Lists and Tables
+- Data surfaces must support at least three density modes: comfortable for overview tasks, compact for dense workflows, and spacious for review or analysis.
+- Row height, spacing, and text scale must change intentionally across those modes rather than being arbitrary.
+- Tables and lists must preserve hierarchy through clear headers, consistent alignment, logical grouping, and strong contrast between primary and secondary information.
+- Selection, hover, active, disabled, and loading rows must share the same interaction rules as other interface controls.
+- Dense data layouts must never sacrifice readability, touch targets, or scanability.
+
+#### 3. Empty, Error, and Loading States
+- Empty states must explain what is missing, why it matters, and what the user can do next.
+- Error states must be recoverable: include the issue, impact, and a path forward.
+- Loading states must preserve context. Skeletons are required for content blocks, while small spinners or progress feedback are required for short actions.
+- Feedback must stay brief, specific, and action-oriented; generic messages are not allowed.
+- Any screen that can fail, wait, or be empty must use a documented state pattern rather than ad hoc copy.
+
+#### 4. Navigation and Information Architecture
+- Multi-level navigation must have a clear hierarchy: primary, secondary, and tertiary levels must feel meaningfully different.
+- The system must define how users move between overview and detail, how breadcrumbs and tabs reinforce location, and how navigation adapts on mobile and desktop.
+- Deep navigation must avoid redundant layers; each level must have a distinct purpose and not compete with the level above it.
+- Navigation patterns must be documented with both content hierarchy and interaction behavior, not just visual styling.
+- If a navigation pattern is reused in more than one workflow, it must be promoted to a system primitive.
+
+Implementation rule: if a pattern appears in more than one core workflow, it must be treated as a system primitive rather than a one-off UI treatment.
 
 ### Token architecture and execution contract
 

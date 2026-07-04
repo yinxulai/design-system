@@ -55,7 +55,134 @@ Every interactive element should have clear default, hover, focus, disabled, and
 - Prefer single-column layouts on small screens, two-column arrangements on tablet, and more spacious compositions on desktop.
 - Avoid introducing new visual weight without a semantic reason; if a component needs emphasis, use intent-driven tokens rather than one-off styling.
 
-### 2.6 Grid sizing guidance
+### 2.6 Non-negotiable shared-layer rules
+
+The shared style layer must provide reusable primitives for high-frequency product patterns so implementation stays consistent across forms, lists, feedback, and navigation. These are not optional polish choices; they are part of the system contract.
+
+- **Token use is mandatory:** colors, spacing, radius, shadow, typography, motion, and control sizing must come from shared tokens. No component may introduce a new visual measurement without first defining it in the token layer.
+- **Decorative treatments are restricted:** gradients, blur, animation, and saturation are allowed only when they support hierarchy, state feedback, or emphasis. They are not allowed to decorate ordinary surfaces or repeated content containers.
+- **States must be explicit:** every interactive primitive must define default, hover, focus, active, disabled, selected, and error states in the shared layer or in the component contract.
+- **High-frequency workflows must be reusable:** forms, empty states, loading states, navigation, and data-density patterns must be implemented as shared primitives and reused consistently.
+- **The preview must reflect the spec:** if the preview shows a pattern that is not supported by the shared layer, the implementation is considered incomplete.
+
+### 2.7 Shared state and product-pattern primitives
+
+The shared style layer should also provide reusable primitives for high-frequency product patterns so implementation stays consistent across forms, lists, feedback, and navigation.
+
+```css
+.form-group {
+  display: grid;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.form-help {
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+
+.form-error {
+  color: var(--destructive);
+}
+
+.form-success {
+  color: var(--success);
+}
+
+.empty-state {
+  display: grid;
+  gap: 16px;
+  padding: 32px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--muted);
+  text-align: center;
+}
+
+.empty-state-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.inline-feedback {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--muted);
+}
+
+.inline-feedback.is-error {
+  border-color: var(--destructive);
+  background: color-mix(in srgb, var(--destructive) 12%, var(--muted));
+}
+
+.inline-feedback.is-success {
+  border-color: var(--success);
+  background: color-mix(in srgb, var(--success) 12%, var(--muted));
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--muted);
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--foreground) 8%, transparent), transparent);
+  animation: shimmer 1.2s infinite;
+}
+
+.table-shell {
+  display: grid;
+  gap: 8px;
+}
+
+.table-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 44px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.table-row.is-selected {
+  background: var(--accent);
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  color: var(--muted-foreground);
+}
+
+.subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--muted);
+}
+```
+
+These primitives should be used before introducing project-specific patterns. The goal is to preserve the same interaction language for validation, feedback, layout density, and navigation across every product surface.
+
+### 2.7 Grid sizing guidance
 
 Grid-based collections such as cards, app lists, and community tiles should not grow indefinitely as the viewport gets larger. Each repeated item should have a defined minimum and maximum width, and the grid tracks should use a bounded range rather than an unconstrained `1fr` fill.
 
