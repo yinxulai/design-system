@@ -1,8 +1,17 @@
 # Modern SaaS Design System
 
 > **Category:** Enterprise SaaS  
-> **Aesthetic:** Clean, modern, minimalist with sophisticated depth and clear hierarchy  
-> **Companion Document:** [COMPONENTS.md](./COMPONENTS.md) for detailed component API and usage examples
+> **Aesthetic:** Clean, modern, minimalist with sophisticated depth and clear hierarchy
+
+## How These Documents Work Together
+
+This document defines the design intent, visual principles, and system-level guidance. It answers the question: what should Aurora feel like and why?
+
+- Use [DESIGN.md](./DESIGN.md) for philosophy, tone, hierarchy, and visual rules.
+- Use [STYLES.md](./STYLES.md) for the shared semantic CSS foundation that makes those rules implementable.
+- Use [COMPONENTS.md](./COMPONENTS.md) for higher-level component APIs and composition patterns built on top of the shared foundation.
+
+In practice, the workflow is: principles first, semantic styles second, components third.
 
 ---
 
@@ -10,13 +19,7 @@
 
 ### Core Principle: Clarity Through Restraint
 
-This design system is built on the belief that **simplicity enhances focus**. We use pure neutral backgrounds to create a calm, professional environment where content and data take center stage. Color is reserved as visual accent — guiding attention to interactive elements and data insights without overwhelming users.
-
-### Key Design Principle: **Color as Punctuation, Not Background**
-
-- **Large surfaces are neutral (0% chroma):** Body, sidebars, cards, panels use pure black/white/gray
-- **Color is punctuation:** Used sparingly on icons, badges, charts, and interactive elements to draw attention
-- **Gradients are accents:** Reserved for hero banners, CTAs, and decorative elements — never on large backgrounds
+Aurora should feel calm, direct, and dependable. The interface should help people focus on the task rather than compete for attention.
 
 ### Design Pillars
 
@@ -47,21 +50,47 @@ This design system is built on the belief that **simplicity enhances focus**. We
 - Motion respects user preferences (reduced motion support)
 - Screen readers get semantic HTML and ARIA labels
 
-### Why This Approach?
+### Design Intent Summary
 
-**Pure Neutral Backgrounds:** Large surfaces (body, sidebar, cards) use 0% chroma colors for a calm, professional appearance. This creates visual rest and lets content stand out.
+- Large surfaces stay neutral and quiet.
+- Color is used as punctuation, not as a dominant background treatment.
+- Elevation and spacing create hierarchy without visual noise.
+- Motion should be subtle, immediate, and respectful of user attention.
 
-**Color as Visual Accent:** Saturated colors appear only on small elements (icons, badges, progress bars, charts) to guide attention. This makes interactive elements immediately recognizable.
+### System Discipline
 
-**Gradients for Emphasis:** Gradients are reserved for hero sections, CTAs, and decorative elements — creating visual hierarchy without noise.
+To keep the system durable, the implementation should follow a few governing rules:
 
-**Large Corner Radius:** 24-32px radius feels modern and friendly. It reduces visual noise and creates flow between sections.
+- **Single source of truth:** intent belongs in this document, reusable primitives in [STYLES.md](./STYLES.md), and component composition in [COMPONENTS.md](./COMPONENTS.md).
+- **Token-first execution:** new visual decisions should be introduced as tokens before becoming component-specific styling.
+- **State completeness:** every important component needs defined default, hover, focus, active, disabled, loading, and error states.
+- **Accessibility as a contract:** contrast, keyboard behavior, focus visibility, reduced motion, and touch targets must be treated as mandatory quality checks.
+- **Visual restraint:** use gradients, motion, and saturated accents sparingly; the system should feel calm before it feels expressive.
 
-**Multi-layer Shadows:** Deep, soft shadows (60-100px blur) with low opacity (0.28-0.42) create realistic depth without color.
+### Token architecture and execution contract
 
-**Immediate Transitions:** 100-200ms transitions feel instant but provide visual continuity. Longer (300ms) for complex state changes like expanding accordions.
+A durable system needs one explicit path from intent to implementation:
 
-**Zero Tooltip Delay:** Information should be instant. 0ms delay shows tooltips immediately on hover, respecting users' curiosity.
+1. **Foundation tokens** define raw values for color, spacing, radius, shadow, typography, and motion.
+2. **Semantic tokens** describe roles such as background, surface, border, primary action, muted text, and status colors.
+3. **Component tokens** map those semantics to specific patterns like cards, inputs, and focus rings.
+4. **State tokens** define hover, focus, active, disabled, selected, and error treatments so interaction behavior stays consistent.
+
+Implementation rule: if a new value appears in UI work, it should first be added to the shared token layer and then reused by components rather than being introduced ad hoc.
+
+### Accessibility & Responsive Standards
+
+- Maintain at least 4.5:1 contrast for text and 3:1 for interactive elements.
+- Ensure visible focus states on all interactive controls and keyboard-accessible navigation patterns.
+- Respect `prefers-reduced-motion` and avoid animation that competes with content.
+- Support touch targets of at least 44px on touch devices.
+- Allow layouts to change by context: single column on narrow screens, two-column on tablet, and more spacious multi-column layouts on desktop.
+
+---
+
+## Semantic CSS Foundations
+
+For implementation-ready semantic CSS primitives, see [STYLES.md](./STYLES.md). That document turns these principles into reusable layout and styling patterns.
 
 ---
 

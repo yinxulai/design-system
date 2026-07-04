@@ -1,29 +1,86 @@
 # Component Library Reference
 
-> **Purpose:** Detailed component API documentation and usage guidelines  
-> **Companion Document:** [DESIGN.md](./DESIGN.md) for design principles and philosophy
+> **Purpose:** Detailed component API documentation and usage guidelines
+
+## How This File Fits the System
+
+This document is the component layer of Aurora. It should not repeat the full philosophy from [DESIGN.md](./DESIGN.md) or re-specify the low-level CSS foundation from [STYLES.md](./STYLES.md); instead, it should describe how higher-level UI building blocks are composed from those shared primitives.
+
+- [DESIGN.md](./DESIGN.md) answers: what should Aurora feel like?
+- [STYLES.md](./STYLES.md) answers: what shared CSS primitives should we use?
+- This file answers: how should we compose those primitives into reusable components?
+
+> **Implementation Note:** For plain HTML/CSS or preview work, start from the semantic primitives documented in [STYLES.md](./STYLES.md). Component APIs in this file should describe composition intent, not duplicate the style token layer.
+
+### Component-to-styles mapping
+
+When describing a component, prefer this order of thinking:
+
+- Shell and page framing should rely on `.page-shell`, `.section`, and `.stack`.
+- Cards and panels should be built from `.surface`, with spacing and rhythm supplied by the shared layout primitives.
+- Section headers should use `.section-header`, `.text-label`, and `.text-caption` rather than bespoke title styling.
+- Lists and rows should use `.list` and `.stack` patterns, with metadata expressed through muted and strong text helpers.
+- Form groups and feedback states should follow the interaction and feedback classes from [STYLES.md](./STYLES.md) so components stay consistent across pages.
+
+### Semantic class usage in examples
+
+Prefer the semantic classes from [STYLES.md](./STYLES.md) in the examples below. New implementation work should favor `.page-shell`, `.section`, `.surface`, `.stack`, `.cluster`, `.text-label`, `.text-caption`, `.badge`, `.alert`, and related helpers over one-off utility strings.
+
+## Component maturity standards
+
+A component is only considered system-ready when it can answer four questions clearly:
+
+- **When should it be used?** Define the scenario, content type, and level of emphasis.
+- **What states does it support?** Default, hover, focus, active, disabled, loading, error, and selected states should be documented.
+- **How should it behave responsively?** Specify stacking, density, and interaction changes across mobile, tablet, and desktop.
+- **How is it made accessible?** Include keyboard support, focus visibility, color contrast, and semantic structure expectations.
+
+### Recommended component checklist
+
+- Use shared primitives from [STYLES.md](./STYLES.md) before introducing bespoke styling.
+- Avoid ad-hoc spacing or visual treatment that cannot be traced back to a token or shared pattern.
+- Document the component’s do/don’t guidance so teams can apply it consistently.
+- Treat accessibility and responsive behavior as part of the component contract, not as a later polish pass.
+
+### Example component contract
+
+A ready-to-ship component should explicitly define:
+
+- **Purpose and usage:** when it should be used, and when a different pattern should be preferred.
+- **Variants:** default, subtle, emphasized, and any contextual alternatives.
+- **States:** default, hover, focus, active, disabled, loading, selected, and error.
+- **Responsive behavior:** stacking, density, and interaction changes across mobile, tablet, and desktop.
+- **Accessibility requirements:** keyboard flow, focus visibility, semantics, contrast, and reduced-motion handling.
+
+This contract should be documented alongside each component so that implementation, review, and testing all use the same standard.
+
+### Executable component contract template
+
+Every component should be documented with the same structure so the system remains actionable rather than descriptive:
+
+- **Purpose:** what problem the component solves and when it should be used.
+- **Variants:** default, subtle, emphasized, and contextual alternatives.
+- **States:** default, hover, focus, active, disabled, loading, selected, and error.
+- **Responsive behavior:** how it stacks, compresses, or reflows across mobile, tablet, and desktop.
+- **Accessibility requirements:** keyboard support, focus visibility, semantic structure, contrast, and motion expectations.
+- **Token usage:** which shared tokens it relies on instead of one-off measurements.
+
+A component is not system-ready until those answers are explicit in the documentation and visible in the implementation.
 
 ---
 
 ## Table of Contents
 
 1. [Layout Components](#layout-components)
-   - [DashboardShell](#dashboardshell)
-   - [PageSection](#pagesection)
 2. [Container Components](#container-components)
-   - [Surface](#surface)
-   - [HeroPanel](#heropanel)
-   - [FormSection](#formsection)
 3. [Content Components](#content-components)
-   - [SectionHeader](#sectionheader)
-   - [StatCard](#statcard)
-   - [ListRow](#listrow)
-   - [EmptyState](#emptystate)
 4. [Form Components](#form-components)
 5. [Data Display](#data-display)
 6. [Navigation Components](#navigation-components)
 7. [Feedback Components](#feedback-components)
 8. [Icon System](#icon-system)
+
+> The sections below should stay focused on composition, API shape, and usage guidance. Low-level spacing, color, and structural primitives are defined in [STYLES.md](./STYLES.md).
 
 ---
 
@@ -45,11 +102,10 @@ interface DashboardShellProps {
 
 #### Design Specs
 
-- **Max Width:** `1280px` (max-w-7xl)
-- **Padding:** `12px` mobile (px-3), `24px` tablet (sm:px-6), `32px` desktop (lg:px-8)
-- **Vertical Padding:** `16px` mobile (py-4), `24px` tablet+ (sm:py-6)
-- **Gap Between Sections:** `24px` (gap-6)
-- **Layout:** Flexbox column, centered
+- **Base Frame:** Use the shared `.page-shell` primitive as the outer container.
+- **Section Rhythm:** Stack major content areas with `.section` and `.stack` rather than ad-hoc spacing.
+- **Content Width:** Keep the page centered and constrained by the same max-width token used in [STYLES.md](./STYLES.md).
+- **Layout:** Column-based composition with clear vertical separation between sections.
 
 #### Usage
 
@@ -194,29 +250,29 @@ interface SurfaceProps {
 
 #### Design Specs
 
-- **Border Radius:** `24px` (rounded-[24px]) - large, friendly
-- **Border Width:** `1px`
-- **Backdrop Blur:** `16px` (backdrop-blur-xl) - frosted glass effect
-- **Padding:** Not included - add via className (typically `p-4` to `p-6`)
+- **Base Primitive:** Start from `.surface` rather than inventing a new card shell.
+- **Radius:** Use the shared surface radius token for a soft, friendly container.
+- **Border and Shadow:** Keep border and shadow treatment aligned with the surface rules from [STYLES.md](./STYLES.md).
+- **Padding:** Add spacing through shared layout helpers rather than hard-coding component-specific padding whenever possible.
 
 #### Usage
 
 ```tsx
 // Default card
-<Surface className="p-5">
-  <h3 className="font-semibold">Title</h3>
-  <p className="text-sm text-muted-foreground">Content</p>
+<Surface className="surface stack space-4">
+  <h3 className="text-label">Title</h3>
+  <p className="text-caption">Content</p>
 </Surface>
 
 // Muted supporting card
-<Surface tone="muted" className="p-4">
-  <p className="text-sm">Secondary information</p>
+<Surface tone="muted" className="surface-muted stack space-3">
+  <p className="text-body">Secondary information</p>
 </Surface>
 
 // Accent featured card
-<Surface tone="accent" className="p-6">
-  <h3 className="text-lg font-semibold">Featured!</h3>
-  <p>Special promotion content</p>
+<Surface tone="accent" className="surface-accent stack space-5">
+  <h3 className="text-label">Featured!</h3>
+  <p className="text-body">Special promotion content</p>
 </Surface>
 ```
 
@@ -231,21 +287,21 @@ interface SurfaceProps {
 
 **Information Cards:**
 ```tsx
-<Surface className="p-5 space-y-3">
-  <div className="flex items-start justify-between">
-    <h3 className="font-semibold">Title</h3>
-    <Badge>Status</Badge>
+<Surface className="surface stack space-4">
+  <div className="cluster">
+    <h3 className="text-label">Title</h3>
+    <Badge className="badge">Status</Badge>
   </div>
-  <p className="text-sm text-muted-foreground">Description</p>
-  <div className="flex gap-2">
-    <Button variant="outline" size="sm">Action</Button>
+  <p className="text-caption">Description</p>
+  <div className="cluster">
+    <Button variant="secondary" size="sm">Action</Button>
   </div>
 </Surface>
 ```
 
 **List Container:**
 ```tsx
-<Surface className="p-3 space-y-2">
+<Surface className="surface stack space-2">
   <ListRow title="Item 1" />
   <ListRow title="Item 2" />
   <ListRow title="Item 3" />
@@ -471,12 +527,10 @@ interface SectionHeaderProps {
 
 #### Design Specs
 
-- **Border Radius:** `20px` (rounded-[20px]) - slightly smaller than cards
-- **Padding:** `16px` mobile (p-4), `20px` tablet+ (sm:p-5)
-- **Border:** `1px solid border-border/60`
-- **Background:** `bg-background/70`
-- **Layout:** Column on mobile, row on tablet+ (sm:flex-row)
-- **Gap:** `12px` (gap-3)
+- **Base Primitive:** Use `.section-header` as the structural foundation.
+- **Text Hierarchy:** Pair the title with `.text-label` and supporting copy with `.text-caption`.
+- **Surface Treatment:** Keep the header visually light by relying on neutral background and border rules from the shared styles.
+- **Layout:** Allow the header to become a row on larger screens while staying compact on mobile.
 
 #### Usage
 
@@ -577,7 +631,7 @@ interface StatCardProps {
 #### Dashboard Grid
 
 ```tsx
-<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+<div className="card-grid">
   <StatCard title="Total Users" value="1,234" tone="accent" />
   <StatCard title="Active Sessions" value="89" />
   <StatCard title="Conversion Rate" value="12.4%" />
@@ -684,13 +738,13 @@ interface ListRowProps {
 #### Interactive Lists
 
 ```tsx
-<div className="space-y-2">
+<div className="stack space-2">
   {releases.map((release) => (
     <ListRow
       key={release.id}
       title={release.name}
       description={release.description}
-      meta={<Badge variant={release.status}>{release.status}</Badge>}
+      meta={<Badge className="badge">{release.status}</Badge>}
       action={
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -704,7 +758,7 @@ interface ListRowProps {
           </DropdownMenuContent>
         </DropdownMenu>
       }
-      className="transition-colors hover:bg-muted/50 cursor-pointer"
+      className="surface-ghost is-active"
       onClick={() => navigate(`/releases/${release.id}`)}
     />
   ))}
@@ -987,20 +1041,20 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 #### Single Column (Default)
 
 ```tsx
-<form className="max-w-sm space-y-4">
-  <div className="space-y-1.5">
-    <Label htmlFor="name">Name</Label>
+<form className="section stack space-4">
+  <div className="stack space-2">
+    <Label htmlFor="name" className="text-label">Name</Label>
     <Input id="name" />
   </div>
   
-  <div className="space-y-1.5">
-    <Label htmlFor="email">Email</Label>
+  <div className="stack space-2">
+    <Label htmlFor="email" className="text-label">Email</Label>
     <Input id="email" type="email" />
   </div>
   
-  <div className="flex justify-end gap-3">
-    <Button variant="outline">Cancel</Button>
-    <Button type="submit">Submit</Button>
+  <div className="cluster">
+    <Button variant="secondary">Cancel</Button>
+    <Button type="submit" className="button primary">Submit</Button>
   </div>
 </form>
 ```
@@ -1045,8 +1099,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 #### Basic Table Structure
 
 ```tsx
-<div className="rounded-lg border">
-  <table className="w-full">
+<div className="surface border-surface">
+  <table className="table">
     <thead className="border-b bg-muted/50">
       <tr>
         <th className="h-12 px-4 text-left align-middle font-semibold text-sm">Name</th>
