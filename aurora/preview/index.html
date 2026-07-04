@@ -1,173 +1,638 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aurora Design System - Preview</title>
+  <title>Designali Creative Suite</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="gradient-bg">
-  <div class="container">
-    <!-- Hero -->
-    <div class="hero-panel mb-8">
-      <span class="eyebrow">Design System</span>
-      <h1 style="margin-top: 16px; margin-bottom: 12px;">Aurora Design System</h1>
-      <p class="text-lg" style="max-width: 640px; margin-bottom: 24px;">
-        A gradient-rich design system with sophisticated depth and clarity. Built for modern SaaS applications with enterprise-grade accessibility.
-      </p>
-      <div class="flex gap-3" style="flex-wrap: wrap;">
-        <a href="../DESIGN.md" class="btn btn-primary btn-lg">View Documentation</a>
-        <a href="https://github.com/taicode-labs/aurora" class="btn btn-outline btn-lg">GitHub</a>
+<body>
+  <!-- 背景渐变效果 -->
+  <div class="animated-background"></div>
+
+  <!-- 侧边栏 -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h2>Designali</h2>
+          <p>Creative Suite</p>
+        </div>
       </div>
     </div>
 
-    <!-- Design Principles -->
-    <section class="section">
-      <div class="section-header">
-        <div>
-          <h2 class="mb-2">Design Philosophy</h2>
-          <p>Five core pillars that guide every design decision</p>
-        </div>
+    <div class="search-box">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="search" placeholder="Search...">
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        </svg>
+        <span>Home</span>
       </div>
-
-      <div class="grid grid-cols-1 grid-cols-2-sm grid-cols-3-lg">
-        <div class="surface p-5">
-          <h3 class="mb-3">Progressive Disclosure</h3>
-          <p>Start simple, reveal complexity only when needed. Use depth to indicate interactivity and importance.</p>
-        </div>
-
-        <div class="surface p-5">
-          <h3 class="mb-3">Spatial Consistency</h3>
-          <p>Predictable layouts with 4px spacing rhythm and large corner radius (24-32px) for visual harmony.</p>
-        </div>
-
-        <div class="surface p-5">
-          <h3 class="mb-3">Responsive Honesty</h3>
-          <p>Mobile and desktop are different experiences — we embrace that with context-aware design.</p>
-        </div>
-
-        <div class="surface p-5">
-          <h3 class="mb-3">Feedback Loops</h3>
-          <p>Every interaction provides immediate visual feedback with 100-200ms transitions.</p>
-        </div>
-
-        <div class="surface p-5">
-          <h3 class="mb-3">Accessible by Default</h3>
-          <p>WCAG 2.1 AA compliance minimum with keyboard navigation and screen reader support.</p>
-        </div>
-
-        <div class="surface-accent surface p-5">
-          <h3 class="mb-3">✨ Key Differentiator</h3>
-          <p><strong>OKLCH color space</strong> for perceptual uniformity and <strong>frosted glass</strong> aesthetics.</p>
-        </div>
+      <div class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7"/>
+          <rect x="14" y="3" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/>
+        </svg>
+        <span>Apps</span>
+        <span class="badge">2</span>
       </div>
-    </section>
-
-    <!-- Preview Pages -->
-    <section class="section">
-      <div class="section-header">
-        <div>
-          <h2 class="mb-2">Interactive Previews</h2>
-          <p>Explore live examples of Aurora design patterns</p>
-        </div>
+      <div class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+        </svg>
+        <span>Files</span>
       </div>
+      <div class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+        <span>Projects</span>
+        <span class="badge">4</span>
+      </div>
+      <div class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+        <span>Learn</span>
+      </div>
+      <div class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <span>Community</span>
+      </div>
+    </nav>
 
-      <div class="grid grid-cols-1 grid-cols-2-sm">
-        <a href="components.html" class="surface p-6" style="text-decoration: none; display: block;">
-          <div class="flex items-center justify-between mb-4">
-            <h3>Components</h3>
-            <span style="font-size: 24px; color: var(--primary);">→</span>
+    <div class="sidebar-footer">
+      <div class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 1v6m0 6v6"/>
+          <path d="m4.93 4.93 4.24 4.24m5.66 5.66 4.24 4.24"/>
+          <path d="M1 12h6m6 0h6"/>
+          <path d="m4.93 19.07 4.24-4.24m5.66-5.66 4.24-4.24"/>
+        </svg>
+        <span>Settings</span>
+      </div>
+      <div class="user-profile">
+        <div class="avatar">JD</div>
+        <span>John Doe</span>
+        <span class="badge pro">Pro</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 主内容区 -->
+  <div class="main-content">
+    <!-- 顶部栏 -->
+    <header class="top-bar">
+      <div class="top-bar-left">
+        <button class="icon-button menu-toggle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+        <h1>Designali Creative</h1>
+      </div>
+      <div class="top-bar-right">
+        <button class="icon-button" id="theme-toggle" title="Toggle theme">
+          <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <button class="icon-button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/>
+            <path d="M6 6h.01M6 10h.01M6 14h.01"/>
+          </svg>
+        </button>
+        <button class="icon-button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </button>
+        <button class="icon-button notification-button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+          </svg>
+          <span class="notification-badge">5</span>
+        </button>
+        <div class="avatar user-avatar">JD</div>
+      </div>
+    </header>
+
+    <!-- 标签栏 -->
+    <div class="tabs-header">
+      <div class="tabs">
+        <button class="tab active">Home</button>
+        <button class="tab">Apps</button>
+        <button class="tab">Files</button>
+        <button class="tab">Projects</button>
+        <button class="tab">Learn</button>
+      </div>
+      <div class="header-actions">
+        <button class="button secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Install App
+        </button>
+        <button class="button primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          New Project
+        </button>
+      </div>
+    </div>
+
+    <!-- 页面内容 -->
+    <main class="page-content">
+      <!-- 欢迎横幅 -->
+      <section class="hero-banner">
+        <div class="hero-content">
+          <span class="badge premium">Premium</span>
+          <h2>Welcome to DesignAli Creative Suite</h2>
+          <p>Unleash your creativity with our comprehensive suite of professional design tools and resources.</p>
+          <div class="hero-actions">
+            <button class="button hero-primary">Explore Plans</button>
+            <button class="button hero-secondary">Take a Tour</button>
           </div>
-          <p>Explore buttons, cards, forms, badges, and all core UI components with live interactions.</p>
-        </a>
+        </div>
+        <div class="hero-decoration">
+          <div class="circle circle-1"></div>
+          <div class="circle circle-2"></div>
+          <div class="circle circle-3"></div>
+          <div class="circle circle-4"></div>
+          <div class="circle circle-5"></div>
+        </div>
+      </section>
 
-        <a href="colors.html" class="surface p-6" style="text-decoration: none; display: block;">
-          <div class="flex items-center justify-between mb-4">
-            <h3>Color System</h3>
-            <span style="font-size: 24px; color: var(--primary);">→</span>
+      <!-- 最近使用的应用 -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Recent Apps</h2>
+          <button class="link-button">View All</button>
+        </div>
+        <div class="apps-grid">
+          <div class="app-card">
+            <div class="app-card-header">
+              <div class="app-icon violet">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <polyline points="21 15 16 10 5 21"/>
+                </svg>
+              </div>
+              <button class="star-button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+              </button>
+            </div>
+            <div class="app-card-content">
+              <h3>PixelMaster</h3>
+              <p>Advanced image editing and composition</p>
+            </div>
+            <div class="app-card-footer">
+              <button class="button secondary full-width">Open</button>
+            </div>
           </div>
-          <p>OKLCH-based color palette with semantic tokens, gradients, and accessibility guidelines.</p>
-        </a>
 
-        <a href="dashboard.html" class="surface p-6" style="text-decoration: none; display: block;">
-          <div class="flex items-center justify-between mb-4">
-            <h3>Dashboard Layout</h3>
-            <span style="font-size: 24px; color: var(--primary);">→</span>
+          <div class="app-card">
+            <div class="app-card-header">
+              <div class="app-icon orange">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/>
+                  <path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"/>
+                </svg>
+              </div>
+              <button class="star-button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+              </button>
+            </div>
+            <div class="app-card-content">
+              <h3>VectorPro</h3>
+              <p>Professional vector graphics creation</p>
+            </div>
+            <div class="app-card-footer">
+              <button class="button secondary full-width">Open</button>
+            </div>
           </div>
-          <p>Complete dashboard example with stat cards, charts, and responsive navigation.</p>
-        </a>
 
-        <a href="typography.html" class="surface p-6" style="text-decoration: none; display: block;">
-          <div class="flex items-center justify-between mb-4">
-            <h3>Typography</h3>
-            <span style="font-size: 24px; color: var(--primary);">→</span>
+          <div class="app-card">
+            <div class="app-card-header">
+              <div class="app-icon pink">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="23 7 16 12 23 17 23 7"/>
+                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                </svg>
+              </div>
+              <button class="star-button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+              </button>
+            </div>
+            <div class="app-card-content">
+              <h3>VideoStudio</h3>
+              <p>Cinematic video editing and production</p>
+            </div>
+            <div class="app-card-footer">
+              <button class="button secondary full-width">Open</button>
+            </div>
           </div>
-          <p>Inter Variable font with hierarchy scale, spacing rules, and readability guidelines.</p>
-        </a>
+        </div>
+      </section>
+
+      <!-- 最近文件和活跃项目 -->
+      <div class="two-column-layout">
+        <section class="section">
+          <div class="section-header">
+            <h2>Recent Files</h2>
+            <button class="link-button">View All</button>
+          </div>
+          <div class="list-card">
+            <div class="list-item">
+              <div class="list-item-left">
+                <div class="app-icon violet small">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <polyline points="21 15 16 10 5 21"/>
+                  </svg>
+                </div>
+                <div class="list-item-info">
+                  <h4>Brand Redesign.pxm</h4>
+                  <p>PixelMaster • 2 hours ago</p>
+                </div>
+              </div>
+              <div class="list-item-right">
+                <span class="badge outline">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                  </svg>
+                  3
+                </span>
+                <button class="button small">Open</button>
+              </div>
+            </div>
+
+            <div class="list-item">
+              <div class="list-item-left">
+                <div class="app-icon orange small">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/>
+                    <path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"/>
+                  </svg>
+                </div>
+                <div class="list-item-info">
+                  <h4>Company Logo.vec</h4>
+                  <p>VectorPro • Yesterday</p>
+                </div>
+              </div>
+              <div class="list-item-right">
+                <span class="badge outline">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                  </svg>
+                  2
+                </span>
+                <button class="button small">Open</button>
+              </div>
+            </div>
+
+            <div class="list-item">
+              <div class="list-item-left">
+                <div class="app-icon pink small">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="23 7 16 12 23 17 23 7"/>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                  </svg>
+                </div>
+                <div class="list-item-info">
+                  <h4>Product Launch Video.vid</h4>
+                  <p>VideoStudio • 3 days ago</p>
+                </div>
+              </div>
+              <div class="list-item-right">
+                <button class="button small">Open</button>
+              </div>
+            </div>
+
+            <div class="list-item">
+              <div class="list-item-left">
+                <div class="app-icon blue small">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+                  </svg>
+                </div>
+                <div class="list-item-info">
+                  <h4>UI Animation.mfx</h4>
+                  <p>MotionFX • Last week</p>
+                </div>
+              </div>
+              <div class="list-item-right">
+                <span class="badge outline">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                  </svg>
+                  4
+                </span>
+                <button class="button small">Open</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Active Projects</h2>
+            <button class="link-button">View All</button>
+          </div>
+          <div class="list-card">
+            <div class="project-item">
+              <div class="project-header">
+                <h4>Website Redesign</h4>
+                <span class="badge outline">Due June 15, 2025</span>
+              </div>
+              <p class="project-description">Complete overhaul of company website</p>
+              <div class="progress-section">
+                <div class="progress-label">
+                  <span>Progress</span>
+                  <span>75%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 75%"></div>
+                </div>
+              </div>
+              <div class="project-meta">
+                <div class="meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                  </svg>
+                  4 members
+                </div>
+                <div class="meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                  </svg>
+                  23 files
+                </div>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-header">
+                <h4>Mobile App Launch</h4>
+                <span class="badge outline">Due July 30, 2025</span>
+              </div>
+              <p class="project-description">Design and assets for new mobile application</p>
+              <div class="progress-section">
+                <div class="progress-label">
+                  <span>Progress</span>
+                  <span>60%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 60%"></div>
+                </div>
+              </div>
+              <div class="project-meta">
+                <div class="meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                  </svg>
+                  6 members
+                </div>
+                <div class="meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                  </svg>
+                  42 files
+                </div>
+              </div>
+            </div>
+
+            <div class="project-item">
+              <div class="project-header">
+                <h4>Brand Identity</h4>
+                <span class="badge outline">Due May 25, 2025</span>
+              </div>
+              <p class="project-description">New brand guidelines and assets</p>
+              <div class="progress-section">
+                <div class="progress-label">
+                  <span>Progress</span>
+                  <span>90%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="project-meta">
+                <div class="meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                  </svg>
+                  3 members
+                </div>
+                <div class="meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                  </svg>
+                  18 files
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-    </section>
 
-    <!-- Key Features -->
-    <section class="section">
-      <div class="section-header">
-        <div>
-          <h2 class="mb-2">Key Features</h2>
-          <p>What makes Aurora different</p>
+      <!-- 社区精选 -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Community Highlights</h2>
+          <button class="link-button">Explore</button>
         </div>
-      </div>
-
-      <div class="grid grid-cols-1 grid-cols-2-sm grid-cols-4-lg">
-        <div class="surface-muted surface p-4">
-          <div class="stat-card-value" style="font-size: 48px; margin-bottom: 8px;">24px</div>
-          <div class="stat-card-title">Border Radius</div>
-          <p class="text-xs" style="margin-top: 8px;">Large, friendly corners create modern, approachable interfaces</p>
-        </div>
-
-        <div class="surface-muted surface p-4">
-          <div class="stat-card-value" style="font-size: 48px; margin-bottom: 8px;">16px</div>
-          <div class="stat-card-title">Backdrop Blur</div>
-          <p class="text-xs" style="margin-top: 8px;">Frosted glass effect adds depth and visual hierarchy</p>
-        </div>
-
-        <div class="surface-muted surface p-4">
-          <div class="stat-card-value" style="font-size: 48px; margin-bottom: 8px;">4px</div>
-          <div class="stat-card-title">Spacing Rhythm</div>
-          <p class="text-xs" style="margin-top: 8px;">Consistent base unit creates visual harmony across all components</p>
-        </div>
-
-        <div class="surface-muted surface p-4">
-          <div class="stat-card-value" style="font-size: 48px; margin-bottom: 8px;">100ms</div>
-          <div class="stat-card-title">Transitions</div>
-          <p class="text-xs" style="margin-top: 8px;">Instant feedback that respects user attention and reduces motion</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Documentation Links -->
-    <section class="section">
-      <div class="surface p-6">
-        <div class="flex flex-col gap-4">
-          <div>
-            <h3 class="mb-2">Complete Documentation</h3>
-            <p>Deep dive into design principles, component APIs, and implementation guides.</p>
+        <div class="community-grid">
+          <div class="community-card">
+            <div class="community-image"></div>
+            <div class="community-content">
+              <h4>Minimalist Logo Design</h4>
+              <p>by Alex Morgan</p>
+              <div class="community-stats">
+                <div class="stat">
+                  <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                  </svg>
+                  342
+                </div>
+                <div class="stat">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  </svg>
+                  28
+                </div>
+                <span class="time">2 days ago</span>
+              </div>
+            </div>
           </div>
-          <div class="flex gap-3" style="flex-wrap: wrap;">
-            <a href="../DESIGN.md" class="btn btn-outline">DESIGN.md - Principles & Philosophy</a>
-            <a href="../COMPONENTS.md" class="btn btn-outline">COMPONENTS.md - API Reference</a>
-            <a href="../README.md" class="btn btn-outline">README.md - Getting Started</a>
+
+          <div class="community-card">
+            <div class="community-image"></div>
+            <div class="community-content">
+              <h4>3D Character Concept</h4>
+              <p>by Priya Sharma</p>
+              <div class="community-stats">
+                <div class="stat">
+                  <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                  </svg>
+                  518
+                </div>
+                <div class="stat">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  </svg>
+                  47
+                </div>
+                <span class="time">1 week ago</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="community-card">
+            <div class="community-image"></div>
+            <div class="community-content">
+              <h4>UI Dashboard Redesign</h4>
+              <p>by Thomas Wright</p>
+              <div class="community-stats">
+                <div class="stat">
+                  <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                  </svg>
+                  276
+                </div>
+                <div class="stat">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  </svg>
+                  32
+                </div>
+                <span class="time">3 days ago</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="community-card">
+            <div class="community-image"></div>
+            <div class="community-content">
+              <h4>Product Photography Setup</h4>
+              <p>by Olivia Chen</p>
+              <div class="community-stats">
+                <div class="stat">
+                  <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                  </svg>
+                  189
+                </div>
+                <div class="stat">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  </svg>
+                  15
+                </div>
+                <span class="time">5 days ago</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer style="text-align: center; padding: 48px 0; color: var(--muted-foreground);">
-      <p class="text-sm">Aurora Design System · Version 1.0 · 2026</p>
-      <p class="text-xs" style="margin-top: 8px; opacity: 0.7;">Built with ❤️ for modern SaaS applications</p>
-    </footer>
+      </section>
+    </main>
   </div>
+
+  <script>
+    // 主题切换功能
+    const themeToggle = document.getElementById('theme-toggle');
+    const sunIcon = document.querySelector('.sun-icon');
+    const moonIcon = document.querySelector('.moon-icon');
+    const html = document.documentElement;
+
+    // 从本地存储加载主题偏好
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+
+    // 主题切换事件
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+
+    function updateThemeIcon(theme) {
+      if (theme === 'dark') {
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+      } else {
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+      }
+    }
+  </script>
 </body>
 </html>

@@ -90,8 +90,14 @@ We use **OKLCH color space** instead of traditional hex/RGB because:
 - **Neutral Primary:** Pure black/white with zero chroma creates timeless, professional appearance that never feels dated or trendy
 - **Indigo Ambience:** Subtle indigo gradients (18-24% opacity) in backgrounds provide warmth without distraction
 - **Cool Neutral Tones:** Gray palette with subtle blue undertones reduces eye strain, feels modern and clean
-- **Minimal Saturation:** Reserved for critical feedback (errors) and success states — draws attention where needed
+- **Minimal Saturation:** Reserved for critical feedback (errors), data visualization (charts), and navigation accents
 - **70-90% Opacity:** Creates layering without hard edges, glass-like depth
+
+**Color Application Strategy:**
+1. **Main Content (0% chroma):** All interactive elements (buttons, inputs, borders) use pure neutrals — focus stays on content
+2. **Background Ambience (18-24% opacity indigo):** Decorative only, provides warmth without competing for attention
+3. **Data Visualization (10-25% chroma indigo):** Charts use saturated colors to make data insights stand out from UI chrome
+4. **Navigation Accent (deep dark mode only):** Sidebar uses subtle indigo to distinguish navigation from content area
 
 **Semantic Color Strategy:**
 Colors communicate meaning, not just decoration:
@@ -119,6 +125,27 @@ Colors communicate meaning, not just decoration:
 | `--accent` | `oklch(0.97 0 0)` | `oklch(0.371 0 0)` | Hover states |
 | `--destructive` | `oklch(0.58 0.22 27)` | `oklch(0.704 0.191 22.216)` | Error/danger |
 
+### Chart Colors (Data Visualization)
+
+| Token | OKLCH Value | Hex Approx | Usage |
+|-------|------------|-----------|-------|
+| `--chart-1` | `oklch(0.809 0.105 251.813)` | #a5b4fc | Lightest indigo |
+| `--chart-2` | `oklch(0.623 0.214 259.815)` | #818cf8 | Light indigo |
+| `--chart-3` | `oklch(0.546 0.245 262.881)` | #6366f1 | Medium indigo |
+| `--chart-4` | `oklch(0.488 0.243 264.376)` | #4f46e5 | Dark indigo |
+| `--chart-5` | `oklch(0.424 0.199 265.638)` | #4338ca | Darkest indigo |
+
+**Design Intent:** Chart colors use indigo palette with consistent chroma (0.1-0.25) for visual harmony. These are the only interactive elements with saturated color (besides destructive states), making data visualization stand out.
+
+### Sidebar Colors (Specialized)
+
+| Token | Light Mode | Dark Mode | Usage |
+|-------|-----------|-----------|-------|
+| `--sidebar` | `oklch(0.985 0 0)` | `oklch(0.205 0 0)` | Sidebar background |
+| `--sidebar-primary` | `oklch(0.205 0 0)` | `oklch(0.488 0.243 264.376)` | Active nav items |
+
+**Design Intent:** In dark mode, sidebar-primary uses indigo (`chart-4`) to provide visual distinction and warmth in the navigation area. This is an intentional deviation from the pure neutral system to create hierarchy between main content (neutral) and navigation (subtle color).
+
 ### Neutral
 
 | Token | Light Mode | Dark Mode | Usage |
@@ -129,17 +156,25 @@ Colors communicate meaning, not just decoration:
 
 ### Gradients & Effects
 
-**Radial Gradient (Light):**
+**Background Gradient (Light Mode):**
 ```css
-radial-gradient(circle at top left, rgba(129,140,248,0.18), transparent 34%),
-linear-gradient(180deg, #f8fafc 0%, #f5f7fb 100%)
+background: radial-gradient(circle at top left, rgba(129,140,248,0.18), transparent 34%),
+            linear-gradient(180deg, #f8fafc 0%, #f5f7fb 100%);
 ```
+- **Radial:** `rgba(129,140,248,0.18)` = #818cf8 (indigo-400) at **18% opacity**
+- **Position:** Top left corner, fades to transparent at **34%** of container
+- **Linear:** Slate-50 (#f8fafc) → Custom cool white (#f5f7fb)
+- **Effect:** Subtle warmth without distraction, guides eye to top-left content
 
-**Radial Gradient (Dark):**
+**Background Gradient (Dark Mode):**
 ```css
-radial-gradient(circle at top left, rgba(79,70,229,0.24), transparent 30%),
-linear-gradient(180deg, #020617 0%, #0f172a 100%)
+background: radial-gradient(circle at top left, rgba(79,70,229,0.24), transparent 30%),
+            linear-gradient(180deg, #020617 0%, #0f172a 100%);
 ```
+- **Radial:** `rgba(79,70,229,0.24)` = #4f46e5 (indigo-600) at **24% opacity**
+- **Position:** Top left corner, fades to transparent at **30%** of container
+- **Linear:** Slate-950 (#020617) → Slate-900 (#0f172a)
+- **Effect:** Deeper, more dramatic than light mode; indigo more visible for warmth
 
 **Frosted Surface:**
 ```css
