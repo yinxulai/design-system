@@ -1,11 +1,11 @@
-# Modern SaaS Design System
+# Aurora Design System
 
-> **Category:** Enterprise SaaS  
-> **Aesthetic:** Clean, modern, minimalist with sophisticated depth and clear hierarchy
+> **Category:** Creative workspace dashboard  
+> **Aesthetic:** Calm, structured, and polished, with neutral surfaces, soft depth, and restrained accent color
 
 ## How These Documents Work Together
 
-This document defines the design intent, visual principles, and system-level guidance. It answers the question: what should Aurora feel like and why?
+This document defines the design intent, visual principles, and system-level guidance for the current Aurora preview experience. It answers the question: what should Aurora feel like and why?
 
 - Use [DESIGN.md](./DESIGN.md) for philosophy, tone, hierarchy, and visual rules.
 - Use [STYLES.md](./STYLES.md) for the shared semantic CSS foundation that makes those rules implementable.
@@ -31,7 +31,7 @@ Aurora should feel calm, direct, and dependable. The interface should help peopl
 **2. Spatial Consistency**
 - Layout follows predictable patterns: fixed navigation, centered content, breathing room
 - Consistent spacing rhythm (4px base, 8px increments) creates visual harmony
-- Large corner radius (24-32px) softens interactions, making the interface feel approachable
+- Soft but restrained corner radius (8px-16px) keeps interactions approachable without feeling overly rounded
 
 **3. Responsive Honesty**
 - Mobile and desktop are different experiences — we embrace that
@@ -77,6 +77,8 @@ A durable system needs one explicit path from intent to implementation:
 4. **State tokens** define hover, focus, active, disabled, selected, and error treatments so interaction behavior stays consistent.
 
 Implementation rule: if a new value appears in UI work, it should first be added to the shared token layer and then reused by components rather than being introduced ad hoc.
+
+Theme rule: dark mode should override color tokens only. Shared tokens for spacing, typography, grid sizing, motion, shadows, and component scale stay in the common layer so light and dark themes remain visually aligned.
 
 ### Accessibility & Responsive Standards
 

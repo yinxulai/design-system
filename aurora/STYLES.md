@@ -1,6 +1,12 @@
 # Styles Reference
 
-This document is the implementation contract for Aurora's visual language. It defines the semantic CSS foundation for static previews, HTML/CSS prototypes, and the base layer for richer component implementations.
+This document is the implementation contract for Aurora's visual language as expressed in the current preview experience. It defines the semantic CSS foundation for static previews, HTML/CSS prototypes, and the base layer for richer component implementations.
+
+## Source of truth for future work
+
+- Treat the current preview as the reference implementation for shape, rhythm, and hierarchy.
+- Preserve the existing dashboard patterns: sidebar navigation, top bar, tab bar, hero banner, app cards, and list rows.
+- Prefer semantic classes and shared tokens over one-off styles so the preview stays stable when the docs evolve.
 
 ## Relationship to the Other Docs
 
@@ -49,7 +55,13 @@ Every interactive element should have clear default, hover, focus, disabled, and
 - Prefer single-column layouts on small screens, two-column arrangements on tablet, and more spacious compositions on desktop.
 - Avoid introducing new visual weight without a semantic reason; if a component needs emphasis, use intent-driven tokens rather than one-off styling.
 
-### 2.6 Token governance and review checklist
+### 2.6 Grid sizing guidance
+
+Grid-based collections such as cards, app lists, and community tiles should not grow indefinitely as the viewport gets larger. Each repeated item should have a defined minimum and maximum width, and the grid tracks should use a bounded range rather than an unconstrained `1fr` fill.
+
+Use patterns such as `repeat(auto-fit, minmax(min(100%, 240px), 320px))` or an equivalent combination of `min-width`, `max-width`, and `width: 100%` on the child item. This keeps the layout calm on large screens, preserves consistent rhythm, and avoids cards stretching into awkward proportions.
+
+### 2.7 Token governance and review checklist
 
 Use this checklist when introducing or changing shared styles:
 
@@ -61,16 +73,31 @@ Use this checklist when introducing or changing shared styles:
 
 ## 3. Token Layer
 
-### 3.1 Token hierarchy
+### 3.1 Preview token review anchors
 
-Aurora's styling should be driven by a layered token system rather than isolated values. The intended hierarchy is:
+For preview validation, treat the following token groups as the minimum visual regression set:
 
-1. Foundation tokens: raw color, spacing, radius, and motion values.
-2. Semantic tokens: roles such as background, surface, border, primary action, muted text, and status color.
-3. Component tokens: values that describe a specific pattern such as a card surface, input border, or focus ring.
-4. State tokens: interaction feedback for hover, focus, active, disabled, and selected states.
+- Color foundation: background, foreground, surface, border, muted text, primary/secondary/accent
+- Status colors: danger, success, warning, info
+- Shape and rhythm: radius, spacing, typography scale
+- Size and shape primitives: avatar sizes, icon sizes, pill radius, badge/chip padding, control heights
+- Typography and composition primitives: a small set of display, heading, body, and caption sizes plus shared line-height and hero button padding
+- Elevation and motion: shadows, focus ring, brand gradient, transitions
 
-### 3.2 Single-source token contract
+If one of these groups changes dramatically, the preview will look materially different even when the overall layout stays the same. A quick pass can therefore focus on whether the preview still feels calm, restrained, and consistent in contrast, border weight, corner softness, and depth.
+
+### 3.2 Token hierarchy
+
+Aurora's styling should be driven by a layered token system rather than isolated values. The simplest mental model is:
+
+1. Foundation tokens: define the raw primitives such as color, spacing, radius, motion, and typography.
+2. Semantic tokens: assign meaning to those primitives for shared roles such as background, surface, border, action, overlay, feedback, and layout intent.
+3. Component tokens: only after the first two layers exist, define component-specific scales such as control height, badge padding, avatar sizes, app icon sizes, and hero spacing.
+4. State tokens: add interaction overrides for hover, focus, active, disabled, and selected states.
+
+A good rule of thumb is: foundation tokens are for values, semantic tokens are for roles, and component tokens are for component-scale decisions. Avoid using foundation values directly in component styles when a semantic token already exists.
+
+### 3.3 Single-source token contract
 
 The design system should expose one canonical token layer for every visual decision. Any new color, spacing, radius, shadow, typography, or motion value must be defined once here and then reused by preview styles and components.
 
@@ -80,19 +107,41 @@ The design system should expose one canonical token layer for every visual decis
 3. Reuse the semantic token from shared primitives and components.
 4. Review the change against contrast, focus visibility, touch target, and responsive behavior before release.
 
-### 3.3 Semantic color tokens
+### 3.4 Current preview token layers
+
+The current preview token set should be read in three layers so implementation stays understandable and future changes stay scoped:
+
+- Foundation tokens: the raw values that define the design language, including color primitives, spacing scale, radius values, shadows, motion curves, and the default font stack.
+- Semantic tokens: the meaning layer that maps those values to shared roles, such as background, surface, border, action, overlay, feedback, and container/layout intent.
+- Component tokens: the scale layer used only when a preview pattern needs its own consistent size or rhythm, such as control heights, badge padding, avatar sizes, app icon sizes, hero button padding, and progress bar dimensions.
+
+In practice, foundation tokens define what exists; semantic tokens define what a thing means; component tokens define how a specific component scales.
+
+### 3.5 Semantic color tokens for light and dark themes
+
+Aurora should expose two complete color sets: one for the default light theme and one for the dark theme. Components should consume the semantic color tokens below, while layout, spacing, radius, motion, and component-scale tokens remain in the shared root layer.
+
+In practice, the dark-theme block should only override color-related tokens. Shared values such as spacing, typography, grid sizing, control heights, and shadow scales stay in the root layer and are reused by both themes.
 
 ```css
 :root {
-  /* Foundation and semantic color roles */
+  /* Shared layout and component-scale tokens */
+  --spacing-2: 8px;
+  --content-inline-padding: clamp(16px, 3vw, 32px);
+  --grid-card-min-width: 240px;
+  --grid-card-max-width: 320px;
+  --control-min-height: 40px;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  /* Light theme colors */
   --color-background: oklch(1 0 0);
   --color-foreground: oklch(0.145 0 0);
   --color-card: oklch(1 0 0);
   --color-muted: oklch(0.961 0 0);
   --color-muted-foreground: oklch(0.451 0 0);
   --color-border: oklch(0.898 0 0);
-  --color-input: oklch(0.898 0 0);
-  --color-ring: oklch(0.708 0 0);
+  --color-input: oklch(0.945 0 0);
+  --color-ring: oklch(0.145 0 0);
 
   --color-primary: oklch(0.09 0 0);
   --color-primary-foreground: oklch(0.98 0 0);
@@ -101,23 +150,48 @@ The design system should expose one canonical token layer for every visual decis
   --color-accent: oklch(0.961 0 0);
   --color-accent-foreground: oklch(0.09 0 0);
 
-  --color-danger: oklch(0.58 0.22 27);
-  --color-success: oklch(0.45 0.15 145);
-  --color-warning: oklch(0.72 0.17 85);
-  --color-info: oklch(0.55 0.16 250);
+  --color-surface: var(--color-card);
+  --color-surface-muted: var(--color-muted);
+  --color-surface-hover: oklch(0.945 0 0);
+  --color-surface-active: oklch(0.905 0 0);
+  --color-control: var(--color-border);
+  --color-control-hover: oklch(0.93 0 0);
+  --color-control-pressed: oklch(0.89 0 0);
+  --color-action-default: var(--color-primary);
+  --color-action-hover: oklch(0.14 0 0);
+  --color-action-pressed: oklch(0.12 0 0);
+  --color-overlay: rgba(15, 23, 42, 0.04);
+}
 
-  --color-sidebar: oklch(0.985 0 0);
-  --color-sidebar-primary: oklch(0.205 0 0);
+[data-theme="dark"] {
+  /* Dark theme colors only */
+  --color-background: oklch(0.046 0 0);
+  --color-foreground: oklch(0.97 0 0);
+  --color-card: oklch(0.064 0 0);
+  --color-muted: oklch(0.124 0 0);
+  --color-muted-foreground: oklch(0.66 0 0);
+  --color-border: oklch(0.18 0 0);
+  --color-input: oklch(0.118 0 0);
+  --color-ring: oklch(0.94 0 0);
 
-  --color-violet: oklch(0.623 0.214 259.815);
-  --color-indigo: oklch(0.488 0.243 264.376);
-  --color-blue: oklch(0.623 0.214 259.815);
-  --color-orange: oklch(0.704 0.191 22.216);
-  --color-red: oklch(0.58 0.22 27);
+  --color-primary: oklch(0.95 0 0);
+  --color-primary-foreground: oklch(0.12 0 0);
+  --color-secondary: oklch(0.14 0 0);
+  --color-secondary-foreground: oklch(0.95 0 0);
+  --color-accent: oklch(0.14 0 0);
+  --color-accent-foreground: oklch(0.95 0 0);
+
+  --color-surface: var(--color-card);
+  --color-surface-muted: var(--color-muted);
+  --color-surface-hover: oklch(0.16 0 0);
+  --color-surface-active: oklch(0.21 0 0);
+  --color-overlay: rgba(255, 255, 255, 0.06);
 }
 ```
 
-### 3.4 Semantic aliases for implementation
+Do not duplicate spacing, radius, typography, or component-scale tokens inside the dark theme block. If a token influences structure or rhythm rather than color, keep it in the shared layer.
+
+### 3.6 Semantic aliases for implementation
 
 These aliases should be used by shared UI primitives and component styles so that the implementation stays readable and consistent.
 
@@ -142,48 +216,60 @@ These aliases should be used by shared UI primitives and component styles so tha
 }
 ```
 
-### 3.5 Spacing scale
+### 3.7 Spacing scale
 
 ```css
 :root {
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-10: 40px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-12: 48px;
 }
 ```
 
-### 3.6 Radius and elevation
+### 3.8 Radius and elevation
 
 ```css
 :root {
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
-  --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
-  --shadow-lg: 0 24px 60px -30px rgba(15, 23, 42, 0.32);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 24px 60px -30px rgba(15, 23, 42, 0.32);
 }
 ```
 
-### 3.7 Component and state tokens
+### 3.7 Component, interaction, and state tokens
 
-When a token is used by a shared component pattern, it should be named for the component role rather than the raw value. Examples include:
+When a token is used by a shared component pattern, it should be named for the role it serves rather than the raw value. The same contract should cover surfaces, controls, and feedback states so a consumer can build the same UI language without inventing new values.
 
 ```css
 :root {
   --surface-radius: var(--radius-lg);
   --surface-border: 1px solid var(--color-border);
   --surface-shadow: var(--shadow-md);
-  --focus-ring: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.16);
-  --overlay-backdrop: rgba(255, 255, 255, 0.8);
+  --surface-hover: var(--color-surface-hover);
+  --surface-active: var(--color-surface-active);
+  --control-default: var(--color-control);
+  --control-hover: var(--color-control-hover);
+  --control-pressed: var(--color-control-pressed);
+  --action-default: var(--color-action-default);
+  --action-hover: var(--color-action-hover);
+  --action-pressed: var(--color-action-pressed);
+  --action-disabled: var(--color-action-disabled);
+  --action-disabled-foreground: var(--color-action-disabled-foreground);
+  --focus-ring: 0 0 0 3px oklch(from var(--color-focus) l c h / 0.16);
+  --overlay-backdrop: var(--color-overlay);
 }
 ```
+
+Use these tokens to define defaults for tabs, buttons, links, cards, inputs, and badges. State tokens such as `--color-success-soft`, `--color-danger-soft`, `--color-warning-soft`, and `--color-info-soft` should be used for inline feedback, badges, or subtle banners rather than hard-coded colors.
 
 ## 4. Layout Primitives
 
@@ -193,7 +279,8 @@ These classes form the base layer for most screens.
 
 ```css
 :root {
-  --page-max-width: 1280px;
+  --page-max-width: none;
+  --content-inline-padding: 24px;
   --surface-radius: var(--radius-lg);
   --surface-border: 1px solid var(--border);
   --surface-shadow: var(--shadow-md);
@@ -201,9 +288,8 @@ These classes form the base layer for most screens.
 
 .page-shell {
   width: 100%;
-  max-width: var(--page-max-width);
   margin: 0 auto;
-  padding: 24px;
+  padding: var(--content-inline-padding);
 }
 
 .section {
@@ -265,7 +351,8 @@ This section covers the base text semantics that should appear in almost every s
 
 ```css
 :root {
-  --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-sans: "Geist", "Segoe UI", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "Geist Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --text-xs: 12px;
   --text-sm: 13px;
   --text-base: 14px;
