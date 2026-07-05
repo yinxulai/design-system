@@ -1,5 +1,7 @@
 # Design System
 
+[English](README.md) | [简体中文](README.zh-CN.md)
+
 A polished, modern design system demo centered on an Aurora-inspired dashboard experience. The project combines semantic design tokens, reusable UI patterns, and a rich preview page to showcase how the visual language feels in real interfaces.
 
 ## Highlights
