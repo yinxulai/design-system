@@ -21,8 +21,19 @@
 - Cross-Device Design Decision Framework
 - Responsive Behavior
 - Accessibility (WCAG 2.1 AA)
+- Token architecture and execution contract
 - Agent Prompt Quick Reference
 - Applying the System
+
+### [STYLES.md](./STYLES.md) - Shared Semantic Style Layer
+**Purpose:** The implementation contract for shared primitives used by previews, HTML/CSS prototypes, and component implementations.
+
+**Contains:**
+- Token hierarchy and semantic aliases
+- Spacing, radius, elevation, and motion tokens
+- Layout primitives such as page shell, section, surface, stack, and cluster
+- Focus, feedback, and responsive behavior rules
+- Review checklist for token changes and visual consistency
 
 **Read this if you want to:**
 - Understand the design philosophy
@@ -60,9 +71,10 @@
 ### For Designers
 
 1. **Read [DESIGN.md](./DESIGN.md) first** - Understand the philosophy and principles
-2. **Reference [COMPONENTS.md](./COMPONENTS.md)** - Learn component patterns and variants
-3. **Use the Decision Framework** - Apply principles to new scenarios not explicitly covered
-4. **Follow Do's and Don'ts** - Avoid common pitfalls
+2. **Reference [STYLES.md](./STYLES.md)** - Learn the shared token and layout primitives
+3. **Reference [COMPONENTS.md](./COMPONENTS.md)** - Learn component patterns and variants
+4. **Use the Decision Framework** - Apply principles to new scenarios not explicitly covered
+5. **Follow Do's and Don'ts** - Avoid common pitfalls
 
 ### For Developers
 
@@ -71,7 +83,7 @@
    import { Surface, StatCard, DashboardShell } from '@/design-system/components/app-shell'
    ```
 
-2. **Reference [COMPONENTS.md](./COMPONENTS.md)** for API details
+2. **Reference [STYLES.md](./STYLES.md)** and [COMPONENTS.md](./COMPONENTS.md) for API details
    ```tsx
    <Surface tone="accent" className="p-5">
      <StatCard title="Total Users" value="1,234" />
@@ -80,7 +92,7 @@
 
 3. **Follow accessibility guidelines** - Keyboard navigation, ARIA labels, contrast ratios
 
-4. **Use design tokens** - Color, spacing, typography from the system
+4. **Use design tokens** - Color, spacing, typography, motion, and focus-ring from the system
    ```tsx
    className="text-muted-foreground space-y-4 rounded-[24px]"
    ```
@@ -93,6 +105,7 @@
 design-system/
 ├── README.md                 # This file - overview and navigation
 ├── DESIGN.md                 # Design principles and philosophy
+├── STYLES.md                 # Shared semantic tokens and layout primitives
 ├── COMPONENTS.md             # Component API documentation
 └── components/
     └── app-shell.tsx         # Core design system components
@@ -118,6 +131,22 @@ Every interaction provides immediate visual feedback (100-200ms transitions).
 WCAG 2.1 AA compliance minimum, keyboard navigation, screen reader support.
 
 ---
+
+## 🧭 System Governance & Delivery Standards
+
+To move from a strong visual concept to a durable design system, the implementation must follow a few non-negotiable rules:
+
+- **Single source of truth:** use [DESIGN.md](./DESIGN.md) for intent, [STYLES.md](./STYLES.md) for shared primitives, and [COMPONENTS.md](./COMPONENTS.md) for composition rules.
+- **Token-first implementation:** introduce tokens before hard-coded values. New spacing, color, radius, or shadow decisions should be added to the shared layer rather than injected ad hoc.
+- **Component maturity:** every component should define usage, variants, states, accessibility requirements, and responsive behavior before it is considered complete.
+- **Verification before release:** review contrast, keyboard behavior, focus states, and breakpoints during implementation rather than after the fact.
+
+### Review checklist
+
+1. Does the UI use semantic primitives instead of one-off styling?
+2. Does the component have clear default, hover, focus, disabled, and error states?
+3. Does the layout remain readable at mobile, tablet, and desktop widths?
+4. Are contrast and motion decisions verified rather than assumed?
 
 ## 🎨 Visual Identity
 

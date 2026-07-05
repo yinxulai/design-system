@@ -1,16 +1,25 @@
-# Modern SaaS Design System
+# Aurora Design System
 
-> **Category:** Enterprise SaaS  
-> **Aesthetic:** Clean, modern, gradient-rich with sophisticated depth and clear hierarchy  
-> **Companion Document:** [COMPONENTS.md](./COMPONENTS.md) for detailed component API and usage examples
+> **Category:** Creative workspace dashboard  
+> **Aesthetic:** Calm, structured, and polished, with neutral surfaces, soft depth, and restrained accent color
+
+## How These Documents Work Together
+
+This document defines the design intent, visual principles, and system-level guidance for the current Aurora preview experience. It answers the question: what should Aurora feel like and why?
+
+- Use [DESIGN.md](./DESIGN.md) for philosophy, tone, hierarchy, and visual rules.
+- Use [STYLES.md](./STYLES.md) for the shared semantic CSS foundation that makes those rules implementable.
+- Use [COMPONENTS.md](./COMPONENTS.md) for higher-level component APIs and composition patterns built on top of the shared foundation.
+
+In practice, the workflow is: principles first, semantic styles second, components third.
 
 ---
 
 ## Design Philosophy
 
-### Core Principle: Clarity Through Depth
+### Core Principle: Clarity Through Restraint
 
-This design system is built on the belief that **digital interfaces should feel like physical spaces** — with depth, light, and layers that guide attention naturally. We don't flatten everything; we use subtle gradients, shadows, and transparency to create visual hierarchy that mirrors how humans understand physical environments.
+Aurora should feel calm, direct, and dependable. The interface should help people focus on the task rather than compete for attention.
 
 ### Design Pillars
 
@@ -22,7 +31,7 @@ This design system is built on the belief that **digital interfaces should feel 
 **2. Spatial Consistency**
 - Layout follows predictable patterns: fixed navigation, centered content, breathing room
 - Consistent spacing rhythm (4px base, 8px increments) creates visual harmony
-- Large corner radius (24-32px) softens interactions, making the interface feel approachable
+- Soft but restrained corner radius (8px-16px) keeps interactions approachable without feeling overly rounded
 
 **3. Responsive Honesty**
 - Mobile and desktop are different experiences — we embrace that
@@ -41,36 +50,105 @@ This design system is built on the belief that **digital interfaces should feel 
 - Motion respects user preferences (reduced motion support)
 - Screen readers get semantic HTML and ARIA labels
 
-### Why This Approach?
+### Design Intent Summary
 
-**Gradients & Blur:** Create depth without harsh lines. Radial gradients (18-24% opacity) add visual interest without distraction. Backdrop blur signals layering and focus.
+- Large surfaces stay neutral and quiet.
+- Color is used as punctuation, not as a dominant background treatment.
+- Elevation and spacing create hierarchy without visual noise.
+- Motion should be subtle, immediate, and respectful of user attention.
 
-**Large Corner Radius:** 24-32px radius feels modern and friendly. It reduces visual noise and creates flow between sections.
+### System Discipline
 
-**Multi-layer Shadows:** Deep, soft shadows (60-100px blur) with low opacity (0.28-0.42) create realistic depth. Purple/blue tints echo the decorative background gradients.
+To keep the system durable, the implementation must follow a few governing rules:
 
-**Immediate Transitions:** 100-200ms transitions feel instant but provide visual continuity. Longer (300ms) for complex state changes like expanding accordions.
+- **Single source of truth:** intent belongs in this document, reusable primitives in [STYLES.md](./STYLES.md), and component composition in [COMPONENTS.md](./COMPONENTS.md).
+- **Token-first execution is mandatory:** every new color, spacing, radius, shadow, typography, motion, or control-size decision must be introduced in the shared token layer before it appears in a component or preview screen. Raw values are not allowed in implementation work.
+- **State completeness is mandatory:** every reusable component must define default, hover, focus, active, disabled, loading, selected, and error states before it is considered system-ready.
+- **Accessibility is a release requirement:** contrast, keyboard behavior, focus visibility, reduced motion, and touch targets must be verified before a pattern ships.
+- **Visual restraint is a non-negotiable constraint:** gradients, motion, and saturated accents may be used only when they support hierarchy or feedback. They are never allowed to become the visual language of core surfaces, repetitive cards, or long-form content.
+- **Workflow patterns must be explicit:** forms, empty states, loading states, error recovery, navigation hierarchy, and content density are treated as shared product patterns, not one-off UI treatments.
+- **The preview is part of the contract:** if a preview screen contradicts the documented system rules, the preview is considered out of spec and must be corrected.
 
-**Zero Tooltip Delay:** Information should be instant. 0ms delay shows tooltips immediately on hover, respecting users' curiosity.
+### Product Pattern Standards
+
+A mature design system is not defined by visuals alone. It must also provide repeatable product patterns for the moments where users need to make decisions, recover from mistakes, or navigate complex information.
+
+#### 1. Forms and Validation States
+- Every form field must have a defined default, hover, focus, filled, disabled, error, success, and loading state.
+- Validation must be progressive: inline helper text first, field-level error next, then a summary-level error when necessary.
+- Required fields must be visually distinguishable without becoming noisy; optional fields must remain clearly secondary.
+- Error messaging must explain what went wrong and how to fix it, rather than relying on color alone.
+- Forms must not ship with incomplete states; a field without a defined invalid or disabled state is considered incomplete implementation.
+
+#### 2. Data Lists and Tables
+- Data surfaces must support at least three density modes: comfortable for overview tasks, compact for dense workflows, and spacious for review or analysis.
+- Row height, spacing, and text scale must change intentionally across those modes rather than being arbitrary.
+- Tables and lists must preserve hierarchy through clear headers, consistent alignment, logical grouping, and strong contrast between primary and secondary information.
+- Selection, hover, active, disabled, and loading rows must share the same interaction rules as other interface controls.
+- Dense data layouts must never sacrifice readability, touch targets, or scanability.
+
+#### 3. Empty, Error, and Loading States
+- Empty states must explain what is missing, why it matters, and what the user can do next.
+- Error states must be recoverable: include the issue, impact, and a path forward.
+- Loading states must preserve context. Skeletons are required for content blocks, while small spinners or progress feedback are required for short actions.
+- Feedback must stay brief, specific, and action-oriented; generic messages are not allowed.
+- Any screen that can fail, wait, or be empty must use a documented state pattern rather than ad hoc copy.
+
+#### 4. Navigation and Information Architecture
+- Multi-level navigation must have a clear hierarchy: primary, secondary, and tertiary levels must feel meaningfully different.
+- The system must define how users move between overview and detail, how breadcrumbs and tabs reinforce location, and how navigation adapts on mobile and desktop.
+- Deep navigation must avoid redundant layers; each level must have a distinct purpose and not compete with the level above it.
+- Navigation patterns must be documented with both content hierarchy and interaction behavior, not just visual styling.
+- If a navigation pattern is reused in more than one workflow, it must be promoted to a system primitive.
+
+Implementation rule: if a pattern appears in more than one core workflow, it must be treated as a system primitive rather than a one-off UI treatment.
+
+### Token architecture and execution contract
+
+A durable system needs one explicit path from intent to implementation:
+
+1. **Foundation tokens** define raw values for color, spacing, radius, shadow, typography, and motion.
+2. **Semantic tokens** describe roles such as background, surface, border, primary action, muted text, and status colors.
+3. **Component tokens** map those semantics to specific patterns like cards, inputs, and focus rings.
+4. **State tokens** define hover, focus, active, disabled, selected, and error treatments so interaction behavior stays consistent.
+
+Implementation rule: if a new value appears in UI work, it should first be added to the shared token layer and then reused by components rather than being introduced ad hoc.
+
+Theme rule: dark mode should override color tokens only. Shared tokens for spacing, typography, grid sizing, motion, shadows, and component scale stay in the common layer so light and dark themes remain visually aligned.
+
+### Accessibility & Responsive Standards
+
+- Maintain at least 4.5:1 contrast for text and 3:1 for interactive elements.
+- Ensure visible focus states on all interactive controls and keyboard-accessible navigation patterns.
+- Respect `prefers-reduced-motion` and avoid animation that competes with content.
+- Support touch targets of at least 44px on touch devices.
+- Allow layouts to change by context: single column on narrow screens, two-column on tablet, and more spacious multi-column layouts on desktop.
+
+---
+
+## Semantic CSS Foundations
+
+For implementation-ready semantic CSS primitives, see [STYLES.md](./STYLES.md). That document turns these principles into reusable layout and styling patterns.
 
 ---
 
 ## 1. Visual Theme & Atmosphere
 
-A contemporary enterprise design language built on soft gradients, generous spacing, and refined depth. The system communicates professionalism through subtle radial gradients, frosted-glass surfaces, and carefully calibrated shadows. The foundation is a pure neutral palette (black/white with zero chroma) with decorative indigo gradients providing ambient warmth.
+A contemporary enterprise design language built on pure neutral foundations, generous spacing, and refined depth. The system communicates professionalism through clean backgrounds and strategic use of color accents. The foundation is a pure neutral palette (black/white with zero chroma) with color used sparingly to guide attention.
 
 **Design Intent:**
 
-This aesthetic serves enterprise users who need to focus on complex tasks. The gradient-rich background provides visual interest without competing for attention. Frosted-glass surfaces (backdrop-blur) create clear layering — users immediately understand what's an overlay, what's a card, what's the background.
+This aesthetic serves enterprise users who need to focus on complex tasks. Pure neutral backgrounds create visual calm and reduce cognitive load. Color appears only where it matters — on interactive elements, data visualization, and call-to-action elements.
 
 **Key Characteristics:**
 
-- Soft radial gradients on major surfaces (18% opacity, subtle)
-- Frosted-glass backdrop blur effects (`backdrop-blur-xl`) for layering
-- Large corner radius (24px–32px) for primary surfaces — friendly, modern
-- Multi-layer shadow system with purple/blue tints — ties to primary palette
-- High color contrast for accessibility (4.5:1 text, 3:1 interactive)
-- Generous whitespace and padding — content breathes, focus is clear
+- **Pure neutral backgrounds** — Body, sidebar, and cards use 0% chroma colors (black/white/gray)
+- **Color as accent** — Saturated colors only on icons, badges, charts, and interactive feedback
+- **Frosted-glass surfaces** — `backdrop-blur-xl` for layering (modals, dropdowns, top bar)
+- **Large corner radius** — 24px–32px for primary surfaces — friendly, modern
+- **Multi-layer shadow system** — Creates depth through shadows, not color
+- **High color contrast** — 4.5:1 text, 3:1 interactive for accessibility
+- **Generous whitespace** — Content breathes, focus is clear
 
 ---
 
@@ -88,16 +166,17 @@ We use **OKLCH color space** instead of traditional hex/RGB because:
 **Color Psychology:**
 
 - **Neutral Primary:** Pure black/white with zero chroma creates timeless, professional appearance that never feels dated or trendy
-- **Indigo Ambience:** Subtle indigo gradients (18-24% opacity) in backgrounds provide warmth without distraction
-- **Cool Neutral Tones:** Gray palette with subtle blue undertones reduces eye strain, feels modern and clean
-- **Minimal Saturation:** Reserved for critical feedback (errors), data visualization (charts), and navigation accents
-- **70-90% Opacity:** Creates layering without hard edges, glass-like depth
+- **Calm Backgrounds:** 0% chroma on all large surfaces (body, sidebar, cards) reduces visual noise and enhances focus
+- **Strategic Color:** Saturated colors appear only on small, interactive elements to guide user attention
+- **Minimal Saturation:** Reserved for critical feedback (errors), data visualization (charts), icons, and badges
+- **Clean Hierarchy:** Pure neutrals for structure, color for emphasis
 
 **Color Application Strategy:**
-1. **Main Content (0% chroma):** All interactive elements (buttons, inputs, borders) use pure neutrals — focus stays on content
-2. **Background Ambience (18-24% opacity indigo):** Decorative only, provides warmth without competing for attention
-3. **Data Visualization (10-25% chroma indigo):** Charts use saturated colors to make data insights stand out from UI chrome
-4. **Navigation Accent (deep dark mode only):** Sidebar uses subtle indigo to distinguish navigation from content area
+1. **Large Surfaces (0% chroma):** Body, sidebar, cards, panels — all use pure neutrals for visual calm
+2. **Interactive Elements (0% chroma):** Buttons, inputs, borders use pure neutrals unless they need emphasis
+3. **Visual Accents (10-25% chroma):** Icons, badges, progress bars, charts use saturated colors to stand out
+4. **Hero Elements:** Gradient banners and CTAs can use color for visual impact
+5. **Navigation Accent (dark mode only):** Sidebar active state uses subtle indigo to distinguish from content
 
 **Semantic Color Strategy:**
 Colors communicate meaning, not just decoration:
@@ -156,48 +235,59 @@ Colors communicate meaning, not just decoration:
 
 ### Gradients & Effects
 
-**Background Gradient (Light Mode):**
+**Background (Light Mode):**
 ```css
-background: radial-gradient(circle at top left, rgba(129,140,248,0.18), transparent 34%),
-            linear-gradient(180deg, #f8fafc 0%, #f5f7fb 100%);
+background-color: oklch(1 0 0); /* Pure white, no gradient */
 ```
-- **Radial:** `rgba(129,140,248,0.18)` = #818cf8 (indigo-400) at **18% opacity**
-- **Position:** Top left corner, fades to transparent at **34%** of container
-- **Linear:** Slate-50 (#f8fafc) → Custom cool white (#f5f7fb)
-- **Effect:** Subtle warmth without distraction, guides eye to top-left content
+- **Pure neutral:** Clean white background without any gradients
+- **Effect:** Maximum clarity and focus, professional appearance
 
-**Background Gradient (Dark Mode):**
+**Background (Dark Mode):**
 ```css
-background: radial-gradient(circle at top left, rgba(79,70,229,0.24), transparent 30%),
-            linear-gradient(180deg, #020617 0%, #0f172a 100%);
+background-color: oklch(0.145 0 0); /* Pure dark, no gradient */
 ```
-- **Radial:** `rgba(79,70,229,0.24)` = #4f46e5 (indigo-600) at **24% opacity**
-- **Position:** Top left corner, fades to transparent at **30%** of container
-- **Linear:** Slate-950 (#020617) → Slate-900 (#0f172a)
-- **Effect:** Deeper, more dramatic than light mode; indigo more visible for warmth
+- **Pure neutral:** Clean dark background without any gradients
+- **Effect:** Reduces eye strain, maintains focus on content
 
-**Frosted Surface:**
+**Accent Gradients (Hero sections, CTAs only):**
+```css
+background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 50%, #2563eb 100%);
+```
+- **Usage:** Only on hero banners, call-to-action sections, and decorative elements
+- **Effect:** Creates visual hierarchy and guides attention to important content
+
+**Frosted Surface (Modals, Dropdowns):**
 ```css
 background: rgba(255,255,255,0.85);
 backdrop-filter: blur(16px);
 ```
+- **Usage:** Overlay surfaces like modals, dropdown menus, top navigation bar
+- **Effect:** Creates layering while maintaining context of underlying content
 
 ### Shadows
+
+Shadows create depth through varying levels of opacity and blur, without relying on color.
 
 **Surface Shadow (24px radius cards):**
 ```css
 box-shadow: 0 24px 60px -30px rgba(15,23,42,0.32);
 ```
+- **Usage:** Standard cards and panels
+- **Effect:** Subtle elevation, separates content from background
 
 **Elevated Shadow (32px radius panels):**
 ```css
 box-shadow: 0 35px 100px -42px rgba(15,23,42,0.42);
 ```
+- **Usage:** Modals, dialogs, elevated surfaces
+- **Effect:** Strong separation, draws attention
 
-**Accent Gradient Shadow:**
+**Light Shadows (Hover states, small elements):**
 ```css
-box-shadow: 0 24px 60px -32px rgba(79,70,229,0.28);
+box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 ```
+- **Usage:** Hover states on cards, interactive elements
+- **Effect:** Immediate feedback on interactivity
 
 ---
 

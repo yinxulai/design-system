@@ -111,11 +111,17 @@
     <!-- 顶部栏 -->
     <header class="top-bar">
       <div class="top-bar-left">
-        <button class="icon-button menu-toggle">
+        <button class="icon-button menu-toggle" id="mobile-menu-toggle" title="Open sidebar">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="3" y1="12" x2="21" y2="12"/>
             <line x1="3" y1="6" x2="21" y2="6"/>
             <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+        <button class="icon-button sidebar-toggle" id="sidebar-toggle" title="Collapse sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h6v16H4z"/>
+            <path d="M14 4h6v16h-6z"/>
           </svg>
         </button>
         <h1>Designali Creative</h1>
@@ -162,11 +168,9 @@
     <!-- 标签栏 -->
     <div class="tabs-header">
       <div class="tabs">
-        <button class="tab active">Home</button>
-        <button class="tab">Apps</button>
-        <button class="tab">Files</button>
-        <button class="tab">Projects</button>
-        <button class="tab">Learn</button>
+        <button class="tab active" data-tab="home">Home</button>
+        <button class="tab" data-tab="apps">Apps</button>
+        <button class="tab" data-tab="files">Files</button>
       </div>
       <div class="header-actions">
         <button class="button secondary">
@@ -189,416 +193,912 @@
 
     <!-- 页面内容 -->
     <main class="page-content">
-      <!-- 欢迎横幅 -->
-      <section class="hero-banner">
-        <div class="hero-content">
-          <span class="badge premium">Premium</span>
-          <h2>Welcome to DesignAli Creative Suite</h2>
-          <p>Unleash your creativity with our comprehensive suite of professional design tools and resources.</p>
-          <div class="hero-actions">
-            <button class="button hero-primary">Explore Plans</button>
-            <button class="button hero-secondary">Take a Tour</button>
+      <div class="tab-pages">
+        <section class="tab-page active" data-tab="home">
+          <!-- 欢迎横幅 -->
+          <section class="hero-banner">
+            <div class="hero-content">
+              <span class="badge premium">Premium</span>
+              <h2>Welcome to DesignAli Creative Suite</h2>
+              <p>Unleash your creativity with our comprehensive suite of professional design tools and resources.</p>
+              <div class="hero-actions">
+                <button class="button hero-primary">Explore Plans</button>
+                <button class="button hero-secondary">Take a Tour</button>
+              </div>
+            </div>
+            <div class="hero-decoration">
+              <div class="circle circle-1"></div>
+              <div class="circle circle-2"></div>
+              <div class="circle circle-3"></div>
+              <div class="circle circle-4"></div>
+              <div class="circle circle-5"></div>
+            </div>
+          </section>
+
+          <!-- 最近使用的应用 -->
+          <section class="section">
+            <div class="section-header">
+              <h2>Recent Apps</h2>
+              <button class="link-button">View All</button>
+            </div>
+            <div class="apps-grid">
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon violet">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                  </div>
+                  <button class="star-button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                  </button>
+                </div>
+                <div class="app-card-content">
+                  <h3>PixelMaster</h3>
+                  <p>Advanced image editing and composition</p>
+                </div>
+                <div class="app-card-footer">
+                  <button class="button secondary full-width">Open</button>
+                </div>
+              </div>
+
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon orange">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/>
+                      <path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"/>
+                    </svg>
+                  </div>
+                  <button class="star-button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                  </button>
+                </div>
+                <div class="app-card-content">
+                  <h3>VectorPro</h3>
+                  <p>Professional vector graphics creation</p>
+                </div>
+                <div class="app-card-footer">
+                  <button class="button secondary full-width">Open</button>
+                </div>
+              </div>
+
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon pink">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="23 7 16 12 23 17 23 7"/>
+                      <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                  </div>
+                  <button class="star-button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                  </button>
+                </div>
+                <div class="app-card-content">
+                  <h3>VideoStudio</h3>
+                  <p>Cinematic video editing and production</p>
+                </div>
+                <div class="app-card-footer">
+                  <button class="button secondary full-width">Open</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 最近文件和活跃项目 -->
+          <div class="two-column-layout">
+            <section class="section">
+              <div class="section-header">
+                <h2>Recent Files</h2>
+                <button class="link-button">View All</button>
+              </div>
+              <div class="list-card">
+                <div class="list-item">
+                  <div class="list-item-left">
+                    <div class="app-icon violet small">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21 15 16 10 5 21"/>
+                      </svg>
+                    </div>
+                    <div class="list-item-info">
+                      <h4>Brand Redesign.pxm</h4>
+                      <p>PixelMaster • 2 hours ago</p>
+                    </div>
+                  </div>
+                  <div class="list-item-right">
+                    <span class="badge outline">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                      </svg>
+                      3
+                    </span>
+                    <button class="button small">Open</button>
+                  </div>
+                </div>
+
+                <div class="list-item">
+                  <div class="list-item-left">
+                    <div class="app-icon orange small">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/>
+                        <path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"/>
+                      </svg>
+                    </div>
+                    <div class="list-item-info">
+                      <h4>Company Logo.vec</h4>
+                      <p>VectorPro • Yesterday</p>
+                    </div>
+                  </div>
+                  <div class="list-item-right">
+                    <span class="badge outline">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                      </svg>
+                      2
+                    </span>
+                    <button class="button small">Open</button>
+                  </div>
+                </div>
+
+                <div class="list-item">
+                  <div class="list-item-left">
+                    <div class="app-icon pink small">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="23 7 16 12 23 17 23 7"/>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                      </svg>
+                    </div>
+                    <div class="list-item-info">
+                      <h4>Product Launch Video.vid</h4>
+                      <p>VideoStudio • 3 days ago</p>
+                    </div>
+                  </div>
+                  <div class="list-item-right">
+                    <button class="button small">Open</button>
+                  </div>
+                </div>
+
+                <div class="list-item">
+                  <div class="list-item-left">
+                    <div class="app-icon blue small">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+                      </svg>
+                    </div>
+                    <div class="list-item-info">
+                      <h4>UI Animation.mfx</h4>
+                      <p>MotionFX • Last week</p>
+                    </div>
+                  </div>
+                  <div class="list-item-right">
+                    <span class="badge outline">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                      </svg>
+                      4
+                    </span>
+                    <button class="button small">Open</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="section">
+              <div class="section-header">
+                <h2>Active Projects</h2>
+                <button class="link-button">View All</button>
+              </div>
+              <div class="list-card">
+                <div class="project-item">
+                  <div class="project-header">
+                    <h4>Website Redesign</h4>
+                    <span class="badge outline">Due June 15, 2025</span>
+                  </div>
+                  <p class="project-description">Complete overhaul of company website</p>
+                  <div class="progress-section">
+                    <div class="progress-label">
+                      <span>Progress</span>
+                      <span>75%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 75%"></div>
+                    </div>
+                  </div>
+                  <div class="project-meta">
+                    <div class="meta-item">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                      </svg>
+                      4 members
+                    </div>
+                    <div class="meta-item">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                      </svg>
+                      23 files
+                    </div>
+                  </div>
+                </div>
+
+                <div class="project-item">
+                  <div class="project-header">
+                    <h4>Mobile App Launch</h4>
+                    <span class="badge outline">Due July 30, 2025</span>
+                  </div>
+                  <p class="project-description">Design and assets for new mobile application</p>
+                  <div class="progress-section">
+                    <div class="progress-label">
+                      <span>Progress</span>
+                      <span>60%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 60%"></div>
+                    </div>
+                  </div>
+                  <div class="project-meta">
+                    <div class="meta-item">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                      </svg>
+                      6 members
+                    </div>
+                    <div class="meta-item">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                      </svg>
+                      42 files
+                    </div>
+                  </div>
+                </div>
+
+                <div class="project-item">
+                  <div class="project-header">
+                    <h4>Brand Identity</h4>
+                    <span class="badge outline">Due May 25, 2025</span>
+                  </div>
+                  <p class="project-description">New brand guidelines and assets</p>
+                  <div class="progress-section">
+                    <div class="progress-label">
+                      <span>Progress</span>
+                      <span>90%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 90%"></div>
+                    </div>
+                  </div>
+                  <div class="project-meta">
+                    <div class="meta-item">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                      </svg>
+                      3 members
+                    </div>
+                    <div class="meta-item">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                      </svg>
+                      18 files
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
-        </div>
-        <div class="hero-decoration">
-          <div class="circle circle-1"></div>
-          <div class="circle circle-2"></div>
-          <div class="circle circle-3"></div>
-          <div class="circle circle-4"></div>
-          <div class="circle circle-5"></div>
-        </div>
-      </section>
 
-      <!-- 最近使用的应用 -->
-      <section class="section">
-        <div class="section-header">
-          <h2>Recent Apps</h2>
-          <button class="link-button">View All</button>
-        </div>
-        <div class="apps-grid">
-          <div class="app-card">
-            <div class="app-card-header">
-              <div class="app-icon violet">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                  <circle cx="8.5" cy="8.5" r="1.5"/>
-                  <polyline points="21 15 16 10 5 21"/>
-                </svg>
+          <!-- 发布准备与协作流程 -->
+          <section class="section">
+            <div class="section-header">
+              <div>
+                <h2>Launch readiness</h2>
+                <p class="section-description">Keep the next release aligned between design, product, and marketing before it goes live.</p>
               </div>
-              <button class="star-button">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                </svg>
-              </button>
+              <button class="link-button">Open board</button>
             </div>
-            <div class="app-card-content">
-              <h3>PixelMaster</h3>
-              <p>Advanced image editing and composition</p>
-            </div>
-            <div class="app-card-footer">
-              <button class="button secondary full-width">Open</button>
-            </div>
-          </div>
+            <div class="system-patterns-grid">
+              <article class="pattern-card">
+                <div class="pattern-card-header">
+                  <h3>Release brief</h3>
+                  <span class="badge outline">Needs review</span>
+                </div>
+                <div class="pattern-stack">
+                  <div class="form-group">
+                    <label class="form-label" for="pattern-workspace">Release name</label>
+                    <input id="pattern-workspace" class="pattern-input" value="Aurora Studio v2.1" />
+                    <div class="form-help">Keep the naming consistent with customer-facing launches.</div>
+                  </div>
+                  <div class="inline-feedback is-error">The launch date still needs approval from the product lead.</div>
+                  <div class="inline-feedback is-success">The summary is ready for stakeholder review.</div>
+                </div>
+              </article>
 
-          <div class="app-card">
-            <div class="app-card-header">
-              <div class="app-icon orange">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/>
-                  <path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"/>
-                </svg>
-              </div>
-              <button class="star-button">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                </svg>
-              </button>
-            </div>
-            <div class="app-card-content">
-              <h3>VectorPro</h3>
-              <p>Professional vector graphics creation</p>
-            </div>
-            <div class="app-card-footer">
-              <button class="button secondary full-width">Open</button>
-            </div>
-          </div>
+              <article class="pattern-card">
+                <div class="pattern-card-header">
+                  <h3>Pending handoff assets</h3>
+                  <span class="badge outline">Waiting on team</span>
+                </div>
+                <div class="empty-state">
+                  <h3>No final assets shared yet</h3>
+                  <p>The marketing team is still waiting for the last illustration set before the launch page can be approved.</p>
+                  <div class="empty-state-actions">
+                    <button class="button primary">Request assets</button>
+                    <button class="button secondary">View notes</button>
+                  </div>
+                </div>
+                <div class="pattern-skeleton-stack">
+                  <div class="skeleton pattern-skeleton"></div>
+                  <div class="skeleton pattern-skeleton is-short"></div>
+                  <div class="skeleton pattern-skeleton is-medium"></div>
+                </div>
+              </article>
 
-          <div class="app-card">
-            <div class="app-card-header">
-              <div class="app-icon pink">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="23 7 16 12 23 17 23 7"/>
-                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-                </svg>
-              </div>
-              <button class="star-button">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                </svg>
-              </button>
+              <article class="pattern-card">
+                <div class="pattern-card-header">
+                  <h3>Approval checklist</h3>
+                  <span class="badge outline">5 items</span>
+                </div>
+                <div class="breadcrumbs">
+                  <span>Workspace</span>
+                  <span>/</span>
+                  <span>Release</span>
+                  <span>/</span>
+                  <span>Checklist</span>
+                </div>
+                <div class="subnav">
+                  <button class="button small">Summary</button>
+                  <button class="button small">Assets</button>
+                  <button class="button small">Feedback</button>
+                </div>
+                <div class="list-card">
+                  <div class="table-row is-selected">
+                    <div class="list-item-left">
+                      <div class="app-icon small blue">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M12 3 3 7v6c0 5 3.4 8.2 9 10 5.6-1.8 9-5 9-10V7l-9-4Z"/>
+                        </svg>
+                      </div>
+                      <div class="list-item-info">
+                        <h4>Design review</h4>
+                        <p>Shared with 6 collaborators</p>
+                      </div>
+                    </div>
+                    <span class="badge outline">In progress</span>
+                  </div>
+                  <div class="table-row">
+                    <div class="list-item-left">
+                      <div class="app-icon small violet">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="4" y="4" width="16" height="16" rx="3"/>
+                          <path d="M8 8h8M8 12h5"/>
+                        </svg>
+                      </div>
+                      <div class="list-item-info">
+                        <h4>Launch assets</h4>
+                        <p>Updated 20 minutes ago</p>
+                      </div>
+                    </div>
+                    <span class="badge outline">Ready</span>
+                  </div>
+                </div>
+              </article>
             </div>
-            <div class="app-card-content">
-              <h3>VideoStudio</h3>
-              <p>Cinematic video editing and production</p>
-            </div>
-            <div class="app-card-footer">
-              <button class="button secondary full-width">Open</button>
-            </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      <!-- 最近文件和活跃项目 -->
-      <div class="two-column-layout">
-        <section class="section">
-          <div class="section-header">
-            <h2>Recent Files</h2>
-            <button class="link-button">View All</button>
-          </div>
-          <div class="list-card">
-            <div class="list-item">
-              <div class="list-item-left">
-                <div class="app-icon violet small">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                    <circle cx="8.5" cy="8.5" r="1.5"/>
-                    <polyline points="21 15 16 10 5 21"/>
-                  </svg>
-                </div>
-                <div class="list-item-info">
-                  <h4>Brand Redesign.pxm</h4>
-                  <p>PixelMaster • 2 hours ago</p>
-                </div>
-              </div>
-              <div class="list-item-right">
-                <span class="badge outline">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                  </svg>
-                  3
-                </span>
-                <button class="button small">Open</button>
-              </div>
+          <!-- 社区精选 -->
+          <section class="section">
+            <div class="section-header">
+              <h2>Community Highlights</h2>
+              <button class="link-button">Explore</button>
             </div>
+            <div class="community-grid">
+              <div class="community-card">
+                <div class="community-image">
+                  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' rx='24' fill='%23f5f3ff'/%3E%3Crect x='56' y='72' width='118' height='118' rx='24' fill='%237c3aed'/%3E%3Crect x='204' y='92' width='140' height='90' rx='20' fill='%234f46e5'/%3E%3Ccircle cx='310' cy='214' r='54' fill='%23c7d2fe'/%3E%3C/svg%3E" alt="Minimalist Logo Design">
+                </div>
+                <div class="community-content">
+                  <h4>Minimalist Logo Design</h4>
+                  <p>by Alex Morgan</p>
+                  <div class="community-stats">
+                    <div class="stat">
+                      <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                      </svg>
+                      342
+                    </div>
+                    <div class="stat">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                      </svg>
+                      28
+                    </div>
+                    <span class="time">2 days ago</span>
+                  </div>
+                </div>
+              </div>
 
-            <div class="list-item">
-              <div class="list-item-left">
-                <div class="app-icon orange small">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/>
-                    <path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"/>
-                  </svg>
+              <div class="community-card">
+                <div class="community-image">
+                  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' rx='24' fill='%23fdf2f8'/%3E%3Ccircle cx='128' cy='132' r='78' fill='%23f43f5e'/%3E%3Cpath d='M194 214h112c24 0 40-16 40-40v-20c0-24-16-40-40-40H194c-24 0-40 16-40 40v20c0 24 16 40 40 40Z' fill='%23fb923c'/%3E%3C/svg%3E" alt="3D Character Concept">
                 </div>
-                <div class="list-item-info">
-                  <h4>Company Logo.vec</h4>
-                  <p>VectorPro • Yesterday</p>
+                <div class="community-content">
+                  <h4>3D Character Concept</h4>
+                  <p>by Priya Sharma</p>
+                  <div class="community-stats">
+                    <div class="stat">
+                      <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                      </svg>
+                      518
+                    </div>
+                    <div class="stat">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                      </svg>
+                      47
+                    </div>
+                    <span class="time">1 week ago</span>
+                  </div>
                 </div>
               </div>
-              <div class="list-item-right">
-                <span class="badge outline">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                  </svg>
-                  2
-                </span>
-                <button class="button small">Open</button>
-              </div>
-            </div>
 
-            <div class="list-item">
-              <div class="list-item-left">
-                <div class="app-icon pink small">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polygon points="23 7 16 12 23 17 23 7"/>
-                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-                  </svg>
+              <div class="community-card">
+                <div class="community-image">
+                  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' rx='24' fill='%23eff6ff'/%3E%3Crect x='74' y='88' width='252' height='132' rx='24' fill='%23ffffff'/%3E%3Crect x='108' y='124' width='90' height='56' rx='12' fill='%230f172a'/%3E%3Crect x='214' y='124' width='78' height='16' rx='8' fill='%236b7280'/%3E%3Crect x='214' y='148' width='54' height='12' rx='6' fill='%23d1d5db'/%3E%3C/svg%3E" alt="UI Dashboard Redesign">
                 </div>
-                <div class="list-item-info">
-                  <h4>Product Launch Video.vid</h4>
-                  <p>VideoStudio • 3 days ago</p>
+                <div class="community-content">
+                  <h4>UI Dashboard Redesign</h4>
+                  <p>by Thomas Wright</p>
+                  <div class="community-stats">
+                    <div class="stat">
+                      <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                      </svg>
+                      276
+                    </div>
+                    <div class="stat">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                      </svg>
+                      32
+                    </div>
+                    <span class="time">3 days ago</span>
+                  </div>
                 </div>
               </div>
-              <div class="list-item-right">
-                <button class="button small">Open</button>
-              </div>
-            </div>
 
-            <div class="list-item">
-              <div class="list-item-left">
-                <div class="app-icon blue small">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
-                  </svg>
+              <div class="community-card">
+                <div class="community-image">
+                  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' rx='24' fill='%23ecfeff'/%3E%3Crect x='86' y='74' width='228' height='152' rx='24' fill='%23ffffff'/%3E%3Ccircle cx='170' cy='150' r='44' fill='%230f766e'/%3E%3Crect x='230' y='108' width='44' height='72' rx='12' fill='%230ea5e9'/%3E%3Crect x='290' y='128' width='24' height='44' rx='8' fill='%23a7f3d0'/%3E%3C/svg%3E" alt="Product Photography Setup">
                 </div>
-                <div class="list-item-info">
-                  <h4>UI Animation.mfx</h4>
-                  <p>MotionFX • Last week</p>
+                <div class="community-content">
+                  <h4>Product Photography Setup</h4>
+                  <p>by Olivia Chen</p>
+                  <div class="community-stats">
+                    <div class="stat">
+                      <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                      </svg>
+                      189
+                    </div>
+                    <div class="stat">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                      </svg>
+                      15
+                    </div>
+                    <span class="time">5 days ago</span>
+                  </div>
                 </div>
-              </div>
-              <div class="list-item-right">
-                <span class="badge outline">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                  </svg>
-                  4
-                </span>
-                <button class="button small">Open</button>
               </div>
             </div>
-          </div>
+          </section>
         </section>
 
-        <section class="section">
-          <div class="section-header">
-            <h2>Active Projects</h2>
-            <button class="link-button">View All</button>
-          </div>
-          <div class="list-card">
-            <div class="project-item">
-              <div class="project-header">
-                <h4>Website Redesign</h4>
-                <span class="badge outline">Due June 15, 2025</span>
-              </div>
-              <p class="project-description">Complete overhaul of company website</p>
-              <div class="progress-section">
-                <div class="progress-label">
-                  <span>Progress</span>
-                  <span>75%</span>
-                </div>
-                <div class="progress-bar">
-                  <div class="progress-fill" style="width: 75%"></div>
-                </div>
-              </div>
-              <div class="project-meta">
-                <div class="meta-item">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                  </svg>
-                  4 members
-                </div>
-                <div class="meta-item">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                  </svg>
-                  23 files
-                </div>
-              </div>
+        <section class="tab-page" data-tab="apps">
+          <section class="hero-banner" style="background: linear-gradient(135deg, #ec4899 0%, #ea580c 50%, #f97316 100%);">
+            <div class="hero-content">
+              <h2>Creative Apps Collection</h2>
+              <p>Discover our full suite of professional design and creative applications.</p>
             </div>
+            <button class="button primary">Install Desktop App</button>
+          </section>
 
-            <div class="project-item">
-              <div class="project-header">
-                <h4>Mobile App Launch</h4>
-                <span class="badge outline">Due July 30, 2025</span>
-              </div>
-              <p class="project-description">Design and assets for new mobile application</p>
-              <div class="progress-section">
-                <div class="progress-label">
-                  <span>Progress</span>
-                  <span>60%</span>
-                </div>
-                <div class="progress-bar">
-                  <div class="progress-fill" style="width: 60%"></div>
-                </div>
-              </div>
-              <div class="project-meta">
-                <div class="meta-item">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                  </svg>
-                  6 members
-                </div>
-                <div class="meta-item">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                  </svg>
-                  42 files
-                </div>
-              </div>
-            </div>
-
-            <div class="project-item">
-              <div class="project-header">
-                <h4>Brand Identity</h4>
-                <span class="badge outline">Due May 25, 2025</span>
-              </div>
-              <p class="project-description">New brand guidelines and assets</p>
-              <div class="progress-section">
-                <div class="progress-label">
-                  <span>Progress</span>
-                  <span>90%</span>
-                </div>
-                <div class="progress-bar">
-                  <div class="progress-fill" style="width: 90%"></div>
-                </div>
-              </div>
-              <div class="project-meta">
-                <div class="meta-item">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                  </svg>
-                  3 members
-                </div>
-                <div class="meta-item">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                  </svg>
-                  18 files
-                </div>
-              </div>
+          <div class="toolbar">
+            <button class="button outline">All Categories</button>
+            <button class="button outline">Creative</button>
+            <button class="button outline">Video</button>
+            <button class="button outline">Web</button>
+            <button class="button outline">3D</button>
+            <div class="inline-search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+              </svg>
+              <input type="search" placeholder="Search apps...">
             </div>
           </div>
+
+          <section class="section">
+            <div class="section-header">
+              <h2>New Releases</h2>
+            </div>
+            <div class="card-grid">
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon violet">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <path d="M8 12h8"/>
+                      <path d="M12 8v8"/>
+                    </svg>
+                  </div>
+                  <div class="badge outline">New</div>
+                </div>
+                <div class="app-card-content">
+                  <h3>UXFlow</h3>
+                  <p>Intuitive user experience design</p>
+                  <div class="app-card-progress">
+                    <div class="flex items-center justify-between text-sm">
+                      <span>Installation</span>
+                      <span>85%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 85%"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="app-card-footer">
+                  <button class="button secondary full-width">Continue Install</button>
+                </div>
+              </div>
+
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon blue">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="4" width="18" height="14" rx="2" ry="2"/>
+                      <path d="M7 8h10"/>
+                      <path d="M7 12h6"/>
+                    </svg>
+                  </div>
+                  <div class="badge outline">New</div>
+                </div>
+                <div class="app-card-content">
+                  <h3>WebCanvas</h3>
+                  <p>Web design and development</p>
+                  <div class="app-card-progress">
+                    <div class="flex items-center justify-between text-sm">
+                      <span>Installation</span>
+                      <span>70%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 70%"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="app-card-footer">
+                  <button class="button primary full-width">Install</button>
+                </div>
+              </div>
+
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon pink">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 3v18"/>
+                      <path d="M3 12h18"/>
+                      <circle cx="12" cy="12" r="8"/>
+                    </svg>
+                  </div>
+                  <div class="badge outline">New</div>
+                </div>
+                <div class="app-card-content">
+                  <h3>3DStudio</h3>
+                  <p>3D modeling and rendering</p>
+                  <div class="app-card-progress">
+                    <div class="flex items-center justify-between text-sm">
+                      <span>Installation</span>
+                      <span>60%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 60%"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="app-card-footer">
+                  <button class="button primary full-width">Install</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="section-header">
+              <h2>All Apps</h2>
+            </div>
+            <div class="card-grid">
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon violet">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                  </div>
+                  <div class="badge outline">Creative</div>
+                </div>
+                <div class="app-card-content">
+                  <h3>PixelMaster</h3>
+                  <p>Advanced image editing and composition</p>
+                </div>
+                <div class="app-card-footer">
+                  <button class="button secondary flex-1">Open</button>
+                  <button class="star-button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon orange">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/>
+                      <path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"/>
+                    </svg>
+                  </div>
+                  <div class="badge outline">Creative</div>
+                </div>
+                <div class="app-card-content">
+                  <h3>VectorPro</h3>
+                  <p>Professional vector graphics creation</p>
+                </div>
+                <div class="app-card-footer">
+                  <button class="button secondary flex-1">Open</button>
+                  <button class="star-button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon pink">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="23 7 16 12 23 17 23 7"/>
+                      <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                  </div>
+                  <div class="badge outline">Video</div>
+                </div>
+                <div class="app-card-content">
+                  <h3>VideoStudio</h3>
+                  <p>Cinematic video editing and production</p>
+                </div>
+                <div class="app-card-footer">
+                  <button class="button secondary flex-1">Open</button>
+                  <button class="star-button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon red">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="4" width="18" height="14" rx="2" ry="2"/>
+                      <path d="M8 8h8"/>
+                      <path d="M8 12h5"/>
+                    </svg>
+                  </div>
+                  <div class="badge outline">Creative</div>
+                </div>
+                <div class="app-card-content">
+                  <h3>PageCraft</h3>
+                  <p>Professional page design and layout</p>
+                </div>
+                <div class="app-card-footer">
+                  <button class="button secondary flex-1">Open</button>
+                  <button class="star-button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon blue">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="4" width="18" height="14" rx="2" ry="2"/>
+                      <path d="M8 8h8"/>
+                      <path d="M8 12h6"/>
+                    </svg>
+                  </div>
+                  <div class="badge outline">Design</div>
+                </div>
+                <div class="app-card-content">
+                  <h3>UXFlow</h3>
+                  <p>Intuitive user experience design</p>
+                </div>
+                <div class="app-card-footer">
+                  <button class="button secondary flex-1">Continue</button>
+                  <button class="star-button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="app-card">
+                <div class="app-card-header">
+                  <div class="app-icon teal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 7h16"/>
+                      <path d="M7 3v4"/>
+                      <path d="M17 3v4"/>
+                      <rect x="4" y="7" width="16" height="12" rx="2"/>
+                    </svg>
+                  </div>
+                  <div class="badge outline">Photography</div>
+                </div>
+                <div class="app-card-content">
+                  <h3>PhotoLab</h3>
+                  <p>Advanced photo editing and organization</p>
+                </div>
+                <div class="app-card-footer">
+                  <button class="button secondary flex-1">Open</button>
+                  <button class="star-button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
         </section>
+
+        <section class="tab-page" data-tab="files">
+          <section class="hero-banner" style="background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 50%, #3b82f6 100%);">
+            <div class="hero-content">
+              <h2>Your Creative Files</h2>
+              <p>Access, manage, and share all your design files in one place.</p>
+            </div>
+            <div class="hero-actions">
+              <button class="button hero-secondary">Cloud Storage</button>
+              <button class="button hero-primary">Upload Files</button>
+            </div>
+          </section>
+
+          <div class="toolbar">
+            <button class="button outline">All Files</button>
+            <button class="button outline">Recent</button>
+            <button class="button outline">Shared</button>
+            <button class="button outline">Favorites</button>
+            <button class="button outline">Trash</button>
+            <div class="inline-search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+              </svg>
+              <input type="search" placeholder="Search files...">
+            </div>
+          </div>
+
+          <section class="section">
+            <div class="section-header">
+              <h2>All Files</h2>
+              <div class="button-row">
+                <button class="button outline">Filter</button>
+                <button class="button outline">Sort</button>
+              </div>
+            </div>
+            <div class="file-table">
+              <div class="file-table-header">
+                <div>Name</div>
+                <div>App</div>
+                <div>Size</div>
+                <div>Modified</div>
+              </div>
+              <div class="file-row">
+                <div class="file-name">
+                  <div class="file-main">
+                    <div class="app-icon violet small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg></div>
+                    <div>
+                      <p class="file-title">Brand Redesign.pxm</p>
+                      <p class="file-subtitle">Design system assets</p>
+                      <div class="file-inline-meta">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m22 21-.6-3.5"/><path d="M16 15l-2 6"/><path d="m16 15 2 6"/></svg>
+                        Shared with 3 people
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="file-meta"><span class="file-chip">PixelMaster</span></div>
+                <div class="file-meta"><span class="file-chip">24.5 MB</span></div>
+                <div class="file-status">
+                  <span>2 hours ago</span>
+                  <div class="file-actions">
+                    <button class="button ghost small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg></button>
+                    <button class="button ghost small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></button>
+                  </div>
+                </div>
+              </div>
+              <div class="file-row">
+                <div class="file-name">
+                  <div class="file-main">
+                    <div class="app-icon orange small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/></svg></div>
+                    <div>
+                      <p class="file-title">Company Logo.vec</p>
+                      <p class="file-subtitle">Brand identity exports</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="file-meta"><span class="file-chip">VectorPro</span></div>
+                <div class="file-meta"><span class="file-chip">8.2 MB</span></div>
+                <div class="file-status">
+                  <span>Yesterday</span>
+                  <div class="file-actions">
+                    <button class="button ghost small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg></button>
+                    <button class="button ghost small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></button>
+                  </div>
+                </div>
+              </div>
+              <div class="file-row">
+                <div class="file-name">
+                  <div class="file-main">
+                    <div class="app-icon pink small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/></svg></div>
+                    <div>
+                      <p class="file-title">Product Launch Video.vid</p>
+                      <p class="file-subtitle">Final cut rendering</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="file-meta"><span class="file-chip">VideoStudio</span></div>
+                <div class="file-meta"><span class="file-chip">1.2 GB</span></div>
+                <div class="file-status">
+                  <span>3 days ago</span>
+                  <div class="file-actions">
+                    <button class="button ghost small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg></button>
+                    <button class="button ghost small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+
       </div>
-
-      <!-- 社区精选 -->
-      <section class="section">
-        <div class="section-header">
-          <h2>Community Highlights</h2>
-          <button class="link-button">Explore</button>
-        </div>
-        <div class="community-grid">
-          <div class="community-card">
-            <div class="community-image"></div>
-            <div class="community-content">
-              <h4>Minimalist Logo Design</h4>
-              <p>by Alex Morgan</p>
-              <div class="community-stats">
-                <div class="stat">
-                  <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
-                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
-                  </svg>
-                  342
-                </div>
-                <div class="stat">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                  </svg>
-                  28
-                </div>
-                <span class="time">2 days ago</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="community-card">
-            <div class="community-image"></div>
-            <div class="community-content">
-              <h4>3D Character Concept</h4>
-              <p>by Priya Sharma</p>
-              <div class="community-stats">
-                <div class="stat">
-                  <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
-                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
-                  </svg>
-                  518
-                </div>
-                <div class="stat">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                  </svg>
-                  47
-                </div>
-                <span class="time">1 week ago</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="community-card">
-            <div class="community-image"></div>
-            <div class="community-content">
-              <h4>UI Dashboard Redesign</h4>
-              <p>by Thomas Wright</p>
-              <div class="community-stats">
-                <div class="stat">
-                  <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
-                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
-                  </svg>
-                  276
-                </div>
-                <div class="stat">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                  </svg>
-                  32
-                </div>
-                <span class="time">3 days ago</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="community-card">
-            <div class="community-image"></div>
-            <div class="community-content">
-              <h4>Product Photography Setup</h4>
-              <p>by Olivia Chen</p>
-              <div class="community-stats">
-                <div class="stat">
-                  <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
-                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
-                  </svg>
-                  189
-                </div>
-                <div class="stat">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                  </svg>
-                  15
-                </div>
-                <span class="time">5 days ago</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
   </div>
 
@@ -608,6 +1108,9 @@
     const sunIcon = document.querySelector('.sun-icon');
     const moonIcon = document.querySelector('.moon-icon');
     const html = document.documentElement;
+    const body = document.body;
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
 
     // 从本地存储加载主题偏好
     const savedTheme = localStorage.getItem('theme') || 'light';
@@ -622,6 +1125,27 @@
       html.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
       updateThemeIcon(newTheme);
+    });
+
+    mobileMenuToggle.addEventListener('click', () => {
+      body.classList.toggle('sidebar-open');
+    });
+
+    sidebarToggle.addEventListener('click', () => {
+      body.classList.toggle('sidebar-collapsed');
+      body.classList.remove('sidebar-open');
+    });
+
+    document.querySelectorAll('.tab').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach((btn) => btn.classList.remove('active'));
+        tab.classList.add('active');
+
+        const selected = tab.getAttribute('data-tab');
+        document.querySelectorAll('.tab-page').forEach((page) => {
+          page.classList.toggle('active', page.getAttribute('data-tab') === selected);
+        });
+      });
     });
 
     function updateThemeIcon(theme) {
