@@ -134,580 +134,88 @@ For implementation-ready semantic CSS primitives, see [STYLES.md](./STYLES.md). 
 
 ## 1. Visual Theme & Atmosphere
 
-A contemporary enterprise design language built on pure neutral foundations, generous spacing, and refined depth. The system communicates professionalism through clean backgrounds and strategic use of color accents. The foundation is a pure neutral palette (black/white with zero chroma) with color used sparingly to guide attention.
+Aurora should feel calm, structured, and polished. The visual language is intentionally restrained: neutral surfaces, subtle depth, and accent color used for feedback rather than decoration.
 
-**Design Intent:**
+### What belongs in this document
+- Intent, tone, and product principles remain here.
+- Shared tokens, spacing, layout primitives, and motion rules live in [STYLES.md](./STYLES.md).
+- Reusable component APIs, variants, and composition patterns live in [COMPONENTS.md](./COMPONENTS.md).
 
-This aesthetic serves enterprise users who need to focus on complex tasks. Pure neutral backgrounds create visual calm and reduce cognitive load. Color appears only where it matters — on interactive elements, data visualization, and call-to-action elements.
-
-**Key Characteristics:**
-
-- **Pure neutral backgrounds** — Body, sidebar, and cards use 0% chroma colors (black/white/gray)
-- **Color as accent** — Saturated colors only on icons, badges, charts, and interactive feedback
-- **Frosted-glass surfaces** — `backdrop-blur-xl` for layering (modals, dropdowns, top bar)
-- **Large corner radius** — 24px–32px for primary surfaces — friendly, modern
-- **Multi-layer shadow system** — Creates depth through shadows, not color
-- **High color contrast** — 4.5:1 text, 3:1 interactive for accessibility
-- **Generous whitespace** — Content breathes, focus is clear
+### Implementation summary
+- Color should stay neutral at the foundation, with accent color reserved for actions, feedback, and data emphasis.
+- Typography should prioritize readability through clear hierarchy, generous line-height, and appropriate contrast.
+- Layout should use a consistent spacing rhythm, bounded content widths, and responsive behavior.
+- Elevation should signal hierarchy through shadow and blur without creating visual noise.
+- Every interactive pattern should define default, hover, focus, active, disabled, loading, selected, and error states.
 
 ---
 
-## 2. Color Palette & Roles
+## 2. Design Application Workflow
 
-### Design Intent: Semantic Color with Perceptual Uniformity
+When a new experience is introduced, follow this sequence:
 
-We use **OKLCH color space** instead of traditional hex/RGB because:
-
-- **Perceptually Uniform:** Equal numeric changes produce equal visual differences (unlike RGB)
-- **Predictable Lightness:** `L` value directly maps to perceived brightness
-- **Wider Gamut:** Supports modern displays with P3 color space
-- **Better Interpolation:** Gradients don't pass through muddy colors
-
-**Color Psychology:**
-
-- **Neutral Primary:** Pure black/white with zero chroma creates timeless, professional appearance that never feels dated or trendy
-- **Calm Backgrounds:** 0% chroma on all large surfaces (body, sidebar, cards) reduces visual noise and enhances focus
-- **Strategic Color:** Saturated colors appear only on small, interactive elements to guide user attention
-- **Minimal Saturation:** Reserved for critical feedback (errors), data visualization (charts), icons, and badges
-- **Clean Hierarchy:** Pure neutrals for structure, color for emphasis
-
-**Color Application Strategy:**
-1. **Large Surfaces (0% chroma):** Body, sidebar, cards, panels — all use pure neutrals for visual calm
-2. **Interactive Elements (0% chroma):** Buttons, inputs, borders use pure neutrals unless they need emphasis
-3. **Visual Accents (10-25% chroma):** Icons, badges, progress bars, charts use saturated colors to stand out
-4. **Hero Elements:** Gradient banners and CTAs can use color for visual impact
-5. **Navigation Accent (dark mode only):** Sidebar active state uses subtle indigo to distinguish from content
-
-**Semantic Color Strategy:**
-Colors communicate meaning, not just decoration:
-- Primary = "Take action here"
-- Muted = "Supporting information"
-- Destructive = "Stop and think"
-- Accent = "Hover preview"
-
-### Primary
-
-| Token | Light Mode | Dark Mode | Usage |
-|-------|-----------|-----------|-------|
-| `--background` | `oklch(1 0 0)` (#ffffff-ish) | `oklch(0.145 0 0)` (#0a0a0a-ish) | Main canvas |
-| `--foreground` | `oklch(0.145 0 0)` | `oklch(0.985 0 0)` | Primary text |
-| `--primary` | `oklch(0.205 0 0)` | `oklch(0.87 0 0)` | CTA buttons, links |
-| `--primary-foreground` | `oklch(0.985 0 0)` | `oklch(0.205 0 0)` | Text on primary |
-
-### Semantic
-
-| Token | Light Mode | Dark Mode | Usage |
-|-------|-----------|-----------|-------|
-| `--card` | `oklch(1 0 0)` | `oklch(0.205 0 0)` | Card surfaces |
-| `--muted` | `oklch(0.97 0 0)` | `oklch(0.269 0 0)` | Subtle backgrounds |
-| `--muted-foreground` | `oklch(0.556 0 0)` | `oklch(0.708 0 0)` | Secondary text |
-| `--accent` | `oklch(0.97 0 0)` | `oklch(0.371 0 0)` | Hover states |
-| `--destructive` | `oklch(0.58 0.22 27)` | `oklch(0.704 0.191 22.216)` | Error/danger |
-
-### Chart Colors (Data Visualization)
-
-| Token | OKLCH Value | Hex Approx | Usage |
-|-------|------------|-----------|-------|
-| `--chart-1` | `oklch(0.809 0.105 251.813)` | #a5b4fc | Lightest indigo |
-| `--chart-2` | `oklch(0.623 0.214 259.815)` | #818cf8 | Light indigo |
-| `--chart-3` | `oklch(0.546 0.245 262.881)` | #6366f1 | Medium indigo |
-| `--chart-4` | `oklch(0.488 0.243 264.376)` | #4f46e5 | Dark indigo |
-| `--chart-5` | `oklch(0.424 0.199 265.638)` | #4338ca | Darkest indigo |
-
-**Design Intent:** Chart colors use indigo palette with consistent chroma (0.1-0.25) for visual harmony. These are the only interactive elements with saturated color (besides destructive states), making data visualization stand out.
-
-### Sidebar Colors (Specialized)
-
-| Token | Light Mode | Dark Mode | Usage |
-|-------|-----------|-----------|-------|
-| `--sidebar` | `oklch(0.985 0 0)` | `oklch(0.205 0 0)` | Sidebar background |
-| `--sidebar-primary` | `oklch(0.205 0 0)` | `oklch(0.488 0.243 264.376)` | Active nav items |
-
-**Design Intent:** In dark mode, sidebar-primary uses indigo (`chart-4`) to provide visual distinction and warmth in the navigation area. This is an intentional deviation from the pure neutral system to create hierarchy between main content (neutral) and navigation (subtle color).
-
-### Neutral
-
-| Token | Light Mode | Dark Mode | Usage |
-|-------|-----------|-----------|-------|
-| `--border` | `oklch(0.922 0 0)` | `oklch(1 0 0 / 10%)` | Card borders |
-| `--input` | `oklch(0.922 0 0)` | `oklch(1 0 0 / 15%)` | Input borders |
-| `--ring` | `oklch(0.708 0 0)` | `oklch(0.556 0 0)` | Focus rings |
-
-### Gradients & Effects
-
-**Background (Light Mode):**
-```css
-background-color: oklch(1 0 0); /* Pure white, no gradient */
-```
-- **Pure neutral:** Clean white background without any gradients
-- **Effect:** Maximum clarity and focus, professional appearance
-
-**Background (Dark Mode):**
-```css
-background-color: oklch(0.145 0 0); /* Pure dark, no gradient */
-```
-- **Pure neutral:** Clean dark background without any gradients
-- **Effect:** Reduces eye strain, maintains focus on content
-
-**Accent Gradients (Hero sections, CTAs only):**
-```css
-background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 50%, #2563eb 100%);
-```
-- **Usage:** Only on hero banners, call-to-action sections, and decorative elements
-- **Effect:** Creates visual hierarchy and guides attention to important content
-
-**Frosted Surface (Modals, Dropdowns):**
-```css
-background: rgba(255,255,255,0.85);
-backdrop-filter: blur(16px);
-```
-- **Usage:** Overlay surfaces like modals, dropdown menus, top navigation bar
-- **Effect:** Creates layering while maintaining context of underlying content
-
-### Shadows
-
-Shadows create depth through varying levels of opacity and blur, without relying on color.
-
-**Surface Shadow (24px radius cards):**
-```css
-box-shadow: 0 24px 60px -30px rgba(15,23,42,0.32);
-```
-- **Usage:** Standard cards and panels
-- **Effect:** Subtle elevation, separates content from background
-
-**Elevated Shadow (32px radius panels):**
-```css
-box-shadow: 0 35px 100px -42px rgba(15,23,42,0.42);
-```
-- **Usage:** Modals, dialogs, elevated surfaces
-- **Effect:** Strong separation, draws attention
-
-**Light Shadows (Hover states, small elements):**
-```css
-box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-```
-- **Usage:** Hover states on cards, interactive elements
-- **Effect:** Immediate feedback on interactivity
+1. Start from the principles in this document.
+2. Express reusable tokens, layout primitives, and feedback patterns in [STYLES.md](./STYLES.md).
+3. Compose them into reusable components in [COMPONENTS.md](./COMPONENTS.md).
+4. Review responsiveness, accessibility, and state completeness before release.
 
 ---
 
-## 3. Typography Rules
+## 3. Review Checklist
 
-### Design Intent: Readability is King
+A pattern is ready to ship when it can answer these questions clearly:
 
-Typography is the primary interface between content and user. We prioritize **readability over style**:
-
-**Why Inter Variable?**
-- **Variable Font:** One file, infinite weights (400-900), reduces bandwidth
-- **Optimized for Screens:** Tall x-height, open apertures, clear at small sizes
-- **Neutral Personality:** Doesn't compete with content, suitable for all contexts
-- **Excellent Hinting:** Crisp at all sizes, even on low-DPI screens
-
-**Hierarchy Philosophy:**
-
-1. **Contrast Creates Clarity:** 48px hero vs. 16px body (3:1 ratio) — clear visual steps
-2. **Line Height for Readability:** 1.5 for body text (comfortable reading), 1.15 for headings (tight, impactful)
-3. **Negative Letter Spacing on Large Text:** -0.02em on 48px+ reduces visual gaps between letters
-4. **Positive Tracking on Small Text:** +0.05em on micro text (10px) increases legibility
-5. **Weight Differentiation:** 600 for headings (authoritative), 400 for body (easy to read)
-
-**Readability Guidelines:**
-- Never below 14px for body text (12px absolute minimum for captions)
-- Max line length: 75 characters (~672px at 16px) — prevents eye strain
-- Sufficient contrast: 4.5:1 minimum (WCAG AA)
-
-### Font Families
-
-- **Primary:** `'Inter Variable', -apple-system, system-ui, sans-serif`
-- **Fallback:** System UI stack
-
-### Hierarchy
-
-| Level | Family | Size | Weight | Line Height | Letter Spacing |
-|-------|--------|------|--------|-------------|----------------|
-| **Hero Title** | Inter Variable | 48px (3rem) | 600 | 1.15 | -0.02em |
-| **Display** | Inter Variable | 40px (2.5rem) | 600 | 1.20 | -0.015em |
-| **Heading 1** | Inter Variable | 36px (2.25rem) | 600 | 1.25 | -0.01em |
-| **Heading 2** | Inter Variable | 24px (1.5rem) | 600 | 1.30 | normal |
-| **Heading 3** | Inter Variable | 20px (1.25rem) | 600 | 1.35 | normal |
-| **Body Large** | Inter Variable | 18px (1.125rem) | 400 | 1.50 | normal |
-| **Body** | Inter Variable | 16px (1rem) | 400 | 1.50 | normal |
-| **Body Medium** | Inter Variable | 16px (1rem) | 500 | 1.50 | normal |
-| **Caption** | Inter Variable | 14px (0.875rem) | 400 | 1.40 | normal |
-| **Small** | Inter Variable | 12px (0.75rem) | 500 | 1.35 | 0.01em |
-| **Micro** | Inter Variable | 10px (0.625rem) | 600 | 1.30 | 0.05em (uppercase) |
+- Does it use shared primitives instead of one-off styling?
+- Does it define the necessary states for interaction and feedback?
+- Does it remain readable and functional at mobile, tablet, and desktop sizes?
+- Does it meet contrast, focus visibility, and reduced-motion expectations?
 
 ---
 
-## 4. Component Specifications
+## 4. Cross-Device Decision Framework
 
-> 📚 **For detailed component API documentation, usage examples, and implementation guides, see [COMPONENTS.md](./COMPONENTS.md)**
+Use the same decision order for any new component or screen:
 
-### Design Intent: Components as System Blocks
+1. User goal
+2. Device context
+3. Content density
+4. Interaction model
+5. Visual priority
 
-Components are designed with **composability** in mind. Each component is self-contained yet harmonious with others. We prioritize:
-
-- **Visual Weight:** Primary actions (solid bg) > Secondary (outline) > Tertiary (ghost)
-- **Touch-Friendly:** Minimum 36px height (h-9) balances desktop precision with mobile usability
-- **Consistent Radius:** Buttons (6px) are deliberately smaller than cards (24px) to create visual hierarchy
-- **State Clarity:** Hover, focus, active, disabled states are visually distinct but follow the same color logic
-
-**Component Categories:**
-- **Layout:** DashboardShell, PageSection
-- **Containers:** Surface, HeroPanel, FormSection
-- **Content:** SectionHeader, StatCard, ListRow, EmptyState
-- **Forms:** Input, Select, Checkbox, Radio, Textarea
-- **Data Display:** Tables, Badges, Charts
-- **Navigation:** Breadcrumbs, Tabs, Pagination
-- **Feedback:** Toast, Alerts, Loading States
-- **Icons:** Lucide React with size/color system
-
-### Buttons
-
-**Design Rationale:**
-Buttons use **opacity reduction (0.8)** instead of color shifts on hover because it preserves brand color while signaling interactivity. The 6px radius is small enough to feel precise but large enough to avoid sharp edges.
-
-**Specifications:**
-
-**Primary:**
-- Background: `var(--primary)`
-- Text: `var(--primary-foreground)`
-- Padding: `10px 16px` (h-9)
-- Border Radius: `6px` (rounded-md)
-- Font: 14px, 500 weight
-- Hover: `opacity: 0.8`
-
-**Secondary/Outline:**
-- Background: `var(--background)`
-- Border: `1px solid var(--border)`
-- Text: `var(--foreground)`
-- Border Radius: `6px`
-- Hover: `var(--accent)` background
-
-**Ghost:**
-- No border, no background
-- Hover: `var(--muted)` background
-
-### Cards
-
-**Standard Surface:**
-- Background: `var(--card) / 90%` with `backdrop-blur-xl`
-- Border: `1px solid var(--border) / 70%`
-- Border Radius: `24px`
-- Padding: `20px` (p-5)
-- Shadow: `0 24px 60px -30px rgba(15,23,42,0.32)`
-
-**Accent Surface (for stats/highlights):**
-- Background: `linear-gradient(135deg, var(--primary)/10, var(--background))`
-- Border: `1px solid var(--primary)/20`
-- Shadow: `0 24px 60px -32px rgba(79,70,229,0.28)`
-
-### Inputs
-
-- Border: `1px solid var(--input)`
-- Border Radius: `6px` (rounded-md)
-- Padding: `8px 10px`
-- Font: 14px
-- Focus: `3px ring var(--ring)/50%`
-- Invalid: `3px ring var(--destructive)/20%`
-
-### Hero Panel
-
-- Border Radius: `32px`
-- Padding: `24px` (sm: 32px, lg: 40px)
-- Background: Radial gradient + linear gradient overlay
-- Border: `1px solid var(--border)/70%`
-- Shadow: `0 35px 100px -42px rgba(15,23,42,0.42)`
-- Glass shine overlay: `linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.24) 45%, transparent 100%)`
-
-### Badge
-
-- Height: `20px` (h-5)
-- Padding: `0 8px` (px-2)
-- Border Radius: `9999px` (fully rounded)
-- Font: 12px, 500 weight
-- Border: `1px solid transparent`
-
-### List Items
-
-- Border Radius: `18px`
-- Border: `1px solid var(--border)/70%`
-- Background: `var(--background)/70%`
-- Padding: `12px` (p-3)
-- Gap: `12px` between items
+That framework should guide how spacing, size, and visual emphasis adapt across breakpoints without breaking the system language.
 
 ---
 
 ## 5. Layout & Spacing
 
-### Design Intent: Rhythm and Breathing Room
+The implementation details for spacing, radius, containers, elevation, and interaction states now live in [STYLES.md](./STYLES.md) and [COMPONENTS.md](./COMPONENTS.md). This document keeps the intent and decision framework high level.
 
-Spacing creates visual rhythm — the "heartbeat" of the interface. We use a **4px base unit** because:
-
-- **Mathematical Consistency:** All spacing is divisible by 4, creating perfect alignment
-- **Predictable Scale:** Doubling (4 → 8 → 16 → 32) creates clear visual steps
-- **Cognitive Load:** Users don't notice the spacing system, they feel the rhythm
-
-**Generous Whitespace Philosophy:**
-Modern screens are large. Don't fear empty space — it guides attention. Section gaps (24-32px) prevent visual crowding. Card padding (20px) ensures content never touches edges.
-
-### Spacing Scale
-
-Based on Tailwind's spacing (4px base unit):
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| `1` | 4px | Micro gaps |
-| `2` | 8px | Tight spacing |
-| `3` | 12px | Default gap |
-| `4` | 16px | Standard padding |
-| `5` | 20px | Card padding |
-| `6` | 24px | Section spacing |
-| `8` | 32px | Large sections |
-| `10` | 40px | Major blocks |
-| `12` | 48px | Hero padding |
-
-### Corner Radius
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| `sm` | `4px` | Badges, micro elements |
-| `md` | `6px` | Buttons, inputs |
-| `lg` | `10px` | Small cards |
-| `xl` | `12px` | Standard cards |
-| `2xl` | `16px` | Nested cards |
-| `3xl` | `20px` | Section headers |
-| `custom-24` | `24px` | Primary surfaces |
-| `custom-28` | `28px` | Dashboard headers |
-| `custom-32` | `32px` | Hero panels |
-| `full` | `9999px` | Pills, circles |
-
-### Container Widths
-
-- **Max Width (standard):** `1280px` (max-w-7xl)
-- **Content Width:** `672px` (max-w-2xl) for text-heavy content
-- **Dashboard Shell:** `1280px` with `24px` side padding
+### Shared implementation rules
+- Use a 4px spacing rhythm and scaled padding values to maintain calm vertical and horizontal rhythm.
+- Keep content widths bounded and predictable so large screens do not feel over-stretched.
+- Define surface radius, shadow, blur, and motion once in the shared style layer and reuse them across components.
+- Apply the same state logic to buttons, cards, tabs, links, and form controls so behavior feels consistent.
 
 ---
 
-## 6. Depth & Elevation
+## 6. Do's and Don'ts
 
-### Design Intent: Mimicking Physical Reality
-
-Shadows are not decoration — they're **information**. In physical space, shadows tell us:
-- How far an object is from the surface (shadow size)
-- Light source direction (shadow angle)
-- Object shape (shadow form)
-
-We mimic this in UI:
-
-**Shadow Philosophy:**
-
-1. **Soft, Deep Shadows:** Large blur (60-100px), low opacity (0.28-0.42) — creates soft, realistic depth
-2. **Negative Spread:** -30px to -42px spread concentrates shadow under element (objects don't cast infinitely)
-3. **Blue-Purple Tints:** `rgba(15,23,42,...)` has slight blue, ties to indigo primary, feels modern not flat black
-4. **Layered Shadows:** Multiple shadows (Level 4 modals) create ultra-realistic depth
-
-**Why These Specific Values?**
-- **60-100px blur:** Soft enough to feel natural, not harsh digital edges
-- **0.28-0.42 opacity:** Visible but not dominant, doesn't obscure content beneath
-- **30-42px negative spread:** Prevents shadow "halo" around elements
-
-**Elevation = Importance:**
-- Flush (0): Inline text, icons
-- Raised (1): Subtle separation
-- Card (2): Primary content containers
-- Panel (3): Prominent sections (hero panels)
-- Modal (4): Critical overlays that demand attention
-
-### Shadow System
-
-**Level 0 (Flush):**
-- No shadow
-- Use for inline elements
-
-**Level 1 (Raised):**
-```css
-box-shadow: 0 1px 2px 0 rgba(15,23,42,0.05);
-```
-
-**Level 2 (Card):**
-```css
-box-shadow: 0 24px 60px -30px rgba(15,23,42,0.32);
-```
-
-**Level 3 (Panel):**
-```css
-box-shadow: 0 35px 100px -42px rgba(15,23,42,0.42);
-```
-
-**Level 4 (Modal):**
-```css
-box-shadow: 0 35px 100px -42px rgba(15,23,42,0.42),
-            0 24px 70px -40px rgba(15,23,42,0.34);
-```
-
-### Backdrop Blur
-
-- **Standard:** `backdrop-blur-xl` (16px)
-- **Heavy:** `backdrop-blur-2xl` (24px)
-
----
-
-## 7. Interaction States
-
-### Design Intent: Affordance Through Feedback
-
-Interaction states answer the question: **"Can I interact with this?"** Good interaction design is invisible — users don't think about it, they just act.
-
-**Core Principles:**
-
-1. **Immediate Feedback:** Hover states appear within 100ms (feels instant)
-2. **Subtle Lift:** 2px translation (`translateY(-0.5px)`) suggests physicality without being distracting
-3. **Progressive Enhancement:** Keyboard users get focus rings, mouse users get hover states, touch users get instant feedback
-4. **Reversibility:** All states are reversible — hover away, blur away, release away
-
-**Why These Specific Values?**
-
-- **3px focus ring:** Thick enough to see, thin enough to not dominate
-- **50% opacity ring:** High contrast without being harsh
-- **0.8 opacity hover:** 20% darker is perceptible but not jarring
-- **100ms transitions:** Faster than human reaction time (200ms), feels instant
-
-### Hover
-
-**Buttons:**
-- Primary: `bg-primary/80` (20% darker)
-- Outline/Ghost: Shift to `bg-muted` with `text-foreground`
-- Link: Apply `underline`
-
-**Cards & Interactive Surfaces:**
-- Translation: `translateY(-0.5px)` (2px lift)
-- Background: `bg-muted/50` color shift
-- Border: Lighten to `border-primary/50` for emphasis
-
-**Navigation & Tabs:**
-- Text color: `text-muted-foreground` → `text-foreground`
-- Background: Subtle `bg-accent` or `bg-muted`
-
-### Focus
-
-**Keyboard Focus Ring:**
-- Ring width: `3px` (ring-[3px])
-- Ring color: `var(--ring)/50%` (50% opacity)
-- Border color: `var(--border-ring)`
-- Applied via: `focus-visible:ring-ring/50 focus-visible:border-ring`
-
-**Focus Visible Strategy:**
-- Use `focus-visible:` prefix for keyboard-only focus
-- Avoid `:focus` to prevent mouse-click focus rings
-- Ring appears outside border (does not shift layout)
-
-### Active
-
-**Button Press:**
-- No scale transform (maintains solid feel)
-- Background darkens further: `active:bg-primary/90`
-- Pressed state via: `aria-pressed:bg-muted`
-
-**Interactive Elements:**
-- Translation resets: `translateY(0)`
-- Background state: `data-[state=selected]:bg-muted`
-
-### Disabled
-
-**Visual Treatment:**
-- Opacity: `0.5` for all disabled elements
-- Cursor: `not-allowed`
-- Pointer events: `none` (blocks all interaction)
-- Applied via: `disabled:pointer-events-none disabled:opacity-50`
-
-### Transition Behavior
-
-**Default Transitions:**
-- Duration: `100ms` (duration-100) for most interactions
-- Timing: Default browser easing (ease)
-- Properties: `transition-colors` for backgrounds, `transition-all` for buttons
-
-**Specific Durations:**
-- Sidebar animations: `200ms ease-linear`
-- Dialog/modal: `100ms` with zoom + fade
-- Tooltips: `0ms delay` (instant show)
-
-**Transform Transitions:**
-- Hover lift: `transition` (default 150ms)
-- Rotation (chevrons): `duration-300` for smooth rotation
-
-### Loading & Skeleton States
-
-**Loading Indicators:**
-- Spinner: `animate-spin` (continuous rotation)
-- Applied to: Icons like `<RefreshCwIcon>`
-- Duration: Infinite until loaded
-
-**Skeleton Placeholders:**
-- Animation: `animate-pulse` (opacity fade in/out)
-- Background: `bg-muted`
-- Border radius: Matches content shape (rounded-md)
-
-### Modal & Overlay Animations
-
-**Entry Animation:**
-- Overlay: `fade-in-0` with `backdrop-blur-xs`
-- Content: `zoom-in-95` (scale from 95% to 100%)
-- Slide direction: `slide-in-from-top-2` or side-specific
-
-**Exit Animation:**
-- Overlay: `fade-out-0`
-- Content: `zoom-out-95`
-- Duration: `100ms`
-
-### Micro-interactions
-
-**Icon Feedback:**
-- Hover rotation: ChevronDown rotates 180° on expand
-- Loading spin: Continuous `animate-spin` on RefreshCw
-- Success check: Instant appearance (no animation)
-
-**Tooltip Behavior:**
-- Delay: `0ms` (instant on hover)
-- Fade in: `fade-in-0`
-- Position: Dynamic based on available space
-
-**Table Row Hover:**
-- Background: `hover:bg-muted/50`
-- Transition: `transition-colors`
-- Selected state: `data-[state=selected]:bg-muted`
-
----
-
-## 8. Do's and Don'ts
-
-### Design Intent: Guiding Principles in Practice
-
-These aren't arbitrary rules — they're **patterns that emerged from real use**. Follow them to maintain consistency and avoid common pitfalls.
+Use these as guardrails when applying the system:
 
 ### ✅ Do
-
-- Use 24px+ border radius for primary surfaces
-- Apply frosted-glass effects with `backdrop-blur`
-- Maintain high contrast ratios (WCAG AA minimum)
-- Use multi-layer shadows for depth
-- Apply radial gradients subtly (18–24% opacity max)
-- Use consistent spacing (multiples of 4px)
+- Keep large surfaces quiet and neutral.
+- Use color as punctuation rather than decoration.
+- Preserve consistent spacing, border weights, and elevation.
+- Document every reusable interaction state before shipping.
 
 ### ❌ Don't
-
-- Use sharp corners on large surfaces (< 12px radius)
-- Skip backdrop blur on semi-transparent surfaces
-- Over-saturate gradients (> 30% opacity)
-- Mix different shadow styles within same component
-- Use heavy drop shadows without blur
-- Skip letter-spacing on uppercase micro text
+- Introduce one-off values that do not map to the shared token layer.
+- Let gradients, blur, or motion overpower the content hierarchy.
+- Ship components without clear default, hover, focus, disabled, loading, and error states.
 
 ---
 
-## 8.5. Cross-Device Design Decision Framework
+## 7. Cross-Device Decision Framework
 
 ### Design Intent: Empowering Consistent Decision-Making
 

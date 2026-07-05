@@ -96,6 +96,28 @@ A component is not system-ready until those answers are explicit in the document
 
 ---
 
+## Shared component contracts
+
+These patterns belong in the component layer because they define composition, variants, and API behavior rather than the underlying design philosophy.
+
+### Buttons
+- Use primary, secondary, and ghost variants with consistent sizing and state handling.
+- Support loading, disabled, and icon-only states through the same control-height and focus-ring tokens as the shared style layer.
+- Keep visual weight clear: primary actions should be more prominent than secondary or tertiary ones.
+
+### Cards and panels
+- Surface is the base container for cards and panels.
+- HeroPanel is reserved for feature-led sections or calls to action that need stronger emphasis.
+- Radius, border, shadow, and blur should be inherited from the shared tokens rather than customized per instance.
+
+### Form primitives
+- Inputs, selects, checkboxes, radios, and textareas should document default, hover, focus, disabled, invalid, success, and loading states.
+- Inline help and inline error messaging should stay consistent and accessible across all form patterns.
+
+### Content and feedback patterns
+- Badges, list rows, empty states, loading states, alerts, and toasts should be treated as reusable composition patterns.
+- Use the shared feedback and layout primitives from [STYLES.md](./STYLES.md) to avoid one-off styling.
+
 ## Layout Components
 
 ### DashboardShell

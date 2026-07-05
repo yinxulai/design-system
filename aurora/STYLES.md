@@ -198,6 +198,18 @@ Use this checklist when introducing or changing shared styles:
 - Confirm that the layout behaves sensibly at mobile, tablet, and desktop widths.
 - Remove decorative treatments that do not support hierarchy, clarity, or trust.
 
+### 2.8 Shared visual language implementation details
+
+These details belong in the shared style layer so previews and components stay aligned with the system intent.
+
+- **Color:** Use a neutral foundation with restrained accents. Keep large surfaces calm and let color support actions, feedback, and data emphasis.
+- **Typography:** Prefer readable, high-contrast type with a clear hierarchy for display, heading, body, caption, and micro text.
+- **Spacing and layout:** Use a 4px rhythm, bounded content widths, and predictable section spacing rather than ad hoc gutters.
+- **Surfaces and elevation:** Radius, border, shadow, and blur should be defined once in tokens and reused by cards, panels, and overlays.
+- **Interaction states:** Every interactive primitive should define default, hover, focus, active, disabled, selected, loading, and error states.
+- **Responsive behavior:** Prefer single-column layouts on small screens and more spacious multi-column compositions on larger breakpoints.
+- **Product patterns:** Forms, empty states, loading states, tables, and navigation should be shared primitives rather than one-off styles.
+
 ## 3. Token Layer
 
 ### 3.1 Preview token review anchors
