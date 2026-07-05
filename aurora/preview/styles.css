@@ -1234,15 +1234,20 @@ body {
 }
 
 .button.hero-secondary {
-  background-color: var(--color-overlay-strong);
-  color: var(--color-foreground);
-  border: 2px solid var(--color-foreground);
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-text-inverse);
+  border: 2px solid rgba(255, 255, 255, 0.72);
   padding: var(--hero-button-padding);
   font-size: var(--font-size-body);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .button.hero-secondary:hover {
-  background-color: var(--color-overlay-strong-hover);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--color-text-inverse);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 /* Hero 装饰 */
