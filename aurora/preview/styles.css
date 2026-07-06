@@ -163,22 +163,21 @@
 
 [data-theme="dark"] {
   /* Dark theme colors only. Layout and component tokens stay shared across themes. */
-  /* 提升背景/卡片/次级面板的明度层级差距，避免暗色模式下内容糊成一片 */
   /* 1) Color foundation tokens */
-  --color-background: oklch(0.16 0 0);
+  --color-background: oklch(0.046 0 0);
   --color-foreground: oklch(0.97 0 0);
-  --color-card: oklch(0.26 0 0);
-  --color-muted: oklch(0.34 0 0);
-  --color-muted-foreground: oklch(0.64 0 0);
-  --color-border: oklch(0.42 0 0);
-  --color-input: oklch(0.30 0 0);
+  --color-card: oklch(0.064 0 0);
+  --color-muted: oklch(0.124 0 0);
+  --color-muted-foreground: oklch(0.66 0 0);
+  --color-border: oklch(0.18 0 0);
+  --color-input: oklch(0.118 0 0);
   --color-ring: oklch(0.94 0 0);
 
   --color-primary: oklch(0.95 0 0);
   --color-primary-foreground: oklch(0.12 0 0);
-  --color-secondary: oklch(0.34 0 0);
+  --color-secondary: oklch(0.14 0 0);
   --color-secondary-foreground: oklch(0.95 0 0);
-  --color-accent: oklch(0.38 0 0);
+  --color-accent: oklch(0.14 0 0);
   --color-accent-foreground: oklch(0.95 0 0);
 
   --color-danger: oklch(0.72 0.19 24);
@@ -186,7 +185,7 @@
   --color-warning: oklch(0.74 0.17 85);
   --color-info: oklch(0.68 0.16 250);
 
-  --color-sidebar: oklch(0.18 0 0);
+  --color-sidebar: oklch(0.088 0 0);
   --color-sidebar-primary: oklch(0.72 0.18 264.376);
 
   --color-violet: oklch(0.7 0.2 260);
@@ -198,22 +197,22 @@
   /* 2) Color semantic tokens */
   --color-surface: var(--color-card);
   --color-surface-muted: var(--color-muted);
-  --color-surface-hover: oklch(0.30 0 0);
-  --color-surface-active: oklch(0.38 0 0);
-  --color-surface-strong: oklch(0.39 0 0);
-  --color-surface-elevated: oklch(0.40 0 0);
+  --color-surface-hover: oklch(0.16 0 0);
+  --color-surface-active: oklch(0.21 0 0);
+  --color-surface-strong: oklch(0.11 0 0);
+  --color-surface-elevated: oklch(0.08 0 0);
   --color-control: var(--color-border);
-  --color-control-hover: oklch(0.48 0 0);
-  --color-control-pressed: oklch(0.52 0 0);
+  --color-control-hover: oklch(0.2 0 0);
+  --color-control-pressed: oklch(0.24 0 0);
   --color-action-default: var(--color-primary);
   --color-action-hover: oklch(0.92 0 0);
   --color-action-pressed: oklch(0.84 0 0);
-  --color-action-disabled: oklch(0.30 0 0);
-  --color-action-disabled-foreground: oklch(0.50 0 0);
+  --color-action-disabled: oklch(0.17 0 0);
+  --color-action-disabled-foreground: oklch(0.54 0 0);
   --color-focus: var(--color-ring);
-  --color-overlay: rgba(255, 255, 255, 0.08);
+  --color-overlay: rgba(255, 255, 255, 0.06);
   --color-text-inverse: oklch(0.98 0 0);
-  --color-backdrop: oklch(0.16 0 0 / 0.82);
+  --color-backdrop: rgba(2, 6, 23, 0.82);
   --color-overlay-strong: rgba(255, 255, 255, 0.12);
   --color-overlay-strong-hover: rgba(255, 255, 255, 0.18);
   --color-overlay-soft: rgba(255, 255, 255, 0.05);
@@ -2212,7 +2211,7 @@ body {
 }
 
 .active {
-  /* background-color: var(--color-card); */
+  background-color: var(--color-card);
   color: var(--color-foreground);
 }
 
