@@ -304,27 +304,28 @@ In practice, the dark-theme block should only override color-related tokens. Sha
 
 [data-theme="dark"] {
   /* Dark theme colors only */
-  --color-background: oklch(0.046 0 0);
+  /* 提升背景/卡片/次级面板的明度层级差距，避免暗色模式下内容糊成一片 */
+  --color-background: oklch(0.16 0 0);
   --color-foreground: oklch(0.97 0 0);
-  --color-card: oklch(0.064 0 0);
-  --color-muted: oklch(0.124 0 0);
-  --color-muted-foreground: oklch(0.66 0 0);
-  --color-border: oklch(0.18 0 0);
-  --color-input: oklch(0.118 0 0);
+  --color-card: oklch(0.26 0 0);
+  --color-muted: oklch(0.34 0 0);
+  --color-muted-foreground: oklch(0.64 0 0);
+  --color-border: oklch(0.42 0 0);
+  --color-input: oklch(0.30 0 0);
   --color-ring: oklch(0.94 0 0);
 
   --color-primary: oklch(0.95 0 0);
   --color-primary-foreground: oklch(0.12 0 0);
-  --color-secondary: oklch(0.14 0 0);
+  --color-secondary: oklch(0.34 0 0);
   --color-secondary-foreground: oklch(0.95 0 0);
-  --color-accent: oklch(0.14 0 0);
+  --color-accent: oklch(0.38 0 0);
   --color-accent-foreground: oklch(0.95 0 0);
 
   --color-surface: var(--color-card);
   --color-surface-muted: var(--color-muted);
-  --color-surface-hover: oklch(0.16 0 0);
-  --color-surface-active: oklch(0.21 0 0);
-  --color-overlay: rgba(255, 255, 255, 0.06);
+  --color-surface-hover: oklch(0.30 0 0);
+  --color-surface-active: oklch(0.38 0 0);
+  --color-overlay: rgba(255, 255, 255, 0.08);
 }
 ```
 
