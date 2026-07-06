@@ -309,7 +309,7 @@ In practice, the dark-theme block should only override color-related tokens. Sha
   --color-card: oklch(0.064 0 0);
   --color-muted: oklch(0.124 0 0);
   --color-muted-foreground: oklch(0.66 0 0);
-  --color-border: oklch(0.18 0 0);
+  --color-border: oklch(0.24 0 0);
   --color-input: oklch(0.118 0 0);
   --color-ring: oklch(0.94 0 0);
 
@@ -322,8 +322,11 @@ In practice, the dark-theme block should only override color-related tokens. Sha
 
   --color-surface: var(--color-card);
   --color-surface-muted: var(--color-muted);
-  --color-surface-hover: oklch(0.16 0 0);
-  --color-surface-active: oklch(0.21 0 0);
+  --color-surface-hover: oklch(0.18 0 0);
+  --color-surface-active: oklch(0.23 0 0);
+  --color-control: var(--color-border);
+  --color-control-hover: oklch(0.26 0 0);
+  --color-control-pressed: oklch(0.30 0 0);
   --color-overlay: rgba(255, 255, 255, 0.06);
 }
 ```

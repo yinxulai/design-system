@@ -169,7 +169,7 @@
   --color-card: oklch(0.064 0 0);
   --color-muted: oklch(0.124 0 0);
   --color-muted-foreground: oklch(0.66 0 0);
-  --color-border: oklch(0.18 0 0);
+  --color-border: oklch(0.24 0 0);
   --color-input: oklch(0.118 0 0);
   --color-ring: oklch(0.94 0 0);
 
@@ -197,13 +197,13 @@
   /* 2) Color semantic tokens */
   --color-surface: var(--color-card);
   --color-surface-muted: var(--color-muted);
-  --color-surface-hover: oklch(0.16 0 0);
-  --color-surface-active: oklch(0.21 0 0);
+  --color-surface-hover: oklch(0.18 0 0);
+  --color-surface-active: oklch(0.23 0 0);
   --color-surface-strong: oklch(0.11 0 0);
   --color-surface-elevated: oklch(0.08 0 0);
   --color-control: var(--color-border);
-  --color-control-hover: oklch(0.2 0 0);
-  --color-control-pressed: oklch(0.24 0 0);
+  --color-control-hover: oklch(0.26 0 0);
+  --color-control-pressed: oklch(0.30 0 0);
   --color-action-default: var(--color-primary);
   --color-action-hover: oklch(0.92 0 0);
   --color-action-pressed: oklch(0.84 0 0);
@@ -370,11 +370,11 @@ body {
 }
 
 .nav-item:hover {
-  background-color: var(--color-muted);
+  background-color: var(--color-surface-hover);
 }
 
 .nav-item.active {
-  background-color: var(--color-accent);
+  background-color: var(--color-surface-active);
   color: var(--color-sidebar-primary);
 }
 
@@ -449,7 +449,7 @@ body {
 }
 
 .user-profile:hover {
-  background-color: var(--color-muted);
+  background-color: var(--color-surface-hover);
 }
 
 /* 头像 */
