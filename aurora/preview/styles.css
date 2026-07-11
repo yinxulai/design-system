@@ -12,7 +12,7 @@
 :root {
   /* 1) Foundation tokens: raw primitives */
   /* Color primitives */
-  --color-background: oklch(1 0 0);
+  --color-background: oklch(0.985 0 0);
   --color-foreground: oklch(0.145 0 0);
   --color-card: oklch(1 0 0);
   --color-muted: oklch(0.961 0 0);
@@ -98,6 +98,10 @@
   --color-danger-soft: oklch(0.93 0.06 27 / 0.18);
   --color-warning-soft: oklch(0.94 0.06 85 / 0.22);
   --color-info-soft: oklch(0.93 0.05 250 / 0.2);
+  --color-on-brand-action: oklch(0.99 0 0);
+  --color-on-brand-action-foreground: oklch(0.18 0 0);
+  --gradient-apps: linear-gradient(135deg, oklch(0.5 0.2 350) 0%, oklch(0.47 0.17 35) 100%);
+  --gradient-files: linear-gradient(135deg, oklch(0.43 0.12 185) 0%, oklch(0.46 0.17 250) 100%);
 
   /* Layout roles */
   --page-max-width: none;
@@ -220,6 +224,15 @@
   --color-danger-soft: oklch(0.22 0.06 24 / 0.24);
   --color-warning-soft: oklch(0.22 0.06 85 / 0.24);
   --color-info-soft: oklch(0.2 0.06 250 / 0.24);
+  --color-on-brand-action: oklch(0.96 0 0);
+  --color-on-brand-action-foreground: oklch(0.14 0 0);
+  --gradient-apps: linear-gradient(135deg, oklch(0.42 0.17 350) 0%, oklch(0.4 0.14 35) 100%);
+  --gradient-files: linear-gradient(135deg, oklch(0.37 0.1 185) 0%, oklch(0.4 0.14 250) 100%);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.03);
+  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.32), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --shadow-lg: 0 14px 32px rgba(0, 0, 0, 0.38), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --shadow-xl: 0 24px 60px -24px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 /* 基础重置 */
@@ -1196,6 +1209,14 @@ body {
   box-shadow: var(--shadow-xl);
 }
 
+.hero-banner.apps-hero {
+  background: var(--gradient-apps);
+}
+
+.hero-banner.files-hero {
+  background: var(--gradient-files);
+}
+
 .hero-content {
   max-width: var(--hero-content-max-width);
   z-index: 1;
@@ -1223,8 +1244,8 @@ body {
 
 .button.hero-primary,
 .hero-banner .button.primary {
-  background-color: var(--color-card);
-  color: var(--color-primary);
+  background-color: var(--color-on-brand-action);
+  color: var(--color-on-brand-action-foreground);
   padding: var(--hero-button-padding);
   font-size: var(--font-size-body);
   box-shadow: var(--shadow-md);
@@ -1232,8 +1253,8 @@ body {
 
 .button.hero-primary:hover,
 .hero-banner .button.primary:hover {
-  background-color: var(--color-surface-hover);
-  color: var(--color-foreground);
+  background-color: var(--color-on-brand-action);
+  color: var(--color-on-brand-action-foreground);
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }
@@ -1451,6 +1472,21 @@ body {
 
 @keyframes shimmer {
   100% { transform: translateX(100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 .table-shell {
@@ -1980,6 +2016,7 @@ body {
   
   .main-content {
     margin-left: 0;
+    width: 100%;
   }
   
   .menu-toggle {
@@ -2036,6 +2073,24 @@ body {
 
   .top-bar {
     padding: 0 var(--spacing-4);
+  }
+
+  .top-bar-left {
+    min-width: 0;
+  }
+
+  .top-bar-left h1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .top-bar-right {
+    gap: var(--spacing-1);
+  }
+
+  .top-bar-right .icon-button:not(#theme-toggle):not(.notification-button) {
+    display: none;
   }
   
   .tabs {
@@ -2275,8 +2330,8 @@ body {
 
 @media (max-width: 480px) {
   .icon-button {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
   }
 
   .icon-button svg {
@@ -2285,9 +2340,7 @@ body {
   }
 
   .user-avatar {
-    width: var(--avatar-size-sm);
-    height: var(--avatar-size-sm);
-    font-size: 12px;
+    display: none;
   }
 
   .button {
@@ -2316,14 +2369,6 @@ body {
 
 /* 中等屏幕优化 (481px - 768px) */
 @media (min-width: 481px) and (max-width: 768px) {
-  .apps-grid {
-    grid-template-columns: repeat(2, minmax(min(100%, var(--grid-card-min-width)), var(--grid-card-max-width)));
-  }
-  
-  .community-grid {
-    grid-template-columns: repeat(2, minmax(min(100%, var(--grid-community-min-width)), var(--grid-community-max-width)));
-  }
-  
   .hero-banner {
     padding: var(--spacing-6);
   }

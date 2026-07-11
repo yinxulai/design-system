@@ -260,7 +260,7 @@ In practice, foundation tokens define what exists; semantic tokens define what a
 
 Aurora should expose two complete color sets: one for the default light theme and one for the dark theme. Components should consume the semantic color tokens below, while layout, spacing, radius, motion, and component-scale tokens remain in the shared root layer.
 
-In practice, the dark-theme block should only override color-related tokens. Shared values such as spacing, typography, grid sizing, control heights, and shadow scales stay in the root layer and are reused by both themes.
+In practice, the dark-theme block should override color-related tokens and theme-dependent elevation. Shared values such as spacing, typography, grid sizing, and control heights stay in the root layer and are reused by both themes.
 
 ```css
 :root {
@@ -273,7 +273,7 @@ In practice, the dark-theme block should only override color-related tokens. Sha
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
 
   /* Light theme colors */
-  --color-background: oklch(1 0 0);
+  --color-background: oklch(0.985 0 0);
   --color-foreground: oklch(0.145 0 0);
   --color-card: oklch(1 0 0);
   --color-muted: oklch(0.961 0 0);
@@ -300,6 +300,10 @@ In practice, the dark-theme block should only override color-related tokens. Sha
   --color-action-hover: oklch(0.14 0 0);
   --color-action-pressed: oklch(0.12 0 0);
   --color-overlay: rgba(15, 23, 42, 0.04);
+  --color-on-brand-action: oklch(0.99 0 0);
+  --color-on-brand-action-foreground: oklch(0.18 0 0);
+  --gradient-apps: linear-gradient(135deg, oklch(0.5 0.2 350), oklch(0.47 0.17 35));
+  --gradient-files: linear-gradient(135deg, oklch(0.43 0.12 185), oklch(0.46 0.17 250));
 }
 
 [data-theme="dark"] {
@@ -328,12 +332,21 @@ In practice, the dark-theme block should only override color-related tokens. Sha
   --color-control-hover: oklch(0.315 0 0);
   --color-control-pressed: oklch(0.35 0 0);
   --color-overlay: rgba(255, 255, 255, 0.06);
+  --color-on-brand-action: oklch(0.96 0 0);
+  --color-on-brand-action-foreground: oklch(0.14 0 0);
+  --gradient-apps: linear-gradient(135deg, oklch(0.42 0.17 350), oklch(0.4 0.14 35));
+  --gradient-files: linear-gradient(135deg, oklch(0.37 0.1 185), oklch(0.4 0.14 250));
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.03);
+  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.32), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --shadow-lg: 0 14px 32px rgba(0, 0, 0, 0.38), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --shadow-xl: 0 24px 60px -24px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 ```
 
 In dark themes, keep surface lightness monotonic: page background < navigation surface < card < nested or interactive surface. Adjacent large surfaces should differ enough to remain distinguishable without relying on borders, while secondary text must retain at least 4.5:1 contrast against every surface where it appears.
 
-Do not duplicate spacing, radius, typography, or component-scale tokens inside the dark theme block. If a token influences structure or rhythm rather than color, keep it in the shared layer.
+Do not duplicate spacing, radius, typography, or component-scale tokens inside the dark theme block. If a token influences structure or rhythm rather than color or perceived elevation, keep it in the shared layer.
 
 ### 3.6 Semantic aliases for implementation
 
