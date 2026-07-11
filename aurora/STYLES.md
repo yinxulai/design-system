@@ -304,32 +304,34 @@ In practice, the dark-theme block should only override color-related tokens. Sha
 
 [data-theme="dark"] {
   /* Dark theme colors only */
-  --color-background: oklch(0.046 0 0);
-  --color-foreground: oklch(0.97 0 0);
-  --color-card: oklch(0.064 0 0);
-  --color-muted: oklch(0.124 0 0);
-  --color-muted-foreground: oklch(0.66 0 0);
-  --color-border: oklch(0.24 0 0);
-  --color-input: oklch(0.118 0 0);
+  --color-background: oklch(0.105 0 0);
+  --color-foreground: oklch(0.96 0 0);
+  --color-card: oklch(0.155 0 0);
+  --color-muted: oklch(0.205 0 0);
+  --color-muted-foreground: oklch(0.72 0 0);
+  --color-border: oklch(0.285 0 0);
+  --color-input: oklch(0.19 0 0);
   --color-ring: oklch(0.94 0 0);
 
   --color-primary: oklch(0.95 0 0);
   --color-primary-foreground: oklch(0.12 0 0);
-  --color-secondary: oklch(0.14 0 0);
+  --color-secondary: oklch(0.205 0 0);
   --color-secondary-foreground: oklch(0.95 0 0);
-  --color-accent: oklch(0.14 0 0);
+  --color-accent: oklch(0.225 0 0);
   --color-accent-foreground: oklch(0.95 0 0);
 
   --color-surface: var(--color-card);
   --color-surface-muted: var(--color-muted);
-  --color-surface-hover: oklch(0.18 0 0);
-  --color-surface-active: oklch(0.23 0 0);
+  --color-surface-hover: oklch(0.235 0 0);
+  --color-surface-active: oklch(0.275 0 0);
   --color-control: var(--color-border);
-  --color-control-hover: oklch(0.26 0 0);
-  --color-control-pressed: oklch(0.30 0 0);
+  --color-control-hover: oklch(0.315 0 0);
+  --color-control-pressed: oklch(0.35 0 0);
   --color-overlay: rgba(255, 255, 255, 0.06);
 }
 ```
+
+In dark themes, keep surface lightness monotonic: page background < navigation surface < card < nested or interactive surface. Adjacent large surfaces should differ enough to remain distinguishable without relying on borders, while secondary text must retain at least 4.5:1 contrast against every surface where it appears.
 
 Do not duplicate spacing, radius, typography, or component-scale tokens inside the dark theme block. If a token influences structure or rhythm rather than color, keep it in the shared layer.
 
