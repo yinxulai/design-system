@@ -2,13 +2,13 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-A polished, modern design system demo centered on an Aurora-inspired dashboard experience. The project combines semantic design tokens, reusable UI patterns, and a rich preview page to showcase how the visual language feels in real interfaces.
+Aurora is a design specification with a static reference preview for modern SaaS products. It defines semantic tokens, reusable interaction patterns, and component contracts; it does not currently ship a framework component package.
 
 ## Highlights
 
 - A refined visual system with layered gradients, depth, and accessible contrast
 - Clear documentation for design principles, styles, and components
-- An interactive preview page that demonstrates the aesthetic in context
+- An interactive static preview that demonstrates the specification in context
 
 ## Project Structure
 
@@ -24,7 +24,7 @@ Open [aurora/preview/index.html](aurora/preview/index.html) directly in a browse
 python3 -m http.server 8000
 ```
 
-Then visit http://localhost:8000/aurora/preview/
+Then visit [http://localhost:8000/aurora/preview/](http://localhost:8000/aurora/preview/).
 
 ## Effect Preview
 

@@ -1,19 +1,21 @@
-# Design System
+# Aurora Design System
 
-> A comprehensive design system for modern SaaS applications with gradient-rich aesthetics, sophisticated depth, and enterprise-grade accessibility.
+> A design specification and static reference preview for modern SaaS applications. Aurora defines implementation contracts, but does not currently ship a framework component package.
 
 ---
 
 ## 📚 Documentation Structure
 
 ### [DESIGN.md](./DESIGN.md) - Design Principles & Philosophy
+
 **Purpose:** The foundational document explaining WHY behind every design decision.
 
 **Contains:**
+
 - Design Philosophy (5 core pillars)
 - Visual Theme & Atmosphere
 - Color Palette & Roles (OKLCH color space)
-- Typography Rules (Inter Variable)
+- Typography rules and semantic type tokens
 - Layout & Spacing (4px rhythm)
 - Depth & Elevation (shadow system)
 - Interaction States (hover, focus, active, disabled)
@@ -26,9 +28,11 @@
 - Applying the System
 
 ### [STYLES.md](./STYLES.md) - Shared Semantic Style Layer
+
 **Purpose:** The implementation contract for shared primitives used by previews, HTML/CSS prototypes, and component implementations.
 
 **Contains:**
+
 - Token hierarchy and semantic aliases
 - Spacing, radius, elevation, and motion tokens
 - Layout primitives such as page shell, section, surface, stack, and cluster
@@ -36,6 +40,7 @@
 - Review checklist for token changes and visual consistency
 
 **Read this if you want to:**
+
 - Understand the design philosophy
 - Learn the principles behind decisions
 - Make consistent decisions in uncovered scenarios
@@ -44,10 +49,12 @@
 
 ---
 
-### [COMPONENTS.md](./COMPONENTS.md) - Component Library Reference
-**Purpose:** Detailed API documentation and usage examples for all components.
+### [COMPONENTS.md](./COMPONENTS.md) - Component Contract Reference
+
+**Purpose:** Framework-agnostic component contracts, suggested API shapes, and usage examples.
 
 **Contains:**
+
 - Layout Components (DashboardShell, PageSection)
 - Container Components (Surface, HeroPanel, FormSection)
 - Content Components (SectionHeader, StatCard, ListRow, EmptyState)
@@ -58,6 +65,7 @@
 - Icon System (Lucide React guidelines)
 
 **Read this if you want to:**
+
 - Implement a specific component
 - Understand component props and variants
 - See code examples and best practices
@@ -78,24 +86,12 @@
 
 ### For Developers
 
-1. **Import components from `design-system/components/`**
-   ```tsx
-   import { Surface, StatCard, DashboardShell } from '@/design-system/components/app-shell'
-   ```
+1. **Reference [STYLES.md](./STYLES.md)** for the canonical token and primitive contracts.
+2. **Reference [COMPONENTS.md](./COMPONENTS.md)** for behavior, composition, and suggested API shapes.
+3. **Use the static [preview](./preview/index.html)** to verify visual hierarchy and responsive behavior.
+4. **Implement components in your product framework** and validate accessibility requirements before release.
 
-2. **Reference [STYLES.md](./STYLES.md)** and [COMPONENTS.md](./COMPONENTS.md) for API details
-   ```tsx
-   <Surface tone="accent" className="p-5">
-     <StatCard title="Total Users" value="1,234" />
-   </Surface>
-   ```
-
-3. **Follow accessibility guidelines** - Keyboard navigation, ARIA labels, contrast ratios
-
-4. **Use design tokens** - Color, spacing, typography, motion, and focus-ring from the system
-   ```tsx
-   className="text-muted-foreground space-y-4 rounded-[24px]"
-   ```
+The TSX snippets in this documentation illustrate recommended composition and API shape. They are not imports from a package shipped by this repository.
 
 ---
 
@@ -103,12 +99,14 @@
 
 ```
 design-system/
-├── README.md                 # This file - overview and navigation
-├── DESIGN.md                 # Design principles and philosophy
-├── STYLES.md                 # Shared semantic tokens and layout primitives
-├── COMPONENTS.md             # Component API documentation
-└── components/
-    └── app-shell.tsx         # Core design system components
+├── README.md                 # Repository overview
+├── README.zh-CN.md           # Chinese repository overview
+└── aurora/
+  ├── README.md             # Aurora overview and navigation
+  ├── DESIGN.md             # Design principles and philosophy
+  ├── STYLES.md             # Semantic tokens and layout primitives
+  ├── COMPONENTS.md         # Component implementation contracts
+  └── preview/              # Static HTML/CSS reference implementation
 ```
 
 ---
@@ -116,18 +114,23 @@ design-system/
 ## 🎯 Design Principles Summary
 
 ### 1. Progressive Disclosure
+
 Start simple, reveal complexity only when needed. Use depth to indicate interactivity.
 
 ### 2. Spatial Consistency
-Predictable layouts with 4px spacing rhythm and large corner radius (24-32px).
+
+Predictable layouts with a 4px spacing rhythm and a restrained 8-16px radius scale.
 
 ### 3. Responsive Honesty
+
 Mobile and desktop are different experiences - embrace that with context-aware design.
 
 ### 4. Feedback Loops
+
 Every interaction provides immediate visual feedback (100-200ms transitions).
 
 ### 5. Accessible by Default
+
 WCAG 2.1 AA compliance minimum, keyboard navigation, screen reader support.
 
 ---
@@ -151,6 +154,7 @@ To move from a strong visual concept to a durable design system, the implementat
 ## 🎨 Visual Identity
 
 ### Color System
+
 - **OKLCH Color Space** - Perceptual uniformity, predictable lightness
 - **Primary:** Neutral Black/White (timeless, professional)
 - **Indigo Ambience** - Subtle gradients (18-24% opacity) for warmth
@@ -158,17 +162,20 @@ To move from a strong visual concept to a durable design system, the implementat
 - **70-90% Opacity** - Creates layering without hard edges
 
 ### Typography
-- **Font:** Inter Variable (400-900 weights)
-- **Scale:** 10px to 48px with clear hierarchy
-- **Line Height:** 1.5 for body, 1.15 for headings
-- **Letter Spacing:** Negative for large text, positive for small
+
+- **Font:** Geist first, with Segoe UI and Inter as fallbacks
+- **Default body:** 14px with a 1.45 line height
+- **Scale:** Use the semantic type tokens defined in [STYLES.md](./STYLES.md)
+- **Letter Spacing:** `0` by default; introduce tracking only for a documented semantic role
 
 ### Spacing & Layout
+
 - **Rhythm:** 4px base unit (8px, 12px, 16px, 24px, 32px)
 - **Max Width:** 1280px (max-w-7xl) for content
-- **Border Radius:** 6px buttons, 18px lists, 24px cards, 32px heroes
+- **Border Radius:** 8px controls, 12px grouped controls, 16px cards and heroes
 
 ### Depth & Shadows
+
 - **Level 1 (Raised):** Subtle separation
 - **Level 2 (Card):** Primary content containers
 - **Level 3 (Panel):** Prominent sections
@@ -180,15 +187,18 @@ To move from a strong visual concept to a durable design system, the implementat
 ## 🚀 Component Categories
 
 ### Layout Components
+
 - **DashboardShell** - Root container, 1280px max-width, responsive padding
 - **PageSection** - Section grouping with header
 
 ### Container Components
+
 - **Surface** - Base card (3 tones: default, muted, accent)
 - **HeroPanel** - Landing page header with gradients
 - **FormSection** - Form field grouping
 
 ### Content Components
+
 - **SectionHeader** - Standalone header with actions
 - **StatCard** - Metrics display
 - **ListRow** - Uniform list items
@@ -196,9 +206,9 @@ To move from a strong visual concept to a durable design system, the implementat
 
 ---
 
-## ✅ Accessibility Features
+## Accessibility Release Targets
 
-- **WCAG 2.1 Level AA** compliance minimum
+- **WCAG 2.1 Level AA** verification target
 - **4.5:1 contrast** for text, 3:1 for interactive elements
 - **Keyboard navigation** - Tab, Enter, Escape, Arrow keys
 - **Screen reader support** - Semantic HTML, ARIA labels
@@ -213,8 +223,6 @@ To move from a strong visual concept to a durable design system, the implementat
 ### Building a Dashboard
 
 ```tsx
-import { DashboardShell, PageSection, Surface, StatCard } from '@/design-system/components/app-shell'
-
 export default function DashboardPage() {
   return (
     <DashboardShell>
@@ -244,9 +252,6 @@ export default function DashboardPage() {
 ### Building a Form
 
 ```tsx
-import { FormSection } from '@/design-system/components/app-shell'
-import { Label, Input, Button } from '@/components/ui'
-
 export default function SettingsPage() {
   return (
     <form className="space-y-6">
@@ -307,8 +312,9 @@ export default function SettingsPage() {
 ## 📝 Changelog
 
 ### Version 1.0 (2026-07-04)
+
 - Initial design system documentation
-- 9 core components in app-shell.tsx
+- Initial component contracts and suggested API shapes
 - Comprehensive design principles
 - Cross-device design decision framework
 - Complete accessibility guidelines

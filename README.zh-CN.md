@@ -2,13 +2,15 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-这是一个以 Aurora 风格为灵感、面向现代 SaaS 产品的设计系统演示项目。它将语义化设计令牌、可复用 UI 组件和富有质感的预览页面结合在一起，帮助你更直观地感受视觉语言在真实界面中的表现。
+Aurora 是一套面向现代 SaaS 产品的设计规范，并提供静态参考预览。它定义语义化设计令牌、可复用交互模式和组件合同，但目前不提供可直接安装的框架组件包。
+
+本入口提供中文说明；Aurora 的详细规范正文目前使用英文编写，请从 [aurora/README.md](aurora/README.md) 进入。
 
 ## 亮点
 
 - 具有层次分明渐变、深度感和可访问对比度的精致视觉系统
 - 为设计原则、样式和组件提供清晰的文档说明
-- 提供交互式预览页，展示系统在真实场景中的视觉效果
+- 提供交互式静态预览，展示规范在真实场景中的应用效果
 
 ## 项目结构
 
@@ -24,7 +26,7 @@
 python3 -m http.server 8000
 ```
 
-随后访问 http://localhost:8000/aurora/preview/
+随后访问 [http://localhost:8000/aurora/preview/](http://localhost:8000/aurora/preview/)。
 
 ## 效果预览
 

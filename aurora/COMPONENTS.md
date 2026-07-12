@@ -26,6 +26,8 @@ When describing a component, prefer this order of thinking:
 
 Prefer the semantic classes from [STYLES.md](./STYLES.md) in the examples below. New implementation work should favor `.page-shell`, `.section`, `.surface`, `.stack`, `.cluster`, `.text-label`, `.text-caption`, `.badge`, `.alert`, and related helpers over one-off utility strings.
 
+The TSX snippets describe recommended API shapes and composition. Adapt them to the product framework in use; this repository does not ship these components as an importable package. When a historical example contains a raw visual value, the canonical token and rule in [STYLES.md](./STYLES.md) takes precedence.
+
 ## Component maturity standards
 
 A component is only considered system-ready when it can answer four questions clearly:
@@ -101,20 +103,24 @@ A component is not system-ready until those answers are explicit in the document
 These patterns belong in the component layer because they define composition, variants, and API behavior rather than the underlying design philosophy.
 
 ### Buttons
+
 - Use primary, secondary, and ghost variants with consistent sizing and state handling.
 - Support loading, disabled, and icon-only states through the same control-height and focus-ring tokens as the shared style layer.
 - Keep visual weight clear: primary actions should be more prominent than secondary or tertiary ones.
 
 ### Cards and panels
+
 - Surface is the base container for cards and panels.
 - HeroPanel is reserved for feature-led sections or calls to action that need stronger emphasis.
 - Radius, border, shadow, and blur should be inherited from the shared tokens rather than customized per instance.
 
 ### Form primitives
+
 - Inputs, selects, checkboxes, radios, and textareas should document default, hover, focus, disabled, invalid, success, and loading states.
 - Inline help and inline error messaging should stay consistent and accessible across all form patterns.
 
 ### Content and feedback patterns
+
 - Badges, list rows, empty states, loading states, alerts, and toasts should be treated as reusable composition patterns.
 - Use the shared feedback and layout primitives from [STYLES.md](./STYLES.md) to avoid one-off styling.
 
@@ -144,8 +150,6 @@ interface DashboardShellProps {
 #### Usage
 
 ```tsx
-import { DashboardShell } from '@/design-system/components/app-shell'
-
 export default function DashboardPage() {
   return (
     <DashboardShell>
@@ -169,11 +173,13 @@ export default function DashboardPage() {
 #### Best Practices
 
 ✅ **Do:**
+
 - Use as the outermost container for all dashboard pages
 - Nest PageSection or direct content inside
 - Combine with other layout utilities if needed
 
 ❌ **Don't:**
+
 - Nest DashboardShell inside another DashboardShell
 - Override max-width (breaks consistency)
 - Use for non-dashboard pages (use page-specific layouts)
@@ -232,11 +238,13 @@ interface PageSectionProps {
 #### Best Practices
 
 ✅ **Do:**
+
 - Keep titles concise (3-5 words)
 - Use description for context, not lengthy explanations
 - Place primary action last in actions slot
 
 ❌ **Don't:**
+
 - Use for single-item sections (just use SectionHeader)
 - Nest PageSection inside PageSection (use nested content instead)
 
@@ -262,6 +270,7 @@ interface SurfaceProps {
 #### Variants
 
 **Default (`tone="default"`)**
+
 - **Use Case:** Primary content cards, main information
 - **Border:** `border-border/70` (70% opacity)
 - **Background:** `bg-card/90` (90% opacity) + backdrop-blur-xl
@@ -269,6 +278,7 @@ interface SurfaceProps {
 - **Visual Weight:** Medium - primary content
 
 **Muted (`tone="muted"`)**
+
 - **Use Case:** Secondary content, supporting information, less important cards
 - **Border:** `border-border/60` (60% opacity, lighter)
 - **Background:** `bg-slate-50/70` light, `bg-slate-900/40` dark
@@ -276,6 +286,7 @@ interface SurfaceProps {
 - **Visual Weight:** Low - supporting content
 
 **Accent (`tone="accent"`)**
+
 - **Use Case:** Call-to-action cards, featured content, promotional sections
 - **Border:** `border-primary/20` (primary color, 20% opacity)
 - **Background:** Gradient from `primary/10` to `background`
@@ -312,14 +323,14 @@ interface SurfaceProps {
 
 #### Design Rationale
 
-- **24px radius:** Creates soft, modern appearance; large enough to be distinctive
-- **Backdrop blur:** Adds depth and hierarchy; indicates "layered" content
+- **Shared radius:** Uses `--surface-radius` so containers follow the canonical 16px maximum
+- **Theme-aware elevation:** Uses semantic surface and shadow tokens rather than fixed opacity or blur
 - **Three tones:** Provides semantic visual hierarchy without needing custom styling
-- **90% opacity:** Allows subtle background texture through, adds richness
 
 #### Composition Patterns
 
 **Information Cards:**
+
 ```tsx
 <Surface className="surface stack space-4">
   <div className="cluster">
@@ -334,6 +345,7 @@ interface SurfaceProps {
 ```
 
 **List Container:**
+
 ```tsx
 <Surface className="surface stack space-2">
   <ListRow title="Item 1" />
@@ -357,12 +369,14 @@ interface SurfaceProps {
 #### Best Practices
 
 ✅ **Do:**
+
 - Use `default` for 80% of cards
 - Use `muted` for sidebars, metadata, supporting info
 - Use `accent` sparingly (1-2 per page) for CTAs
 - Add padding via className: `p-5` is standard
 
 ❌ **Don't:**
+
 - Nest Surface inside Surface (creates visual noise)
 - Use multiple `accent` cards on same screen
 - Override border-radius (breaks consistency)
@@ -390,12 +404,12 @@ interface HeroPanelProps {
 
 #### Design Specs
 
-- **Border Radius:** `32px` (rounded-[32px]) - extra large for prominence
-- **Padding:** `24px` mobile (p-6), `32px` tablet (sm:p-8), `40px` desktop (lg:p-10)
-- **Shadow:** Level 3 - `0 35px 100px -42px rgba(15,23,42,0.42)`
-- **Background:** Radial gradient (indigo 24% opacity) + linear gradient + glass shine overlay
-- **Title Size:** `30px` mobile (text-3xl), `36px` tablet+ (sm:text-4xl)
-- **Layout:** Column on mobile, row on desktop (lg:flex-row)
+- **Border Radius:** `--surface-radius` (16px)
+- **Padding:** Shared spacing tokens, reduced from desktop to mobile without changing component geometry
+- **Shadow:** Theme-aware elevation token
+- **Background:** Named gradient and on-brand color tokens; no inline gradients
+- **Title Size:** Semantic heading token appropriate to the product surface
+- **Layout:** Column on mobile, row only when content and viewport width support it
 
 #### Visual Layers
 
@@ -424,9 +438,8 @@ interface HeroPanelProps {
 
 #### Design Rationale
 
-- **32px radius:** Larger than cards (24px) to signal importance
-- **Radial gradient:** Draws eye to content, adds depth
-- **Shine overlay:** Creates premium, polished look
+- **Shared radius:** Keeps the hero aligned with the restrained surface language
+- **Named gradient:** Draws attention while remaining theme-aware
 - **Flexible layout:** Accommodates text-only or text + visual content
 
 #### Eyebrow Component
@@ -439,6 +452,7 @@ interface HeroPanelProps {
 ```
 
 **Use Cases:**
+
 - "New" / "Beta" / "Coming Soon"
 - Category labels
 - Status indicators
@@ -446,12 +460,14 @@ interface HeroPanelProps {
 #### Best Practices
 
 ✅ **Do:**
+
 - Use once per page (maximum twice)
 - Keep title under 60 characters
 - Limit description to 1-2 sentences
 - Use 1-2 actions maximum
 
 ❌ **Don't:**
+
 - Use for secondary sections (use SectionHeader)
 - Overload with content (keep focused)
 - Stack multiple HeroPanels vertically
@@ -477,12 +493,12 @@ interface FormSectionProps {
 
 #### Design Specs
 
-- **Border Radius:** `24px` (rounded-[24px])
-- **Padding:** `20px` (p-5)
-- **Border:** `1px solid border-border/70`
-- **Background:** `bg-background/70` + backdrop blur
-- **Shadow:** Light - `0 20px 60px -36px rgba(15,23,42,0.24)`
-- **Field Spacing:** `16px` (space-y-4) between children
+- **Border Radius:** `--surface-radius`
+- **Padding:** Shared spacing tokens
+- **Border:** `--surface-border`
+- **Background:** Semantic surface token
+- **Shadow:** `--surface-shadow`
+- **Field Spacing:** Shared stack spacing token
 
 #### Usage
 
@@ -529,12 +545,14 @@ interface FormSectionProps {
 #### Best Practices
 
 ✅ **Do:**
+
 - Group 3-6 related fields per section
 - Use description for instructions, not field labels
 - Place section-level actions in `actions` slot
 - Use `space-y-4` for field spacing
 
 ❌ **Don't:**
+
 - Put single field in FormSection (unnecessary wrapper)
 - Use for non-form content
 - Nest FormSection inside FormSection
@@ -596,12 +614,14 @@ interface SectionHeaderProps {
 #### Best Practices
 
 ✅ **Do:**
+
 - Keep titles short and descriptive
 - Use sentence case (not Title Case)
 - Align actions to the right
 - Use icon + text for clarity
 
 ❌ **Don't:**
+
 - Use without subsequent content
 - Make description longer than title
 - Put more than 3 actions
@@ -676,6 +696,7 @@ interface StatCardProps {
 #### Typography Formatting
 
 **Large Numbers:**
+
 ```tsx
 <StatCard title="Downloads" value={
   <span className="tabular-nums">1,234,567</span>
@@ -683,6 +704,7 @@ interface StatCardProps {
 ```
 
 **Percentages:**
+
 ```tsx
 <StatCard title="Success Rate" value={
   <>98.5<span className="text-xl">%</span></>
@@ -690,6 +712,7 @@ interface StatCardProps {
 ```
 
 **Trend Indicators:**
+
 ```tsx
 <StatCard
   title="Revenue"
@@ -706,12 +729,14 @@ interface StatCardProps {
 #### Best Practices
 
 ✅ **Do:**
+
 - Use tabular-nums for aligned numbers
 - Keep title short (1-3 words)
 - Use description for trends/comparisons
 - Group related stats in grids
 
 ❌ **Don't:**
+
 - Put paragraphs in description (keep to 1 line)
 - Use more than 8 stat cards on one page
 - Mix formatting styles (be consistent)
@@ -802,12 +827,14 @@ interface ListRowProps {
 #### Best Practices
 
 ✅ **Do:**
+
 - Use consistent spacing between rows (space-y-2)
 - Truncate long titles with `truncate` class
 - Keep actions compact (icon buttons)
 - Use for homogeneous lists (same structure)
 
 ❌ **Don't:**
+
 - Mix ListRow with other list styles in same list
 - Put complex layouts inside ListRow (keep simple)
 - Use for single items (just use regular div)
@@ -833,7 +860,7 @@ interface EmptyStateProps {
 
 #### Design Specs
 
-- **Border Radius:** `24px` (rounded-[24px])
+- **Border Radius:** `--surface-radius`
 - **Padding:** `24px` (p-6)
 - **Border:** `1px dashed border-border/70` (dashed = temporary state)
 - **Background:** `bg-background/60`
@@ -886,12 +913,14 @@ interface EmptyStateProps {
 #### Best Practices
 
 ✅ **Do:**
+
 - Explain WHY empty (new user? filtered out? error?)
 - Provide clear action if user can fix it
 - Use friendly, encouraging language
 - Include icon for visual interest
 
 ❌ **Don't:**
+
 - Use error red unless actual error
 - Make description longer than 2 sentences
 - Leave without action if user can resolve
@@ -907,24 +936,26 @@ interface EmptyStateProps {
 #### Sizes
 
 ```tsx
-// Default (height: 36px)
+// Default pointer-oriented control (minimum height: 40px)
 <Input placeholder="Email" />
 
-// Large (height: 44px) - mobile-optimized
+// Touch control (minimum height: 44px)
 <Input placeholder="Email" className="h-11" />
 
-// Small (height: 32px) - compact forms
-<Input placeholder="Search" className="h-8 text-sm" />
+// Compact visual treatment may reduce internal density, but not the interactive hit area
+<Input placeholder="Search" className="control-compact" />
 ```
 
 #### Variants
 
 **Default:**
+
 ```tsx
 <Input type="text" placeholder="Username" />
 ```
 
 **With Icon:**
+
 ```tsx
 <div className="relative">
   <SearchIcon className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
@@ -933,6 +964,7 @@ interface EmptyStateProps {
 ```
 
 **With Clear Button:**
+
 ```tsx
 <div className="relative">
   <Input value={value} onChange={(e) => setValue(e.target.value)} />
@@ -951,6 +983,7 @@ interface EmptyStateProps {
 #### States
 
 **Error State:**
+
 ```tsx
 <div className="space-y-1.5">
   <Label htmlFor="email">Email</Label>
@@ -968,11 +1001,13 @@ interface EmptyStateProps {
 ```
 
 **Disabled State:**
+
 ```tsx
 <Input disabled placeholder="Cannot edit" />
 ```
 
 **Read-Only:**
+
 ```tsx
 <Input readOnly value="Fixed value" className="bg-muted" />
 ```
@@ -984,7 +1019,7 @@ interface EmptyStateProps {
 #### Native Select (Mobile)
 
 ```tsx
-<select className="flex h-9 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+<select className="flex min-h-11 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
   <option>Option 1</option>
   <option>Option 2</option>
   <option>Option 3</option>
@@ -1162,6 +1197,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 #### Table Density Variants
 
 **Default (height: 48px)**
+
 ```tsx
 <tr className="border-b hover:bg-muted/50">
   <td className="p-4">Content</td>
@@ -1169,6 +1205,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 ```
 
 **Compact (height: 40px)**
+
 ```tsx
 <tr className="border-b hover:bg-muted/50">
   <td className="px-4 py-2 text-sm">Content</td>
@@ -1176,6 +1213,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 ```
 
 **Comfortable (height: 56px)**
+
 ```tsx
 <tr className="border-b hover:bg-muted/50">
   <td className="px-4 py-4">Content</td>
@@ -1534,7 +1572,7 @@ toast('Release pending approval', {
 
 ```tsx
 // Card skeleton
-<div className="rounded-[24px] border p-5 space-y-3">
+<div className="surface stack space-3 p-5">
   <Skeleton className="h-4 w-[250px]" />
   <Skeleton className="h-4 w-[200px]" />
   <Skeleton className="h-10 w-[100px]" />
@@ -1569,6 +1607,7 @@ pnpm add lucide-react
 ```
 
 **Why Lucide:**
+
 - 24×24 base grid, consistent sizing
 - Stroke-width: 2 (matches our visual weight)
 - 1000+ icons, actively maintained

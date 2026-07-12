@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
   <div class="animated-background"></div>
 
   <!-- 侧边栏 -->
-  <aside class="sidebar" id="sidebar">
+  <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
     <div class="sidebar-header">
       <div class="logo">
         <div class="logo-icon">
@@ -37,17 +37,17 @@
         <circle cx="11" cy="11" r="8"/>
         <path d="m21 21-4.35-4.35"/>
       </svg>
-      <input type="search" placeholder="Search...">
+      <input type="search" placeholder="Search..." aria-label="Search workspace">
     </div>
 
     <nav class="sidebar-nav">
-      <div class="nav-item active">
+      <a class="nav-item active" href="#panel-home" aria-current="page">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
         </svg>
         <span>Home</span>
-      </div>
-      <div class="nav-item">
+      </a>
+      <a class="nav-item" href="#panel-apps">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <rect x="3" y="3" width="7" height="7"/>
           <rect x="14" y="3" width="7" height="7"/>
@@ -56,15 +56,15 @@
         </svg>
         <span>Apps</span>
         <span class="badge">2</span>
-      </div>
-      <div class="nav-item">
+      </a>
+      <a class="nav-item" href="#panel-files">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
           <polyline points="14 2 14 8 20 8"/>
         </svg>
         <span>Files</span>
-      </div>
-      <div class="nav-item">
+      </a>
+      <a class="nav-item" href="#active-projects">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 2L2 7l10 5 10-5-10-5z"/>
           <path d="M2 17l10 5 10-5"/>
@@ -72,15 +72,15 @@
         </svg>
         <span>Projects</span>
         <span class="badge">4</span>
-      </div>
-      <div class="nav-item">
+      </a>
+      <a class="nav-item" href="#patterns">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
           <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
         </svg>
         <span>Learn</span>
-      </div>
-      <div class="nav-item">
+      </a>
+      <a class="nav-item" href="#community">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
           <circle cx="9" cy="7" r="4"/>
@@ -88,11 +88,11 @@
           <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
         </svg>
         <span>Community</span>
-      </div>
+      </a>
     </nav>
 
     <div class="sidebar-footer">
-      <div class="nav-item">
+      <a class="nav-item" href="#settings">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="3"/>
           <path d="M12 1v6m0 6v6"/>
@@ -101,7 +101,7 @@
           <path d="m4.93 19.07 4.24-4.24m5.66-5.66 4.24-4.24"/>
         </svg>
         <span>Settings</span>
-      </div>
+      </a>
       <div class="user-profile">
         <div class="avatar">JD</div>
         <span>John Doe</span>
@@ -110,19 +110,21 @@
     </div>
   </aside>
 
+  <button class="sidebar-backdrop" id="sidebar-backdrop" type="button" aria-label="Close sidebar" tabindex="-1"></button>
+
   <!-- 主内容区 -->
   <div class="main-content">
     <!-- 顶部栏 -->
     <header class="top-bar">
       <div class="top-bar-left">
-        <button class="icon-button menu-toggle" id="mobile-menu-toggle" title="Open sidebar" aria-controls="sidebar" aria-expanded="false">
+        <button class="icon-button menu-toggle" id="mobile-menu-toggle" title="Open sidebar" aria-label="Open sidebar" aria-controls="sidebar" aria-expanded="false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="3" y1="12" x2="21" y2="12"/>
             <line x1="3" y1="6" x2="21" y2="6"/>
             <line x1="3" y1="18" x2="21" y2="18"/>
           </svg>
         </button>
-        <button class="icon-button sidebar-toggle" id="sidebar-toggle" title="Collapse sidebar">
+        <button class="icon-button sidebar-toggle" id="sidebar-toggle" title="Collapse sidebar" aria-label="Collapse sidebar">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M4 4h6v16H4z"/>
             <path d="M14 4h6v16h-6z"/>
@@ -131,7 +133,7 @@
         <h1>Designali Creative</h1>
       </div>
       <div class="top-bar-right">
-        <button class="icon-button" id="theme-toggle" title="Toggle theme">
+        <button class="icon-button" id="theme-toggle" title="Toggle theme" aria-label="Toggle color theme">
           <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="5"/>
             <line x1="12" y1="1" x2="12" y2="3"/>
@@ -147,18 +149,18 @@
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
           </svg>
         </button>
-        <button class="icon-button">
+        <button class="icon-button" aria-label="Open documents">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M18 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/>
             <path d="M6 6h.01M6 10h.01M6 14h.01"/>
           </svg>
         </button>
-        <button class="icon-button">
+        <button class="icon-button" aria-label="Open messages">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
           </svg>
         </button>
-        <button class="icon-button notification-button">
+        <button class="icon-button notification-button" aria-label="Open notifications, 5 unread">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
             <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
@@ -418,7 +420,7 @@
                       <span>Progress</span>
                       <span>75%</span>
                     </div>
-                    <div class="progress-bar">
+                    <div class="progress-bar" role="progressbar" aria-label="Website Redesign progress" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                       <div class="progress-fill" style="width: 75%"></div>
                     </div>
                   </div>
@@ -451,7 +453,7 @@
                       <span>Progress</span>
                       <span>60%</span>
                     </div>
-                    <div class="progress-bar">
+                    <div class="progress-bar" role="progressbar" aria-label="Mobile App Launch progress" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
                       <div class="progress-fill" style="width: 60%"></div>
                     </div>
                   </div>
@@ -484,7 +486,7 @@
                       <span>Progress</span>
                       <span>90%</span>
                     </div>
-                    <div class="progress-bar">
+                    <div class="progress-bar" role="progressbar" aria-label="Brand Identity progress" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
                       <div class="progress-fill" style="width: 90%"></div>
                     </div>
                   </div>
@@ -560,20 +562,20 @@
                   <h3>Approval checklist</h3>
                   <span class="badge outline">5 items</span>
                 </div>
-                <div class="breadcrumbs">
+                <nav class="breadcrumbs" aria-label="Breadcrumb">
                   <span>Workspace</span>
                   <span>/</span>
                   <span>Release</span>
                   <span>/</span>
                   <span>Checklist</span>
-                </div>
+                </nav>
                 <div class="subnav">
                   <button class="button small">Summary</button>
                   <button class="button small">Assets</button>
                   <button class="button small">Feedback</button>
                 </div>
                 <div class="list-card">
-                  <div class="table-row is-selected">
+                  <div class="table-row is-selected" aria-selected="true">
                     <div class="list-item-left">
                       <div class="app-icon small blue">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -765,7 +767,7 @@
                       <span>Installation</span>
                       <span>85%</span>
                     </div>
-                    <div class="progress-bar">
+                    <div class="progress-bar" role="progressbar" aria-label="UXFlow installation progress" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
                       <div class="progress-fill" style="width: 85%"></div>
                     </div>
                   </div>
@@ -794,7 +796,7 @@
                       <span>Installation</span>
                       <span>70%</span>
                     </div>
-                    <div class="progress-bar">
+                    <div class="progress-bar" role="progressbar" aria-label="WebCanvas installation progress" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
                       <div class="progress-fill" style="width: 70%"></div>
                     </div>
                   </div>
@@ -823,7 +825,7 @@
                       <span>Installation</span>
                       <span>60%</span>
                     </div>
-                    <div class="progress-bar">
+                    <div class="progress-bar" role="progressbar" aria-label="3DStudio installation progress" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
                       <div class="progress-fill" style="width: 60%"></div>
                     </div>
                   </div>
@@ -1115,6 +1117,8 @@
     const body = document.body;
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const sidebarToggle = document.getElementById('sidebar-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarBackdrop = document.getElementById('sidebar-backdrop');
 
     // 从本地存储加载主题偏好
     const savedTheme = html.dataset.theme;
@@ -1132,8 +1136,21 @@
     });
 
     mobileMenuToggle.addEventListener('click', () => {
-      body.classList.toggle('sidebar-open');
-      updateSidebarState();
+      setSidebarOpen(!body.classList.contains('sidebar-open'));
+    });
+
+    sidebarBackdrop.addEventListener('click', () => setSidebarOpen(false));
+
+    sidebar.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (matchMedia('(max-width: 768px)').matches) setSidebarOpen(false);
+      });
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && body.classList.contains('sidebar-open')) {
+        setSidebarOpen(false, true);
+      }
     });
 
     sidebarToggle.addEventListener('click', () => {
@@ -1183,6 +1200,18 @@
       const isOpen = body.classList.contains('sidebar-open');
       sidebar.inert = isMobile && !isOpen;
       mobileMenuToggle.setAttribute('aria-expanded', isOpen);
+      mobileMenuToggle.setAttribute('aria-label', isOpen ? 'Close sidebar' : 'Open sidebar');
+      sidebarBackdrop.tabIndex = isMobile && isOpen ? 0 : -1;
+    }
+
+    function setSidebarOpen(isOpen, restoreFocus = false) {
+      body.classList.toggle('sidebar-open', isOpen);
+      updateSidebarState();
+      if (isOpen) {
+        sidebar.querySelector('input, button, a, [tabindex]:not([tabindex="-1"])')?.focus();
+      } else if (restoreFocus) {
+        mobileMenuToggle.focus();
+      }
     }
 
     addEventListener('resize', updateSidebarState);

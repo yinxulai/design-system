@@ -279,6 +279,15 @@ body {
   transition: background-color var(--transition-base);
 }
 
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: none;
+  border: 0;
+  background: var(--color-overlay);
+}
+
 .sidebar-header {
   padding: var(--spacing-4);
 }
@@ -370,6 +379,7 @@ body {
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
+  text-decoration: none;
   transition: all var(--transition-fast);
   color: var(--color-foreground);
   min-height: 40px;
@@ -2013,6 +2023,10 @@ body {
   .sidebar-open .sidebar {
     transform: translateX(0);
   }
+
+  .sidebar-open .sidebar-backdrop {
+    display: block;
+  }
   
   .main-content {
     margin-left: 0;
@@ -2181,7 +2195,13 @@ body {
   }
   
   .apps-grid {
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--spacing-4);
+  }
+
+  .apps-grid > .app-card {
+    min-width: 0;
+    max-width: none;
   }
   
   .community-grid {

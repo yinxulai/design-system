@@ -21,6 +21,7 @@ When in doubt, start here for shared layout, spacing, typography, control, and f
 This document is the shared implementation layer for Aurora. Its purpose is to ensure that any screen built in HTML/CSS, preview markup, or a component-based UI can follow the same structural and visual rules.
 
 Use this document as the default reference for the following foundation categories:
+
 - text and typography
 - borders and outlines
 - spacing and rhythm
@@ -241,6 +242,7 @@ A good rule of thumb is: foundation tokens are for values, semantic tokens are f
 The design system should expose one canonical token layer for every visual decision. Any new color, spacing, radius, shadow, typography, or motion value must be defined once here and then reused by preview styles and components.
 
 #### Required token flow
+
 1. Define the raw foundation token.
 2. Map it to a semantic role such as background, surface, border, action, or status.
 3. Reuse the semantic token from shared primitives and components.
@@ -270,6 +272,7 @@ In practice, the dark-theme block should override color-related tokens and theme
   --grid-card-min-width: 240px;
   --grid-card-max-width: 320px;
   --control-min-height: 40px;
+  --touch-control-min-height: 44px;
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
 
   /* Light theme colors */
@@ -288,6 +291,10 @@ In practice, the dark-theme block should override color-related tokens and theme
   --color-secondary-foreground: oklch(0.09 0 0);
   --color-accent: oklch(0.961 0 0);
   --color-accent-foreground: oklch(0.09 0 0);
+  --color-danger: oklch(0.58 0.22 27);
+  --color-success: oklch(0.45 0.15 145);
+  --color-warning: oklch(0.72 0.17 85);
+  --color-info: oklch(0.55 0.16 250);
 
   --color-surface: var(--color-card);
   --color-surface-muted: var(--color-muted);
@@ -299,6 +306,9 @@ In practice, the dark-theme block should override color-related tokens and theme
   --color-action-default: var(--color-primary);
   --color-action-hover: oklch(0.14 0 0);
   --color-action-pressed: oklch(0.12 0 0);
+  --color-action-disabled: oklch(0.94 0 0);
+  --color-action-disabled-foreground: oklch(0.53 0 0);
+  --color-focus: var(--color-ring);
   --color-overlay: rgba(15, 23, 42, 0.04);
   --color-on-brand-action: oklch(0.99 0 0);
   --color-on-brand-action-foreground: oklch(0.18 0 0);
@@ -323,6 +333,10 @@ In practice, the dark-theme block should override color-related tokens and theme
   --color-secondary-foreground: oklch(0.95 0 0);
   --color-accent: oklch(0.225 0 0);
   --color-accent-foreground: oklch(0.95 0 0);
+  --color-danger: oklch(0.72 0.19 24);
+  --color-success: oklch(0.62 0.16 145);
+  --color-warning: oklch(0.74 0.17 85);
+  --color-info: oklch(0.68 0.16 250);
 
   --color-surface: var(--color-card);
   --color-surface-muted: var(--color-muted);
@@ -331,6 +345,12 @@ In practice, the dark-theme block should override color-related tokens and theme
   --color-control: var(--color-border);
   --color-control-hover: oklch(0.315 0 0);
   --color-control-pressed: oklch(0.35 0 0);
+  --color-action-default: var(--color-primary);
+  --color-action-hover: oklch(0.92 0 0);
+  --color-action-pressed: oklch(0.84 0 0);
+  --color-action-disabled: oklch(0.2 0 0);
+  --color-action-disabled-foreground: oklch(0.58 0 0);
+  --color-focus: var(--color-ring);
   --color-overlay: rgba(255, 255, 255, 0.06);
   --color-on-brand-action: oklch(0.96 0 0);
   --color-on-brand-action-foreground: oklch(0.14 0 0);
@@ -495,6 +515,7 @@ These classes form the base layer for most screens.
 ```
 
 ### Layout usage rules
+
 - Use `.page-shell` for the outer page frame.
 - Use `.section` for grouped content areas.
 - Use `.surface` for cards, panels, and secondary containers.
@@ -552,6 +573,7 @@ h1, h2, h3, h4, h5, h6 {
 ```
 
 ### 5.2 Typography rules
+
 - Body text should stay readable and neutral.
 - Headings should be concise and informative.
 - Secondary text should use muted color and slightly smaller size.
@@ -826,7 +848,7 @@ This section covers how the shared primitives should adapt across viewport sizes
 
 - Use fluid grids and allow cards to wrap naturally on smaller viewports.
 - Prioritize one-column layout on narrow screens.
-- Keep touch targets at least 40px high on mobile.
+- Keep touch targets at least 44px high in touch contexts. The 40px control size is reserved for pointer-oriented layouts.
 - Avoid forcing overly dense content in small viewports.
 
 ```css
@@ -919,6 +941,7 @@ The following categories should be treated as the default semantic vocabulary fo
 ### 12.9 Preview mapping guidance
 
 When a new preview screen is built, the implementation should prefer these classes in order:
+
 1. structural layout classes
 2. surface and spacing classes
 3. text and content classes
