@@ -2108,6 +2108,18 @@ body {
     flex-shrink: 0;
     white-space: nowrap;
   }
+
+  .pattern-card .subnav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-radius: var(--radius-md);
+  }
+
+  .pattern-card .subnav .button {
+    min-width: 0;
+    padding-inline: var(--spacing-2);
+    white-space: nowrap;
+  }
   
   .header-actions {
     width: 100%;
