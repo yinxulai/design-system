@@ -5,7 +5,7 @@
   "description": "Aurora Design System — shadcn registry",
   "scripts": {
     "build": "shadcn build",
-    "build:output": "shadcn build --output public/r"
+    "build:output": "shadcn build --output public/aurora/r"
   },
   "devDependencies": {
     "shadcn": "^4.13.1"

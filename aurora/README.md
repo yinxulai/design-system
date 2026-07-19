@@ -6,23 +6,23 @@
 
 ## 📦 Component Registry
 
-Aurora ships as a [shadcn registry](https://ui.shadcn.com/docs/registry). Components are authored as source under `aurora/component/source/`, built to static JSON via `shadcn build`, and published to GitHub Pages for consumption.
+Aurora ships as a [shadcn registry](https://ui.shadcn.com/docs/registry). Components are authored as source under `aurora/component/source/`, built to static JSON via `shadcn build`, and published to GitHub Pages for consumption. The registry is served under the `aurora/` subpath because this repository hosts multiple design systems.
 
 ### Install components
 
 ```bash
 # Install a single component
-npx shadcn add https://yinxulai.github.io/design-system/r/button.json
+npx shadcn add https://yinxulai.github.io/design-system/aurora/r/button.json
 
 # Or register a namespace first
-npx shadcn registry add @aurora=https://yinxulai.github.io/design-system/r/{name}.json
+npx shadcn registry add @aurora=https://yinxulai.github.io/design-system/aurora/r/{name}.json
 npx shadcn add @aurora/button
 ```
 
 ### Browse available items
 
 ```bash
-npx shadcn list https://yinxulai.github.io/design-system/r/registry.json
+npx shadcn list https://yinxulai.github.io/design-system/aurora/r/registry.json
 ```
 
 ### Local development
@@ -30,13 +30,13 @@ npx shadcn list https://yinxulai.github.io/design-system/r/registry.json
 ```bash
 cd aurora/component
 npm install
-npm run build        # build to ./public/r/
-npm run build:output # alias, explicit --output public/r
+npm run build        # build to ./public/aurora/r/
+npm run build:output # alias, explicit --output public/aurora/r
 ```
 
 ### Deployment
 
-Pushing to `main` triggers the [deploy-registry workflow](../.github/workflows/deploy-registry.yml) which builds the registry JSON and publishes it to GitHub Pages at `https://yinxulai.github.io/design-system/r/`. Build artifacts under `public/r/` are gitignored and only generated during build.
+Pushing to `main` triggers the [deploy-registry workflow](../.github/workflows/deploy-registry.yml) which builds the registry with `shadcn build` and publishes it to GitHub Pages at `https://yinxulai.github.io/design-system/aurora/r/`. Build artifacts under `component/public/` are gitignored and only generated during build.
 
 ---
 
