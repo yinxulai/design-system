@@ -7,7 +7,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@aurora/lib/utils"
 
 const toggleVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors",
+  "inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors duration-200 active:scale-[0.98]",
   {
     variants: {
       variant: {

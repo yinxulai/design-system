@@ -50,7 +50,7 @@ const ToggleGroupItem = React.forwardRef<
         "hover:bg-muted hover:text-muted-foreground",
         "data-[state=on]:bg-accent data-[state=on]:text-accent-foreground",
         "focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50",
-        "disabled:pointer-events-none disabled:opacity-50",
+        "disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]",
         className
       )}
       {...props}

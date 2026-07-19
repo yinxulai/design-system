@@ -44,7 +44,7 @@ const Breadcrumbs = React.forwardRef<HTMLElement, BreadcrumbsProps>(
               ) : (
                 <a
                   href={item.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 rounded-sm"
+                  className="text-muted-foreground hover:text-foreground transition-colors duration-200 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 rounded-sm"
                 >
                   {item.label}
                 </a>

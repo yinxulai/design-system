@@ -15,8 +15,8 @@ const ListRow = React.forwardRef<HTMLDivElement, ListRowProps>(
       <div
         ref={ref}
         className={cn(
-          "flex flex-col gap-1 rounded-[18px] border border-border/70 p-3 sm:flex-row sm:items-center sm:justify-between",
-          "bg-background/70 transition-colors duration-150 hover:bg-muted/50",
+          "flex flex-col gap-1 rounded-[var(--radius-lg)] border border-border/70 p-3 sm:flex-row sm:items-center sm:justify-between",
+          "bg-background/70 transition-colors duration-200 hover:bg-muted/50",
           className
         )}
         {...props}

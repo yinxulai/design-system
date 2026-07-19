@@ -28,8 +28,9 @@ const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
           disabled={!showPrev}
           onClick={() => onPageChange?.(currentPage - 1)}
           className={cn(
-            "inline-flex items-center gap-1 rounded-md border px-3 py-2 text-sm font-medium transition-all",
+            "inline-flex items-center gap-1 rounded-md border px-3 py-2 text-sm font-medium transition-all duration-200",
             "hover:bg-accent hover:text-accent-foreground",
+            "focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50",
             "disabled:pointer-events-none disabled:opacity-50"
           )}
         >
@@ -44,7 +45,7 @@ const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
               type="button"
               onClick={() => onPageChange?.(page)}
               className={cn(
-                "inline-flex h-9 w-9 items-center justify-center rounded-md text-sm font-medium transition-all",
+                "inline-flex h-9 w-9 items-center justify-center rounded-md text-sm font-medium transition-all duration-200",
                 "focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50",
                 page === currentPage
                   ? "bg-primary text-primary-foreground"
@@ -65,8 +66,9 @@ const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
           disabled={!showNext}
           onClick={() => onPageChange?.(currentPage + 1)}
           className={cn(
-            "inline-flex items-center gap-1 rounded-md border px-3 py-2 text-sm font-medium transition-all",
+            "inline-flex items-center gap-1 rounded-md border px-3 py-2 text-sm font-medium transition-all duration-200",
             "hover:bg-accent hover:text-accent-foreground",
+            "focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50",
             "disabled:pointer-events-none disabled:opacity-50"
           )}
         >
