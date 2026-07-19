@@ -6,7 +6,7 @@
       "type": "registry:base",
       "extends": "none",
       "title": "Aurora Base",
-      "description": "Aurora 设计系统基础 — Token、配置和工具类一键注入",
+      "description": "Aurora design system foundation - tokens, config, and utility classes in one shot",
       "config": {
         "style": "aurora",
         "iconLibrary": "lucide",
@@ -28,7 +28,9 @@
         "clsx",
         "tailwind-merge"
       ],
-      "registryDependencies": ["utils"],
+      "registryDependencies": [
+        "utils"
+      ],
       "cssVars": {
         "theme": {
           "font-sans": "'Geist', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif",

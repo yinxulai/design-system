@@ -11,10 +11,10 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- 背景渐变效果 -->
+  <!-- Background gradient effect -->
   <div class="animated-background"></div>
 
-  <!-- 侧边栏 -->
+  <!-- Sidebar -->
   <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
     <div class="sidebar-header">
       <div class="logo">
@@ -112,9 +112,9 @@
 
   <button class="sidebar-backdrop" id="sidebar-backdrop" type="button" aria-label="Close sidebar" tabindex="-1"></button>
 
-  <!-- 主内容区 -->
+  <!-- Main content area -->
   <div class="main-content">
-    <!-- 顶部栏 -->
+    <!-- Top bar -->
     <header class="top-bar">
       <div class="top-bar-left">
         <button class="icon-button menu-toggle" id="mobile-menu-toggle" title="Open sidebar" aria-label="Open sidebar" aria-controls="sidebar" aria-expanded="false">
@@ -171,7 +171,7 @@
       </div>
     </header>
 
-    <!-- 标签栏 -->
+    <!-- Tab bar -->
     <div class="tabs-header">
       <div class="tabs" role="tablist" aria-label="Workspace sections">
         <button class="tab active" id="tab-home" role="tab" aria-selected="true" aria-controls="panel-home" tabindex="0" data-tab="home">Home</button>
@@ -197,11 +197,11 @@
       </div>
     </div>
 
-    <!-- 页面内容 -->
+    <!-- Page content -->
     <main class="page-content">
       <div class="tab-pages">
         <section class="tab-page active" id="panel-home" role="tabpanel" aria-labelledby="tab-home" data-tab="home">
-          <!-- 欢迎横幅 -->
+          <!-- Welcome banner -->
           <section class="hero-banner">
             <div class="hero-content">
               <span class="badge premium">Premium</span>
@@ -221,7 +221,7 @@
             </div>
           </section>
 
-          <!-- 最近使用的应用 -->
+          <!-- Recent apps -->
           <section class="section">
             <div class="section-header">
               <h2>Recent Apps</h2>
@@ -300,7 +300,7 @@
             </div>
           </section>
 
-          <!-- 最近文件和活跃项目 -->
+          <!-- Recent files and active projects -->
           <div class="two-column-layout">
             <section class="section">
               <div class="section-header">
@@ -511,7 +511,7 @@
             </section>
           </div>
 
-          <!-- 发布准备与协作流程 -->
+          <!-- Release readiness and collaboration flow -->
           <section class="section">
             <div class="section-header">
               <div>
@@ -609,7 +609,7 @@
             </div>
           </section>
 
-          <!-- 社区精选 -->
+          <!-- Community picks -->
           <section class="section">
             <div class="section-header">
               <h2>Community Highlights</h2>
@@ -1109,7 +1109,7 @@
   </div>
 
   <script>
-    // 主题切换功能
+    // Theme toggle logic
     const themeToggle = document.getElementById('theme-toggle');
     const sunIcon = document.querySelector('.sun-icon');
     const moonIcon = document.querySelector('.moon-icon');
@@ -1120,12 +1120,12 @@
     const sidebar = document.getElementById('sidebar');
     const sidebarBackdrop = document.getElementById('sidebar-backdrop');
 
-    // 从本地存储加载主题偏好
+    // Load theme preference from local storage
     const savedTheme = html.dataset.theme;
     html.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
 
-    // 主题切换事件
+    // Theme toggle event
     themeToggle.addEventListener('click', () => {
       const currentTheme = html.getAttribute('data-theme');
       const newTheme = currentTheme === 'light' ? 'dark' : 'light';

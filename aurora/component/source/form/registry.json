@@ -5,9 +5,13 @@
       "name": "checkbox",
       "type": "registry:ui",
       "title": "Checkbox",
-      "description": "Aurora 复选框组件",
-      "dependencies": ["@radix-ui/react-checkbox"],
-      "registryDependencies": ["utils"],
+      "description": "Aurora checkbox component",
+      "dependencies": [
+        "@radix-ui/react-checkbox"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "checkbox/checkbox.tsx",
@@ -20,9 +24,13 @@
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
-      "description": "Aurora 下拉选择组件",
-      "dependencies": ["@radix-ui/react-select"],
-      "registryDependencies": ["utils"],
+      "description": "Aurora select dropdown component",
+      "dependencies": [
+        "@radix-ui/react-select"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "select/select.tsx",
@@ -35,9 +43,13 @@
       "name": "radio-group",
       "type": "registry:ui",
       "title": "Radio Group",
-      "description": "Aurora 单选组组件",
-      "dependencies": ["@radix-ui/react-radio-group"],
-      "registryDependencies": ["utils"],
+      "description": "Aurora radio group component",
+      "dependencies": [
+        "@radix-ui/react-radio-group"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "radio-group/radio-group.tsx",
@@ -50,9 +62,13 @@
       "name": "switch",
       "type": "registry:ui",
       "title": "Switch",
-      "description": "Aurora 开关组件",
-      "dependencies": ["@radix-ui/react-switch"],
-      "registryDependencies": ["utils"],
+      "description": "Aurora switch component",
+      "dependencies": [
+        "@radix-ui/react-switch"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "switch/switch.tsx",
@@ -65,9 +81,13 @@
       "name": "input-otp",
       "type": "registry:ui",
       "title": "Input OTP",
-      "description": "Aurora 一次性验证码输入组件",
-      "dependencies": ["input-otp"],
-      "registryDependencies": ["utils"],
+      "description": "Aurora one-time verification code input component",
+      "dependencies": [
+        "input-otp"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "input-otp/input-otp.tsx",

@@ -5,8 +5,10 @@
       "name": "breadcrumbs",
       "type": "registry:ui",
       "title": "Breadcrumbs",
-      "description": "Aurora 面包屑导航组件",
-      "registryDependencies": ["utils"],
+      "description": "Aurora breadcrumb navigation component",
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "breadcrumbs/breadcrumbs.tsx",
@@ -19,9 +21,13 @@
       "name": "tabs",
       "type": "registry:ui",
       "title": "Tabs",
-      "description": "Aurora 标签页组件",
-      "dependencies": ["@radix-ui/react-tabs"],
-      "registryDependencies": ["utils"],
+      "description": "Aurora tabs component",
+      "dependencies": [
+        "@radix-ui/react-tabs"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "tabs/tabs.tsx",
@@ -34,8 +40,10 @@
       "name": "pagination",
       "type": "registry:ui",
       "title": "Pagination",
-      "description": "Aurora 分页组件",
-      "registryDependencies": ["utils"],
+      "description": "Aurora pagination component",
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "pagination/pagination.tsx",

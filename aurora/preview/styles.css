@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100;200;300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600;700&display=swap');
 
 /* Preview design token baseline
-   这些值定义了 preview 的基础视觉语言；如果它们发生大幅变化，preview 的整体风格会明显漂移。
-   视觉验收时，优先检查颜色、半径、间距、阴影和品牌渐变这几组 token。
-   亮色和暗色主题都使用一套完整的语义 token，避免只在某一侧补值。
+   These values define the base visual language of the preview; if they shift
+   significantly, the overall preview aesthetic will drift noticeably.
+   During visual QA, prioritize checking color, radius, spacing, shadow, and
+   brand gradient tokens.
+   Both light and dark themes use a complete set of semantic tokens; never
+   patch only one side.
 
    Token layering:
    1. Foundation tokens: define the raw primitives.
@@ -235,7 +238,7 @@
   --shadow-xl: 0 24px 60px -24px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-/* 基础重置 */
+/* Base reset */
 * {
   margin: 0;
   padding: 0;
@@ -259,12 +262,12 @@ body {
   min-height: 100vh;
 }
 
-/* 动态渐变背景（已移除，使用纯色） */
+/* Dynamic gradient background (removed, using solid color) */
 .animated-background {
   display: none;
 }
 
-/* 侧边栏 */
+/* Sidebar */
 .sidebar {
   position: fixed;
   left: 0;
@@ -328,7 +331,7 @@ body {
   transition: color var(--transition-fast);
 }
 
-/* 搜索框 */
+/* Search box */
 .search-box {
   position: relative;
   padding: var(--spacing-2) var(--spacing-3);
@@ -362,7 +365,7 @@ body {
   box-shadow: var(--focus-ring);
 }
 
-/* 导航 */
+/* Navigation */
 .sidebar-nav {
   flex: 1;
   padding: var(--spacing-2) var(--spacing-3);
@@ -410,7 +413,7 @@ body {
   margin-left: auto;
 }
 
-/* 徽章 */
+/* Badge */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -454,7 +457,7 @@ body {
   height: 12px;
 }
 
-/* 侧边栏底部 */
+/* Sidebar footer */
 .sidebar-footer {
   border-top: 1px solid var(--color-border);
   padding: var(--spacing-3);
@@ -475,7 +478,7 @@ body {
   background-color: var(--color-surface-hover);
 }
 
-/* 头像 */
+/* Avatar */
 .avatar {
   width: 24px;
   height: 24px;
@@ -496,7 +499,7 @@ body {
   border: 2px solid var(--color-sidebar-primary);
 }
 
-/* 主内容区 */
+/* Main content area */
 .main-content {
   margin-left: 256px;
   width: calc(100% - 256px);
@@ -519,7 +522,7 @@ body {
   transition: transform var(--transition-base), width var(--transition-base);
 }
 
-/* 顶部栏 */
+/* Top bar */
 .top-bar {
   position: sticky;
   top: 0;
@@ -565,7 +568,7 @@ body {
   display: none;
 }
 
-/* 图标按钮 */
+/* Icon button */
 .icon-button {
   position: relative;
   width: 40px;
@@ -598,7 +601,7 @@ body {
   outline-offset: 2px;
 }
 
-/* 主题切换按钮 */
+/* Theme toggle button */
 #theme-toggle {
   position: relative;
 }
@@ -647,7 +650,7 @@ body {
   }
 }
 
-/* 标签页 */
+/* Tabs */
 .tabs-header {
   width: 100%;
   max-width: var(--page-max-width);
@@ -710,7 +713,7 @@ body {
   align-items: center;
 }
 
-/* 按钮 */
+/* Button */
 .button {
   display: inline-flex;
   align-items: center;
@@ -863,7 +866,7 @@ body {
   color: var(--color-foreground);
 }
 
-/* 通用布局与文本工具类 */
+/* Generic layout and text utility classes */
 .flex {
   display: flex;
 }
@@ -1188,7 +1191,7 @@ body {
   outline-offset: 2px;
 }
 
-/* 页面内容 */
+/* Page content */
 .page-content {
   flex: 1;
   width: 100%;
@@ -1202,7 +1205,7 @@ body {
   margin-bottom: var(--spacing-8);
 }
 
-/* Hero 横幅 */
+/* Hero banner */
 .hero-banner {
   position: relative;
   padding: var(--spacing-8);
@@ -1286,7 +1289,7 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-/* Hero 装饰 */
+/* Hero decoration */
 .hero-decoration {
   position: relative;
   width: var(--hero-decoration-size);
@@ -1313,7 +1316,7 @@ body {
 .circle-4 { inset: calc(var(--hero-decoration-step) * 3); background-color: color-mix(in srgb, var(--color-overlay-strong) 110%, transparent); }
 .circle-5 { inset: calc(var(--hero-decoration-step) * 4); background-color: color-mix(in srgb, var(--color-overlay-strong) 120%, transparent); }
 
-/* 区块 */
+/* Section */
 .section {
   margin-bottom: var(--spacing-8);
 }
@@ -1559,7 +1562,7 @@ body {
   margin-top: 4px;
 }
 
-/* 应用网格 */
+/* App grid */
 .apps-grid,
 .card-grid {
   display: grid;
@@ -1572,7 +1575,7 @@ body {
   height: 100%;
 }
 
-/* 应用卡片 */
+/* App card */
 .app-card {
   display: flex;
   flex-direction: column;
@@ -1729,7 +1732,7 @@ body {
   padding-top: var(--spacing-2);
 }
 
-/* 双列布局 */
+/* Two-column layout */
 .two-column-layout {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--two-column-min-width)), 1fr));
@@ -1738,7 +1741,7 @@ body {
   padding: 0;
 }
 
-/* 列表卡片 */
+/* List card */
 .list-card {
   border: var(--border-width-sm) solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -1811,7 +1814,7 @@ body {
   flex-shrink: 0;
 }
 
-/* 项目项 */
+/* Project item */
 .project-item {
   padding: var(--spacing-4);
   border-bottom: 1px solid var(--color-border);
@@ -1906,7 +1909,7 @@ body {
   color: currentColor;
 }
 
-/* 社区网格 */
+/* Community grid */
 .community-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--grid-community-min-width)), var(--grid-community-max-width)));
@@ -2013,7 +2016,7 @@ body {
   color: var(--color-muted-foreground);
 }
 
-/* 响应式 */
+/* Responsive */
 @media (max-width: 768px) {
   .sidebar {
     transform: translateX(-100%);
@@ -2399,7 +2402,7 @@ body {
   }
 }
 
-/* 中等屏幕优化 (481px - 768px) */
+/* Medium screen optimizations (481px - 768px) */
 @media (min-width: 481px) and (max-width: 768px) {
   .hero-banner {
     padding: var(--spacing-6);

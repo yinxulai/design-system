@@ -5,8 +5,10 @@
       "name": "surface",
       "type": "registry:ui",
       "title": "Surface",
-      "description": "Aurora 核心容器组件，支持 default / muted / accent 三种 tone",
-      "registryDependencies": ["utils"],
+      "description": "Aurora core container component supporting default / muted / accent tones",
+      "registryDependencies": [
+        "utils"
+      ],
       "cssVars": {
         "light": {
           "surface-muted-bg": "oklch(0.961 0 0)",
@@ -29,8 +31,10 @@
       "name": "dashboard-shell",
       "type": "registry:ui",
       "title": "Dashboard Shell",
-      "description": "Aurora 仪表板外壳，提供最大宽度和响应式内边距",
-      "registryDependencies": ["utils"],
+      "description": "Aurora dashboard shell providing max-width and responsive padding",
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "dashboard-shell/dashboard-shell.tsx",
@@ -43,8 +47,10 @@
       "name": "page-section",
       "type": "registry:ui",
       "title": "Page Section",
-      "description": "Aurora 页面区块组件，包含标题、描述和操作",
-      "registryDependencies": ["utils"],
+      "description": "Aurora page section component with title, description, and actions",
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "page-section/page-section.tsx",
@@ -57,8 +63,10 @@
       "name": "section-header",
       "type": "registry:ui",
       "title": "Section Header",
-      "description": "Aurora 区块头部组件",
-      "registryDependencies": ["utils"],
+      "description": "Aurora section header component",
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "section-header/section-header.tsx",
@@ -71,8 +79,10 @@
       "name": "hero-panel",
       "type": "registry:ui",
       "title": "Hero Panel",
-      "description": "Aurora 英雄面板/横幅组件，用于页面顶部引导",
-      "registryDependencies": ["utils"],
+      "description": "Aurora hero panel / banner component for top-of-page guidance",
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "hero-panel/hero-panel.tsx",
@@ -85,8 +95,10 @@
       "name": "form-section",
       "type": "registry:ui",
       "title": "Form Section",
-      "description": "Aurora 表单区块组件，带卡片样式",
-      "registryDependencies": ["utils"],
+      "description": "Aurora form section component with card styling",
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "form-section/form-section.tsx",

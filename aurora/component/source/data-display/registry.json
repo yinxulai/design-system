@@ -5,8 +5,10 @@
       "name": "table",
       "type": "registry:ui",
       "title": "Table",
-      "description": "Aurora 表格组件",
-      "registryDependencies": ["utils"],
+      "description": "Aurora table component",
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [
         {
           "path": "table/table.tsx",
@@ -19,9 +21,15 @@
       "name": "data-table",
       "type": "registry:ui",
       "title": "Data Table",
-      "description": "Aurora 数据表格组件，基于 TanStack Table",
-      "dependencies": ["@tanstack/react-table"],
-      "registryDependencies": ["utils", "table", "button"],
+      "description": "Aurora data table component built on TanStack Table",
+      "dependencies": [
+        "@tanstack/react-table"
+      ],
+      "registryDependencies": [
+        "utils",
+        "table",
+        "button"
+      ],
       "files": [
         {
           "path": "data-table/data-table.tsx",
