@@ -432,7 +432,7 @@ interface HeroPanelProps {
   }
 >
   {/* Optional: Illustration or screenshot */}
-  <img src="/hero-illustration.png" alt="Product preview" className="lg:max-w-md" />
+  <img source="/hero-illustration.png" alt="Product preview" className="lg:max-w-md" />
 </HeroPanel>
 ```
 

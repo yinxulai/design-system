@@ -1,0 +1,48 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "breadcrumbs",
+      "type": "registry:ui",
+      "title": "Breadcrumbs",
+      "description": "Aurora 面包屑导航组件",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "breadcrumbs/breadcrumbs.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/navigation/breadcrumbs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Aurora 标签页组件",
+      "dependencies": ["@radix-ui/react-tabs"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "tabs/tabs.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/navigation/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Aurora 分页组件",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "pagination/pagination.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/navigation/pagination.tsx"
+        }
+      ]
+    }
+  ]
+}

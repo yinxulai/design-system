@@ -1,6 +1,42 @@
 # Aurora Design System
 
-> A design specification and static reference preview for modern SaaS applications. Aurora defines implementation contracts, but does not currently ship a framework component package.
+> A design specification, static reference preview, and shadcn component registry for modern SaaS applications.
+
+---
+
+## 📦 Component Registry
+
+Aurora ships as a [shadcn registry](https://ui.shadcn.com/docs/registry). Components are authored as source under `aurora/component/source/`, built to static JSON via `shadcn build`, and published to GitHub Pages for consumption.
+
+### Install components
+
+```bash
+# Install a single component
+npx shadcn add https://yinxulai.github.io/design-system/r/button.json
+
+# Or register a namespace first
+npx shadcn registry add @aurora=https://yinxulai.github.io/design-system/r/{name}.json
+npx shadcn add @aurora/button
+```
+
+### Browse available items
+
+```bash
+npx shadcn list https://yinxulai.github.io/design-system/r/registry.json
+```
+
+### Local development
+
+```bash
+cd aurora/component
+npm install
+npm run build        # build to ./public/r/
+npm run build:output # alias, explicit --output public/r
+```
+
+### Deployment
+
+Pushing to `main` triggers the [deploy-registry workflow](../.github/workflows/deploy-registry.yml) which builds the registry JSON and publishes it to GitHub Pages at `https://yinxulai.github.io/design-system/r/`. Build artifacts under `public/r/` are gitignored and only generated during build.
 
 ---
 
@@ -101,12 +137,18 @@ The TSX snippets in this documentation illustrate recommended composition and AP
 design-system/
 ├── README.md                 # Repository overview
 ├── README.zh-CN.md           # Chinese repository overview
+├── .github/workflows/        # CI: build & deploy registry to GitHub Pages
 └── aurora/
   ├── README.md             # Aurora overview and navigation
   ├── DESIGN.md             # Design principles and philosophy
   ├── STYLES.md             # Semantic tokens and layout primitives
   ├── COMPONENTS.md         # Component implementation contracts
-  └── preview/              # Static HTML/CSS reference implementation
+  ├── preview/              # Static HTML/CSS reference implementation
+  └── component/            # shadcn registry source (built + deployed via CI)
+      ├── source/           # registry source files
+      ├── public/r/         # build output (gitignored)
+      ├── registry.json     # root registry manifest
+      └── components.json   # shadcn project config
 ```
 
 ---

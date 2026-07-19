@@ -1,0 +1,17 @@
+{
+  "name": "aurora",
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "homepage": "https://github.com/yinxulai/design-system/tree/main/aurora",
+  "include": [
+    "source/base/registry.json",
+    "source/lib/registry.json",
+    "source/ui/registry.json",
+    "source/layout/registry.json",
+    "source/form/registry.json",
+    "source/content/registry.json",
+    "source/data-display/registry.json",
+    "source/navigation/registry.json",
+    "source/overlay/registry.json",
+    "source/feedback/registry.json"
+  ]
+}

@@ -1,0 +1,349 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Aurora 按钮组件，支持多种变体和状态",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "button/button.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Aurora 输入框组件",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "input/input.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Aurora 标签组件",
+      "dependencies": ["@radix-ui/react-label"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "label/label.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/label.tsx"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Aurora 多行文本输入组件",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "textarea/textarea.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/textarea.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Aurora 徽章组件，支持多种变体",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "badge/badge.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Aurora 骨架屏加载组件",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "skeleton/skeleton.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/skeleton.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Aurora 卡片容器组件",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "card/card.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Aurora 分隔线组件",
+      "dependencies": ["@radix-ui/react-separator"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "separator/separator.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/separator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Aurora 警告/提示组件",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "alert/alert.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/alert.tsx"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Aurora 弹出层组件",
+      "dependencies": ["@radix-ui/react-popover"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "popover/popover.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/popover.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Aurora 头像组件",
+      "dependencies": ["@radix-ui/react-avatar"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "avatar/avatar.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/avatar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Aurora 手风琴折叠面板组件",
+      "dependencies": ["@radix-ui/react-accordion"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "accordion/accordion.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/accordion.tsx"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "Aurora 可折叠区域组件",
+      "dependencies": ["@radix-ui/react-collapsible"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "collapsible/collapsible.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/collapsible.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "Aurora 自定义滚动区域组件",
+      "dependencies": ["@radix-ui/react-scroll-area"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "scroll-area/scroll-area.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/scroll-area.tsx"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Aurora 滑块输入组件",
+      "dependencies": ["@radix-ui/react-slider"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "slider/slider.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/slider.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "Aurora 开关按钮组件",
+      "dependencies": ["@radix-ui/react-toggle", "class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "toggle/toggle.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "Aurora 开关按钮组组件",
+      "dependencies": ["@radix-ui/react-toggle-group", "class-variance-authority"],
+      "registryDependencies": ["utils", "toggle"],
+      "files": [
+        {
+          "path": "toggle-group/toggle-group.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/toggle-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "Aurora 菜单栏组件",
+      "dependencies": ["@radix-ui/react-menubar"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "menubar/menubar.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/menubar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "Aurora 命令面板/搜索组件",
+      "dependencies": ["cmdk"],
+      "registryDependencies": ["utils", "dialog"],
+      "files": [
+        {
+          "path": "command/command.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/command.tsx"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "Aurora 日历组件",
+      "dependencies": ["react-day-picker", "date-fns"],
+      "registryDependencies": ["utils", "button"],
+      "files": [
+        {
+          "path": "calendar/calendar.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/calendar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "description": "Aurora 日期选择器组件",
+      "dependencies": ["date-fns"],
+      "registryDependencies": ["utils", "button", "calendar", "popover"],
+      "files": [
+        {
+          "path": "date-picker/date-picker.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/date-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "Aurora 可调整尺寸面板组件",
+      "dependencies": ["react-resizable-panels"],
+      "registryDependencies": ["utils", "button"],
+      "files": [
+        {
+          "path": "resizable/resizable.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/resizable.tsx"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "Aurora 轮播/幻灯片组件",
+      "dependencies": ["embla-carousel-react"],
+      "registryDependencies": ["utils", "button"],
+      "files": [
+        {
+          "path": "carousel/carousel.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/ui/carousel.tsx"
+        }
+      ]
+    }
+  ]
+}

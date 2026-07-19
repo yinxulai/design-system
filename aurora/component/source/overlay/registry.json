@@ -1,0 +1,110 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Aurora 模态对话框组件",
+      "dependencies": ["@radix-ui/react-dialog"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "dialog/dialog.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/overlay/dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Aurora 侧边抽屉组件",
+      "dependencies": ["@radix-ui/react-dialog", "class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "sheet/sheet.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/overlay/sheet.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Aurora 文字提示组件",
+      "dependencies": ["@radix-ui/react-tooltip"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "tooltip/tooltip.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/overlay/tooltip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Aurora 下拉菜单组件",
+      "dependencies": ["@radix-ui/react-dropdown-menu"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "dropdown-menu/dropdown-menu.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/overlay/dropdown-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "Aurora 右键菜单组件",
+      "dependencies": ["@radix-ui/react-context-menu"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "context-menu/context-menu.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/overlay/context-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "Aurora 悬停信息卡片组件",
+      "dependencies": ["@radix-ui/react-hover-card"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "hover-card/hover-card.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/overlay/hover-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "Aurora 警告对话框组件",
+      "dependencies": ["@radix-ui/react-alert-dialog"],
+      "registryDependencies": ["utils", "button"],
+      "files": [
+        {
+          "path": "alert-dialog/alert-dialog.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/overlay/alert-dialog.tsx"
+        }
+      ]
+    }
+  ]
+}

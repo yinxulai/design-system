@@ -1,0 +1,99 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "surface",
+      "type": "registry:ui",
+      "title": "Surface",
+      "description": "Aurora 核心容器组件，支持 default / muted / accent 三种 tone",
+      "registryDependencies": ["utils"],
+      "cssVars": {
+        "light": {
+          "surface-muted-bg": "oklch(0.961 0 0)",
+          "surface-accent-border": "oklch(0.09 0 0 / 0.2)"
+        },
+        "dark": {
+          "surface-muted-bg": "oklch(0.205 0 0 / 0.4)",
+          "surface-accent-border": "oklch(0.95 0 0 / 0.2)"
+        }
+      },
+      "files": [
+        {
+          "path": "surface/surface.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/layout/surface.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dashboard-shell",
+      "type": "registry:ui",
+      "title": "Dashboard Shell",
+      "description": "Aurora 仪表板外壳，提供最大宽度和响应式内边距",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "dashboard-shell/dashboard-shell.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/layout/dashboard-shell.tsx"
+        }
+      ]
+    },
+    {
+      "name": "page-section",
+      "type": "registry:ui",
+      "title": "Page Section",
+      "description": "Aurora 页面区块组件，包含标题、描述和操作",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "page-section/page-section.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/layout/page-section.tsx"
+        }
+      ]
+    },
+    {
+      "name": "section-header",
+      "type": "registry:ui",
+      "title": "Section Header",
+      "description": "Aurora 区块头部组件",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "section-header/section-header.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/layout/section-header.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero-panel",
+      "type": "registry:ui",
+      "title": "Hero Panel",
+      "description": "Aurora 英雄面板/横幅组件，用于页面顶部引导",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "hero-panel/hero-panel.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/layout/hero-panel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form-section",
+      "type": "registry:ui",
+      "title": "Form Section",
+      "description": "Aurora 表单区块组件，带卡片样式",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "form-section/form-section.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/layout/form-section.tsx"
+        }
+      ]
+    }
+  ]
+}

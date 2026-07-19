@@ -1,0 +1,47 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "stat-card",
+      "type": "registry:ui",
+      "title": "Stat Card",
+      "description": "Aurora 统计卡片组件，用于展示关键指标",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "stat-card/stat-card.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/content/stat-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "list-row",
+      "type": "registry:ui",
+      "title": "List Row",
+      "description": "Aurora 列表行组件",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "list-row/list-row.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/content/list-row.tsx"
+        }
+      ]
+    },
+    {
+      "name": "empty-state",
+      "type": "registry:ui",
+      "title": "Empty State",
+      "description": "Aurora 空状态组件",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "empty-state/empty-state.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/content/empty-state.tsx"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Aurora 进度条组件",
+      "dependencies": ["@radix-ui/react-progress"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "progress/progress.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/feedback/progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Aurora 轻提示组件",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "toast/toast.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/feedback/toast.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "Sonner",
+      "description": "Aurora 高级通知提示组件",
+      "dependencies": ["sonner"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "sonner/sonner.tsx",
+          "type": "registry:ui",
+          "target": "@aurora/feedback/sonner.tsx"
+        }
+      ]
+    }
+  ]
+}

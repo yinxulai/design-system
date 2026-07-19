@@ -1,0 +1,13 @@
+{
+  "name": "@aurora/registry",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Aurora Design System — shadcn registry",
+  "scripts": {
+    "build": "shadcn build",
+    "build:output": "shadcn build --output public/r"
+  },
+  "devDependencies": {
+    "shadcn": "^4.13.1"
+  }
+}
