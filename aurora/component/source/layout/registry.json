@@ -9,16 +9,6 @@
       "registryDependencies": [
         "utils"
       ],
-      "cssVars": {
-        "light": {
-          "surface-muted-bg": "oklch(0.961 0 0)",
-          "surface-accent-border": "oklch(0.09 0 0 / 0.2)"
-        },
-        "dark": {
-          "surface-muted-bg": "oklch(0.205 0 0 / 0.4)",
-          "surface-accent-border": "oklch(0.95 0 0 / 0.2)"
-        }
-      },
       "files": [
         {
           "path": "surface/surface.tsx",
@@ -31,7 +21,7 @@
       "name": "dashboard-shell",
       "type": "registry:ui",
       "title": "Dashboard Shell",
-      "description": "Aurora dashboard shell providing max-width and responsive padding",
+      "description": "Aurora full-width dashboard shell with responsive page gutters",
       "registryDependencies": [
         "utils"
       ],

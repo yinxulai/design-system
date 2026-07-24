@@ -1,0 +1,12 @@
+{
+  "name": "design-system-registries",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Build and publish every design system registry in this repository.",
+  "scripts": {
+    "build": "node scripts/build-registries.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

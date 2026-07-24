@@ -31,7 +31,7 @@ Aurora should feel calm, direct, and dependable. The interface should help peopl
 
 **2. Spatial Consistency**
 
-- Layout follows predictable patterns: fixed navigation, centered content, breathing room
+- Layout follows predictable patterns: fixed navigation, full-width workspace shells, and responsive page gutters
 - Consistent spacing rhythm (4px base, 8px increments) creates visual harmony
 - Soft but restrained corner radius (8px-16px) keeps interactions approachable without feeling overly rounded
 
@@ -155,7 +155,7 @@ Aurora should feel calm, structured, and polished. The visual language is intent
 
 - Color should stay neutral at the foundation, with accent color reserved for actions, feedback, and data emphasis.
 - Typography should prioritize readability through clear hierarchy, generous line-height, and appropriate contrast.
-- Layout should use a consistent spacing rhythm, bounded content widths, and responsive behavior.
+- Layout should use a consistent spacing rhythm, full-width workspace shells, and component-level width constraints where readability requires them.
 - Elevation should signal hierarchy through shadow and blur without creating visual noise.
 - Every interactive pattern should define default, hover, focus, active, disabled, loading, selected, and error states.
 
@@ -190,7 +190,7 @@ The implementation details for spacing, radius, containers, elevation, and inter
 ### Shared implementation rules
 
 - Use a 4px spacing rhythm and scaled padding values to maintain calm vertical and horizontal rhythm.
-- Keep content widths bounded and predictable so large screens do not feel over-stretched.
+- Let workspace shells fill the available width; constrain text, forms, media, and repeated items at the component level so large screens remain readable.
 - Define surface radius, shadow, blur, and motion once in the shared style layer and reuse them across components.
 - Apply the same state logic to buttons, cards, tabs, links, and form controls so behavior feels consistent.
 
@@ -668,8 +668,9 @@ if (lowEndDevice) {
 
 #### Very Large Screens (> 1920px)
 
-- **Strategy:** Cap max-width, don't stretch content infinitely
-- **Containers:** `max-w-7xl` (1280px) or `max-w-screen-xl`
+- **Strategy:** Keep the workspace shell full-width and use the additional space intentionally
+- **Containers:** Preserve responsive page gutters; cap text, forms, media, and individual repeated items rather than the whole dashboard
+- **Grids:** Add columns when useful while keeping each card or tile within its defined minimum and maximum width
 - **Images:** Maintain aspect ratio, don't upscale beyond 2x
 - **Typography:** Cap at desktop sizes, don't increase further
 
@@ -682,7 +683,7 @@ if (lowEndDevice) {
 
 #### Unusual Aspect Ratios (Ultra-wide, Vertical)
 
-- **Ultra-wide:** Use multi-column layouts, but cap content width
+- **Ultra-wide:** Use multi-column layouts and bounded component tracks within the full-width workspace shell
 - **Vertical (tablet portrait):** Prioritize vertical scrolling, not horizontal
 - **Foldables:** Treat as desktop when unfolded, mobile when folded
 

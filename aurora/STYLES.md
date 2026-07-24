@@ -205,7 +205,7 @@ These details belong in the shared style layer so previews and components stay a
 
 - **Color:** Use a neutral foundation with restrained accents. Keep large surfaces calm and let color support actions, feedback, and data emphasis.
 - **Typography:** Prefer readable, high-contrast type with a clear hierarchy for display, heading, body, caption, and micro text.
-- **Spacing and layout:** Use a 4px rhythm, bounded content widths, and predictable section spacing rather than ad hoc gutters.
+- **Spacing and layout:** Use a 4px rhythm, full-width workspace shells, responsive page gutters, and component-level width constraints rather than an arbitrary global max-width.
 - **Surfaces and elevation:** Radius, border, shadow, and blur should be defined once in tokens and reused by cards, panels, and overlays.
 - **Interaction states:** Every interactive primitive should define default, hover, focus, active, disabled, selected, loading, and error states.
 - **Responsive behavior:** Prefer single-column layouts on small screens and more spacious multi-column compositions on larger breakpoints.

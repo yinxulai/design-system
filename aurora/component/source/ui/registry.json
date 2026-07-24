@@ -43,7 +43,8 @@
       "title": "Label",
       "description": "Aurora label component",
       "dependencies": [
-        "@radix-ui/react-label"
+        "@radix-ui/react-label",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -361,8 +362,8 @@
       "title": "Calendar",
       "description": "Aurora calendar component",
       "dependencies": [
-        "react-day-picker",
-        "date-fns"
+        "react-day-picker@8.10.1",
+        "date-fns@3.6.0"
       ],
       "registryDependencies": [
         "utils",
@@ -382,7 +383,7 @@
       "title": "Date Picker",
       "description": "Aurora date picker component",
       "dependencies": [
-        "date-fns"
+        "date-fns@3.6.0"
       ],
       "registryDependencies": [
         "utils",
@@ -404,7 +405,7 @@
       "title": "Resizable",
       "description": "Aurora resizable panel component",
       "dependencies": [
-        "react-resizable-panels"
+        "react-resizable-panels@2.1.9"
       ],
       "registryDependencies": [
         "utils",

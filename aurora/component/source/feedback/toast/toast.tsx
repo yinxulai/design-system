@@ -30,11 +30,26 @@ export interface ToastProps
     VariantProps<typeof toastVariants> {}
 
 const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
-  ({ className, variant, ...props }, ref) => {
+  (
+    {
+      className,
+      variant,
+      role,
+      "aria-live": ariaLive,
+      "aria-atomic": ariaAtomic,
+      ...props
+    },
+    ref
+  ) => {
+    const isDestructive = variant === "destructive"
+
     return (
       <div
         ref={ref}
         className={cn(toastVariants({ variant }), className)}
+        role={role ?? (isDestructive ? "alert" : "status")}
+        aria-live={ariaLive ?? (isDestructive ? "assertive" : "polite")}
+        aria-atomic={ariaAtomic ?? true}
         {...props}
       />
     )

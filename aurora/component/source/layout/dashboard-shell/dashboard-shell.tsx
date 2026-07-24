@@ -11,7 +11,7 @@ const DashboardShell = React.forwardRef<HTMLDivElement, DashboardShellProps>(
       <div
         ref={ref}
         className={cn(
-          "mx-auto w-full max-w-[1280px] px-4 py-6 sm:px-6 lg:px-8",
+          "w-full px-4 py-6 sm:px-6 lg:px-8",
           className
         )}
         {...props}

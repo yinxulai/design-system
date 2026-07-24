@@ -6,6 +6,10 @@
       "type": "registry:lib",
       "title": "Utils",
       "description": "Utility functions including cn() for className merging",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
       "files": [
         {
           "path": "utils.ts",

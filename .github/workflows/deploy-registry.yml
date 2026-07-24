@@ -1,11 +1,8 @@
-name: Deploy Aurora Registry to GitHub Pages
+name: Deploy Registries to GitHub Pages
 
 on:
   push:
     branches: [main]
-    paths:
-      - 'aurora/component/**'
-      - '.github/workflows/deploy-registry.yml'
   workflow_dispatch:
 
 permissions:
@@ -27,17 +24,15 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
-          cache-dependency-path: aurora/component/package.json
+          cache-dependency-path: package-lock.json
 
-      - name: Install shadcn CLI
-        working-directory: aurora/component
-        run: npm install
+      - name: Install root dependencies
+        run: npm ci
 
-      - name: Build registry JSON
-        working-directory: aurora/component
-        run: npm run build:output
+      - name: Build all registry JSON
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -45,7 +40,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: aurora/component/public
+          path: output
 
   deploy:
     needs: build

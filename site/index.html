@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A multi-system shadcn registry and visual preview directory." />
+    <title>Design Systems Registry</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Design Systems Registry home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Design Systems Registry</span>
+      </a>
+      <div class="header-actions">
+        <span class="status-dot"><span></span> Live catalog</span>
+        <a class="text-link" href="https://ui.shadcn.com/docs/registry" target="_blank" rel="noreferrer">shadcn docs <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="kicker">A shared shelf for distinct visual languages</p>
+          <h1 id="page-title">Choose the system<br /><em>your product needs.</em></h1>
+          <p class="hero-lede">Browse the design systems in this repository, open a working preview, or copy a ready-to-use shadcn Registry URL into your project.</p>
+          <div class="hero-actions">
+            <a class="button button-dark" href="#systems">Explore systems <span aria-hidden="true">↓</span></a>
+            <a class="button button-quiet" href="/registries.json">View registries.json <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="hero-index" aria-label="Registry summary">
+          <span class="index-label">REGISTRY / 01</span>
+          <div class="index-figure"><span id="system-count">—</span><small>systems</small></div>
+          <p>One endpoint, multiple points of view. Each system keeps its own rhythm, tone, and component vocabulary.</p>
+          <div class="hero-rule"><span></span><span></span><span></span></div>
+        </div>
+      </section>
+
+      <section class="systems-section" id="systems" aria-labelledby="systems-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">The collection</p>
+            <h2 id="systems-title">Design systems</h2>
+          </div>
+          <p class="section-note">Each card pairs a visual point of view with the exact install surface.</p>
+        </div>
+        <div class="system-grid" id="system-grid" aria-live="polite">
+          <div class="loading-state">Loading the registry catalog<span>...</span></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Built from the repository catalog</span>
+      <span>Push to <code>main</code> to publish</span>
+    </footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="/app.js" defer></script>
+  </body>
+</html>

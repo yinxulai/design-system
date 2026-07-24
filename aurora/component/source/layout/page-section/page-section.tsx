@@ -2,7 +2,8 @@ import * as React from "react"
 
 import { cn } from "@aurora/lib/utils"
 
-export interface PageSectionProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface PageSectionProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   title?: React.ReactNode
   description?: React.ReactNode
   actions?: React.ReactNode

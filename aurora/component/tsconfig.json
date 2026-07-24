@@ -12,11 +12,24 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "incremental": true,
+    "incremental": false,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@aurora/*": ["./*"]
+      "@aurora/lib/*": ["./source/lib/*"],
+      "@aurora/data-display/table": [
+        "./source/data-display/table/table.tsx"
+      ],
+      "@aurora/layout/surface": [
+        "./source/layout/surface/surface.tsx"
+      ],
+      "@aurora/overlay/dialog": [
+        "./source/overlay/dialog/dialog.tsx"
+      ],
+      "@aurora/ui/button": ["./source/ui/button/button.tsx"],
+      "@aurora/ui/calendar": ["./source/ui/calendar/calendar.tsx"],
+      "@aurora/ui/popover": ["./source/ui/popover/popover.tsx"],
+      "@aurora/ui/toggle": ["./source/ui/toggle/toggle.tsx"]
     }
   },
   "include": ["source/**/*"],

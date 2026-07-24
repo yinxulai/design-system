@@ -2,7 +2,8 @@ import * as React from "react"
 
 import { cn } from "@aurora/lib/utils"
 
-export interface HeroPanelProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface HeroPanelProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   eyebrow?: React.ReactNode
   title: React.ReactNode
   description?: React.ReactNode
@@ -18,23 +19,15 @@ const HeroPanel = React.forwardRef<HTMLDivElement, HeroPanelProps>(
       <div
         ref={ref}
         className={cn(
-          "relative overflow-hidden rounded-[var(--radius-lg)] border p-6 sm:p-8",
-          "bg-gradient-to-br from-primary/5 via-background to-background",
+          "rounded-[var(--radius-lg)] border border-primary/15 bg-primary/5 p-6 sm:p-8",
           className
         )}
         {...props}
       >
-        <div
-          className="pointer-events-none absolute inset-0 z-0 opacity-20"
-          style={{
-            background:
-              "linear-gradient(120deg, rgba(255,255,255,0.24) 45%, transparent 55%)",
-          }}
-        />
-        <div className="relative z-10 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="space-y-3 max-w-2xl">
             {eyebrow && (
-              <div className="inline-flex w-fit items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+              <div className="inline-flex w-fit items-center rounded-md border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
                 {eyebrow}
               </div>
             )}

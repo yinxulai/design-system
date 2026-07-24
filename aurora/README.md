@@ -6,37 +6,34 @@
 
 ## 📦 Component Registry
 
-Aurora ships as a [shadcn registry](https://ui.shadcn.com/docs/registry). Components are authored as source under `aurora/component/source/`, built to static JSON via `shadcn build`, and published to GitHub Pages for consumption. The registry is served under the `aurora/` subpath because this repository hosts multiple design systems.
+Aurora ships as a [shadcn registry](https://ui.shadcn.com/docs/registry). Components are authored under `aurora/component/source/`, built to static JSON via the repository-level build, and published through Cloudflare Pages. The registry is served under the `aurora/` subpath because this repository can host multiple design systems.
 
 ### Install components
 
 ```bash
 # Install a single component
-npx shadcn add https://yinxulai.github.io/design-system/aurora/r/button.json
+npx shadcn add https://design-system-registry.pages.dev/aurora/r/button.json
 
 # Or register a namespace first
-npx shadcn registry add @aurora=https://yinxulai.github.io/design-system/aurora/r/{name}.json
+npx shadcn registry add @aurora=https://design-system-registry.pages.dev/aurora/r/{name}.json
 npx shadcn add @aurora/button
 ```
 
 ### Browse available items
 
 ```bash
-npx shadcn list https://yinxulai.github.io/design-system/aurora/r/registry.json
+npx shadcn list https://design-system-registry.pages.dev/aurora/r/registry.json
 ```
 
 ### Local development
 
 ```bash
-cd aurora/component
-npm install
-npm run build        # build to ./public/aurora/r/
-npm run build:output # alias, explicit --output public/aurora/r
+npm run build # installs, checks, and builds every registry to ./output/<system>/r/
 ```
 
 ### Deployment
 
-Pushing to `main` triggers the [deploy-registry workflow](../.github/workflows/deploy-registry.yml) which builds the registry with `shadcn build` and publishes it to GitHub Pages at `https://yinxulai.github.io/design-system/aurora/r/`. Build artifacts under `component/public/` are gitignored and only generated during build.
+Cloudflare Pages watches `main`, runs the repository-level build, and publishes `output/`. Branches and pull requests receive preview deployments. See [DEPLOYMENT.md](../DEPLOYMENT.md) for setup and the multi-design-system directory contract.
 
 ---
 

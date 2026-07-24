@@ -3,7 +3,8 @@ import * as React from "react"
 import { cn } from "@aurora/lib/utils"
 import { Surface } from "@aurora/layout/surface"
 
-export interface StatCardProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface StatCardProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   title: React.ReactNode
   value: React.ReactNode
   description?: React.ReactNode

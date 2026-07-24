@@ -8,6 +8,7 @@ const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap " +
     "text-sm font-medium transition-all duration-200 " +
     "disabled:pointer-events-none disabled:opacity-50 " +
+    "aria-disabled:pointer-events-none aria-disabled:opacity-50 " +
     "focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 " +
     "active:scale-[0.98]",
   {
@@ -45,18 +46,52 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, loading, disabled, children, ...props }, ref) => {
+  (
+    {
+      className,
+      variant,
+      size,
+      asChild = false,
+      loading = false,
+      disabled,
+      children,
+      onClick,
+      tabIndex,
+      type,
+      ...props
+    },
+    ref
+  ) => {
     const Comp = asChild ? Slot : "button"
+    const isDisabled = Boolean(disabled || loading)
+    const handleClick: React.MouseEventHandler<HTMLElement> = (event) => {
+      if (isDisabled) {
+        event.preventDefault()
+        event.stopPropagation()
+        return
+      }
+
+      onClick?.(event as React.MouseEvent<HTMLButtonElement>)
+    }
+
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
-        disabled={disabled || loading}
-        aria-busy={loading}
         {...props}
+        type={asChild ? undefined : type ?? "button"}
+        disabled={asChild ? undefined : isDisabled}
+        aria-disabled={asChild && isDisabled ? true : undefined}
+        aria-busy={loading || undefined}
+        data-loading={loading || undefined}
+        tabIndex={asChild && isDisabled ? -1 : tabIndex}
+        onClick={handleClick}
       >
-        {loading && (
-          <span className="inline-flex h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+        {loading && !asChild && (
+          <span
+            aria-hidden="true"
+            className="inline-flex h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent"
+          />
         )}
         {children}
       </Comp>

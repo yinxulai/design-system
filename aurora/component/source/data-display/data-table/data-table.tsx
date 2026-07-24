@@ -26,12 +26,16 @@ export interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
   className?: string
+  ariaLabel?: string
+  emptyMessage?: React.ReactNode
 }
 
 function DataTable<TData, TValue>({
   columns,
   data,
   className,
+  ariaLabel = "Data table",
+  emptyMessage = "No results.",
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([])
 
@@ -50,7 +54,7 @@ function DataTable<TData, TValue>({
   return (
     <div className={cn("space-y-4", className)}>
       <div className="rounded-md border">
-        <Table>
+        <Table aria-label={ariaLabel}>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
@@ -89,17 +93,17 @@ function DataTable<TData, TValue>({
             ) : (
               <TableRow>
                 <TableCell
-                  colSpan={columns.length}
+                  colSpan={table.getVisibleLeafColumns().length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  {emptyMessage}
                 </TableCell>
               </TableRow>
             )}
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2">
+      <div className="flex items-center justify-end gap-2">
         <Button
           variant="outline"
           size="sm"
@@ -108,6 +112,10 @@ function DataTable<TData, TValue>({
         >
           Previous
         </Button>
+        <span className="min-w-24 text-center text-sm text-muted-foreground tabular-nums">
+          Page {table.getState().pagination.pageIndex + 1} of{" "}
+          {Math.max(1, table.getPageCount())}
+        </span>
         <Button
           variant="outline"
           size="sm"

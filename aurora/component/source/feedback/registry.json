@@ -45,6 +45,7 @@
       "title": "Sonner",
       "description": "Aurora advanced notification toast component",
       "dependencies": [
+        "next-themes",
         "sonner"
       ],
       "registryDependencies": [

@@ -1,0 +1,9 @@
+{
+  "label": "Aurora",
+  "eyebrow": "Calm systems for complex products",
+  "description": "A layered, quietly expressive system for modern SaaS products that need clarity without losing warmth.",
+  "style": "Neutral foundations, indigo atmosphere, soft depth, and deliberate information density.",
+  "useCases": ["SaaS workspaces", "Operations dashboards", "Data-rich product surfaces"],
+  "preview": "/aurora/preview/",
+  "accent": "orange"
+}

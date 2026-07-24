@@ -128,7 +128,7 @@ These patterns belong in the component layer because they define composition, va
 
 ### DashboardShell
 
-**Purpose:** Root container for all dashboard pages. Provides consistent max-width, padding, and spacing.
+**Purpose:** Root container for all dashboard pages. Fills the available workspace width and provides consistent responsive padding and spacing.
 
 #### API
 
@@ -144,7 +144,7 @@ interface DashboardShellProps {
 
 - **Base Frame:** Use the shared `.page-shell` primitive as the outer container.
 - **Section Rhythm:** Stack major content areas with `.section` and `.stack` rather than ad-hoc spacing.
-- **Content Width:** Keep the page centered and constrained by the same max-width token used in [STYLES.md](./STYLES.md).
+- **Content Width:** Fill the available workspace width. Apply readable maximum widths to text, forms, media, cards, and grid tracks at the component level.
 - **Layout:** Column-based composition with clear vertical separation between sections.
 
 #### Usage
@@ -166,7 +166,8 @@ export default function DashboardPage() {
 
 #### Design Rationale
 
-- **1280px max-width:** Prevents text lines from exceeding 75-80 characters on ultra-wide screens
+- **Full-width shell:** Uses the space available beside navigation without imposing an arbitrary dashboard-wide cap
+- **Component-level constraints:** Keep text lines readable and repeated items stable on ultra-wide screens
 - **Responsive padding:** Maintains comfortable margins on all devices without wasting space
 - **24px section gap:** Follows 4px spacing rhythm, provides clear visual separation
 
@@ -181,7 +182,7 @@ export default function DashboardPage() {
 ❌ **Don't:**
 
 - Nest DashboardShell inside another DashboardShell
-- Override max-width (breaks consistency)
+- Add a page-level max-width that conflicts with the full-width workspace shell
 - Use for non-dashboard pages (use page-specific layouts)
 
 ---
