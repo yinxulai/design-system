@@ -11,6 +11,8 @@ The repository is prepared for a Cloudflare Pages project connected to GitHub. C
 5. Set `NODE_VERSION` to `22` if the build settings do not detect `.node-version` automatically.
 6. Keep automatic production and preview branch deployments enabled.
 
+If the Cloudflare build settings show a separate **Deploy command** field, set it to `npm run deploy`. Do not use `npx wrangler deploy`: that command targets Workers, while this repository is configured as a Pages project.
+
 Leave build watch paths at their default (watch the whole repository). If you later narrow them, include `*/component/**`, `scripts/**`, `package.json`, `package-lock.json`, `wrangler.jsonc`, and `.node-version` so changes to any design system or the shared builder trigger a deployment.
 
 The checked-in `wrangler.jsonc` uses the project name `design-system-registry`. If the Pages project uses another name, update the `name` field to match it before the first deployment.
